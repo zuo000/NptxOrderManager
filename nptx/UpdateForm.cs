@@ -8,7 +8,7 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 
-namespace nptx
+namespace UI
 {
     public partial class UpdateForm : Form
     {

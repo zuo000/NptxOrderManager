@@ -1,4 +1,4 @@
-﻿namespace nptx
+﻿namespace UI
 {
     partial class CheckoutForm
     {
