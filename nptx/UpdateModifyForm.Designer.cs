@@ -52,9 +52,13 @@
             this.label_DeliverEvery = new System.Windows.Forms.Label();
             this.button_Submit = new System.Windows.Forms.Button();
             this.groupBox1 = new System.Windows.Forms.GroupBox();
+            this.groupBox2 = new System.Windows.Forms.GroupBox();
+            this.monthCalendar1 = new System.Windows.Forms.MonthCalendar();
+            this.label2 = new System.Windows.Forms.Label();
             this.panel_DeliverWeekly.SuspendLayout();
             this.panel_DeliverDaily.SuspendLayout();
             this.groupBox1.SuspendLayout();
+            this.groupBox2.SuspendLayout();
             this.SuspendLayout();
             // 
             // label_CustomerName
@@ -71,7 +75,7 @@
             // 
             this.label_Community.AutoSize = true;
             this.label_Community.Font = new System.Drawing.Font("微软雅黑", 10.5F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
-            this.label_Community.Location = new System.Drawing.Point(21, 80);
+            this.label_Community.Location = new System.Drawing.Point(250, 35);
             this.label_Community.Name = "label_Community";
             this.label_Community.Size = new System.Drawing.Size(65, 20);
             this.label_Community.TabIndex = 2;
@@ -92,7 +96,7 @@
             this.comboBox_Community.AutoCompleteSource = System.Windows.Forms.AutoCompleteSource.CustomSource;
             this.comboBox_Community.Font = new System.Drawing.Font("微软雅黑", 10.5F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
             this.comboBox_Community.FormattingEnabled = true;
-            this.comboBox_Community.Location = new System.Drawing.Point(108, 77);
+            this.comboBox_Community.Location = new System.Drawing.Point(337, 32);
             this.comboBox_Community.Name = "comboBox_Community";
             this.comboBox_Community.Size = new System.Drawing.Size(121, 28);
             this.comboBox_Community.TabIndex = 6;
@@ -102,7 +106,7 @@
             // 
             this.label_OrderNum.AutoSize = true;
             this.label_OrderNum.Font = new System.Drawing.Font("微软雅黑", 10.5F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
-            this.label_OrderNum.Location = new System.Drawing.Point(21, 125);
+            this.label_OrderNum.Location = new System.Drawing.Point(22, 78);
             this.label_OrderNum.Name = "label_OrderNum";
             this.label_OrderNum.Size = new System.Drawing.Size(65, 20);
             this.label_OrderNum.TabIndex = 7;
@@ -111,7 +115,7 @@
             // textBox_OrderNum
             // 
             this.textBox_OrderNum.Font = new System.Drawing.Font("微软雅黑", 10.5F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
-            this.textBox_OrderNum.Location = new System.Drawing.Point(108, 125);
+            this.textBox_OrderNum.Location = new System.Drawing.Point(109, 78);
             this.textBox_OrderNum.Name = "textBox_OrderNum";
             this.textBox_OrderNum.Size = new System.Drawing.Size(56, 26);
             this.textBox_OrderNum.TabIndex = 8;
@@ -121,7 +125,7 @@
             // 
             this.label1.AutoSize = true;
             this.label1.Font = new System.Drawing.Font("微软雅黑", 10.5F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
-            this.label1.Location = new System.Drawing.Point(170, 125);
+            this.label1.Location = new System.Drawing.Point(171, 78);
             this.label1.Name = "label1";
             this.label1.Size = new System.Drawing.Size(23, 20);
             this.label1.TabIndex = 9;
@@ -131,7 +135,7 @@
             // 
             this.label_DeliverPeriod.AutoSize = true;
             this.label_DeliverPeriod.Font = new System.Drawing.Font("微软雅黑", 10.5F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
-            this.label_DeliverPeriod.Location = new System.Drawing.Point(10, 12);
+            this.label_DeliverPeriod.Location = new System.Drawing.Point(10, 17);
             this.label_DeliverPeriod.Name = "label_DeliverPeriod";
             this.label_DeliverPeriod.Size = new System.Drawing.Size(65, 20);
             this.label_DeliverPeriod.TabIndex = 10;
@@ -142,7 +146,7 @@
             this.radioButton_ByWeek.AutoSize = true;
             this.radioButton_ByWeek.Checked = true;
             this.radioButton_ByWeek.Font = new System.Drawing.Font("微软雅黑", 10.5F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
-            this.radioButton_ByWeek.Location = new System.Drawing.Point(97, 12);
+            this.radioButton_ByWeek.Location = new System.Drawing.Point(85, 17);
             this.radioButton_ByWeek.Name = "radioButton_ByWeek";
             this.radioButton_ByWeek.Size = new System.Drawing.Size(55, 24);
             this.radioButton_ByWeek.TabIndex = 14;
@@ -156,7 +160,7 @@
             // 
             this.radioButton_ByDay.AutoSize = true;
             this.radioButton_ByDay.Font = new System.Drawing.Font("微软雅黑", 10.5F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
-            this.radioButton_ByDay.Location = new System.Drawing.Point(163, 12);
+            this.radioButton_ByDay.Location = new System.Drawing.Point(151, 17);
             this.radioButton_ByDay.Name = "radioButton_ByDay";
             this.radioButton_ByDay.Size = new System.Drawing.Size(55, 24);
             this.radioButton_ByDay.TabIndex = 15;
@@ -174,7 +178,7 @@
             this.panel_DeliverWeekly.Controls.Add(this.checkBox_Wednesday);
             this.panel_DeliverWeekly.Controls.Add(this.checkBox_Tuesday);
             this.panel_DeliverWeekly.Controls.Add(this.checkBox_Monday);
-            this.panel_DeliverWeekly.Location = new System.Drawing.Point(35, 59);
+            this.panel_DeliverWeekly.Location = new System.Drawing.Point(17, 59);
             this.panel_DeliverWeekly.Name = "panel_DeliverWeekly";
             this.panel_DeliverWeekly.Size = new System.Drawing.Size(197, 192);
             this.panel_DeliverWeekly.TabIndex = 16;
@@ -261,7 +265,7 @@
             this.panel_DeliverDaily.Controls.Add(this.textBox_DeliverInterval);
             this.panel_DeliverDaily.Controls.Add(this.label_DeliverDay);
             this.panel_DeliverDaily.Controls.Add(this.label_DeliverEvery);
-            this.panel_DeliverDaily.Location = new System.Drawing.Point(38, 59);
+            this.panel_DeliverDaily.Location = new System.Drawing.Point(20, 59);
             this.panel_DeliverDaily.Name = "panel_DeliverDaily";
             this.panel_DeliverDaily.Size = new System.Drawing.Size(200, 100);
             this.panel_DeliverDaily.TabIndex = 17;
@@ -298,9 +302,9 @@
             // button_Submit
             // 
             this.button_Submit.Font = new System.Drawing.Font("微软雅黑", 10.5F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
-            this.button_Submit.Location = new System.Drawing.Point(109, 450);
+            this.button_Submit.Location = new System.Drawing.Point(228, 451);
             this.button_Submit.Name = "button_Submit";
-            this.button_Submit.Size = new System.Drawing.Size(76, 30);
+            this.button_Submit.Size = new System.Drawing.Size(105, 42);
             this.button_Submit.TabIndex = 18;
             this.button_Submit.Text = "提交";
             this.button_Submit.UseVisualStyleBackColor = true;
@@ -313,17 +317,44 @@
             this.groupBox1.Controls.Add(this.radioButton_ByDay);
             this.groupBox1.Controls.Add(this.radioButton_ByWeek);
             this.groupBox1.Controls.Add(this.label_DeliverPeriod);
-            this.groupBox1.Location = new System.Drawing.Point(11, 165);
+            this.groupBox1.Location = new System.Drawing.Point(25, 127);
             this.groupBox1.Name = "groupBox1";
-            this.groupBox1.Size = new System.Drawing.Size(270, 268);
+            this.groupBox1.Size = new System.Drawing.Size(250, 268);
             this.groupBox1.TabIndex = 19;
             this.groupBox1.TabStop = false;
+            // 
+            // groupBox2
+            // 
+            this.groupBox2.Controls.Add(this.label2);
+            this.groupBox2.Controls.Add(this.monthCalendar1);
+            this.groupBox2.Location = new System.Drawing.Point(302, 127);
+            this.groupBox2.Name = "groupBox2";
+            this.groupBox2.Size = new System.Drawing.Size(228, 268);
+            this.groupBox2.TabIndex = 20;
+            this.groupBox2.TabStop = false;
+            // 
+            // monthCalendar1
+            // 
+            this.monthCalendar1.Location = new System.Drawing.Point(4, 64);
+            this.monthCalendar1.Name = "monthCalendar1";
+            this.monthCalendar1.TabIndex = 0;
+            // 
+            // label2
+            // 
+            this.label2.AutoSize = true;
+            this.label2.Font = new System.Drawing.Font("微软雅黑", 10.5F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
+            this.label2.Location = new System.Drawing.Point(66, 22);
+            this.label2.Name = "label2";
+            this.label2.Size = new System.Drawing.Size(93, 20);
+            this.label2.TabIndex = 1;
+            this.label2.Text = "送奶开始日期";
             // 
             // UpdateModifyForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 12F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(296, 505);
+            this.ClientSize = new System.Drawing.Size(542, 505);
+            this.Controls.Add(this.groupBox2);
             this.Controls.Add(this.button_Submit);
             this.Controls.Add(this.label1);
             this.Controls.Add(this.textBox_OrderNum);
@@ -345,6 +376,8 @@
             this.panel_DeliverDaily.PerformLayout();
             this.groupBox1.ResumeLayout(false);
             this.groupBox1.PerformLayout();
+            this.groupBox2.ResumeLayout(false);
+            this.groupBox2.PerformLayout();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -376,5 +409,8 @@
         private System.Windows.Forms.TextBox textBox_DeliverInterval;
         private System.Windows.Forms.Button button_Submit;
         private System.Windows.Forms.GroupBox groupBox1;
+        private System.Windows.Forms.GroupBox groupBox2;
+        private System.Windows.Forms.MonthCalendar monthCalendar1;
+        private System.Windows.Forms.Label label2;
     }
 }

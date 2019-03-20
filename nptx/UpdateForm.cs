@@ -33,7 +33,7 @@ namespace nptx
             dataGridView1.Rows[index].Cells[0].Value = "张三";
             dataGridView1.Rows[index].Cells[1].Value = "亚东城";
             dataGridView1.Rows[index].Cells[2].Value = "50";
-            dataGridView1.Rows[index].Cells[3].Value = "每周一五";
+            dataGridView1.Rows[index].Cells[3].Value = "周一周五";
             dataGridView1.Rows[index].Cells[4].Value = "2019-01-01";
             dataGridView1.Rows[index].Cells[5].Value = "2020-01-01";
 
@@ -41,7 +41,7 @@ namespace nptx
             dataGridView1.Rows[index].Cells[0].Value = "李四";
             dataGridView1.Rows[index].Cells[1].Value = "璞樾钟山";
             dataGridView1.Rows[index].Cells[2].Value = "100";
-            dataGridView1.Rows[index].Cells[3].Value = "每两天";
+            dataGridView1.Rows[index].Cells[3].Value = "每2天";
             dataGridView1.Rows[index].Cells[4].Value = "2019-01-01";
             dataGridView1.Rows[index].Cells[5].Value = "2020-01-01";
         }
@@ -58,7 +58,14 @@ namespace nptx
 
         private void ToolStripMenuItem_Modify_Click(object sender, EventArgs e)
         {
-            UpdateModifyForm updateModifyForm = new UpdateModifyForm();
+            var row = dataGridView1.SelectedRows[0];
+            string name = row.Cells[0].Value.ToString();
+            string community = row.Cells[1].Value.ToString();
+            string orderNum = row.Cells[2].Value.ToString();
+            string deliverPeriod = row.Cells[3].Value.ToString();
+            string startDate = row.Cells[4].Value.ToString();
+
+            UpdateModifyForm updateModifyForm = new UpdateModifyForm(name, community, orderNum, deliverPeriod, startDate);
             updateModifyForm.Show();
         }
 

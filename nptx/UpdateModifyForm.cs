@@ -10,19 +10,85 @@ using System.Windows.Forms;
 
 namespace nptx
 {
+    public enum DeliverType
+    {
+        Weekly = 0,
+        Daily = 1
+    }
+
     public partial class UpdateModifyForm : Form
     {
+        private OrderInfo orderInfo;
         private List<string> listOnit = new List<string>();
         private List<string> listNew = new List<string>();
 
-        public UpdateModifyForm()
+        public UpdateModifyForm(string name, string community, string orderNum, string deliverPeriod, string startDate)
         {
+            this.orderInfo = new OrderInfo(name, community, orderNum, deliverPeriod, startDate);
             InitializeComponent();
         }
 
         private void UpdateModifyForm_Load(object sender, EventArgs e)
         {
             BindComboBox();
+            this.textBox_CustomerName.Text = this.orderInfo.name;
+            this.comboBox_Community.Text = this.orderInfo.community;
+            this.textBox_OrderNum.Text = this.orderInfo.orderNum;
+            if (this.orderInfo.deliverType == DeliverType.Weekly)
+            {
+                this.radioButton_ByWeek.Checked = true;
+                this.radioButton_ByDay.Checked = false;
+                this.checkBox_Monday.Checked = false;
+                this.checkBox_Tuesday.Checked = false;
+                this.checkBox_Wednesday.Checked = false;
+                this.checkBox_Thursday.Checked = false;
+                this.checkBox_Friday.Checked = false;
+                this.checkBox_Saturday.Checked = false;
+                this.checkBox_Sunday.Checked = false;
+
+                if (this.orderInfo.deliverPeriod.Contains("一"))
+                {
+                    this.checkBox_Monday.Checked = true;
+                }
+
+                if (this.orderInfo.deliverPeriod.Contains("二"))
+                {
+                    this.checkBox_Tuesday.Checked = true;
+                }
+
+                if (this.orderInfo.deliverPeriod.Contains("三"))
+                {
+                    this.checkBox_Wednesday.Checked = true;
+                }
+
+                if (this.orderInfo.deliverPeriod.Contains("四"))
+                {
+                    this.checkBox_Thursday.Checked = true;
+                }
+
+                if (this.orderInfo.deliverPeriod.Contains("五"))
+                {
+                    this.checkBox_Friday.Checked = true;
+                }
+
+                if (this.orderInfo.deliverPeriod.Contains("六"))
+                {
+                    this.checkBox_Saturday.Checked = true;
+                }
+
+                if (this.orderInfo.deliverPeriod.Contains("日"))
+                {
+                    this.checkBox_Sunday.Checked = true;
+                }
+            }
+            else
+            {
+                this.radioButton_ByWeek.Checked = false;
+                this.radioButton_ByDay.Checked = true;
+                this.textBox_DeliverInterval.Text = this.orderInfo.deliverPeriod;
+            }
+
+            this.monthCalendar1.SetDate(Convert.ToDateTime(this.orderInfo.startDate));
         }
 
         private void BindComboBox()
@@ -161,6 +227,35 @@ namespace nptx
         private void button_Submit_Click(object sender, EventArgs e)
         {
 
+        }
+    }
+
+    public class OrderInfo
+    {
+        public string name;
+        public string community;
+        public string orderNum;
+        public DeliverType deliverType;
+        public string deliverPeriod;
+        public string startDate;
+
+        public OrderInfo(string name, string community, string orderNum, string deliverPeriod, string startDate)
+        {
+            this.name = name;
+            this.community = community;
+            this.orderNum = orderNum;
+            this.startDate = startDate;
+
+            if (deliverPeriod.Contains("周"))
+            {
+                this.deliverType = DeliverType.Weekly;
+                this.deliverPeriod = deliverPeriod.Replace("周", string.Empty);
+            }
+            else
+            {
+                this.deliverType = DeliverType.Daily;
+                this.deliverPeriod = deliverPeriod.Replace("每", string.Empty).Replace("天", string.Empty);
+            }
         }
     }
 }
