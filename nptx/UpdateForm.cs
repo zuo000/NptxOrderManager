@@ -33,17 +33,19 @@ namespace UI
             dataGridView1.Rows[index].Cells[0].Value = "张三";
             dataGridView1.Rows[index].Cells[1].Value = "亚东城";
             dataGridView1.Rows[index].Cells[2].Value = "50";
-            dataGridView1.Rows[index].Cells[3].Value = "周一周五";
-            dataGridView1.Rows[index].Cells[4].Value = "2019-01-01";
-            dataGridView1.Rows[index].Cells[5].Value = "2020-01-01";
+            dataGridView1.Rows[index].Cells[3].Value = "2";
+            dataGridView1.Rows[index].Cells[4].Value = "周一周五";
+            dataGridView1.Rows[index].Cells[5].Value = "2019-01-01";
+            dataGridView1.Rows[index].Cells[6].Value = "2020-01-01";
 
             index = dataGridView1.Rows.Add(new DataGridViewRow());
             dataGridView1.Rows[index].Cells[0].Value = "李四";
             dataGridView1.Rows[index].Cells[1].Value = "璞樾钟山";
             dataGridView1.Rows[index].Cells[2].Value = "100";
-            dataGridView1.Rows[index].Cells[3].Value = "每2天";
-            dataGridView1.Rows[index].Cells[4].Value = "2019-01-01";
-            dataGridView1.Rows[index].Cells[5].Value = "2020-01-01";
+            dataGridView1.Rows[index].Cells[3].Value = "3";
+            dataGridView1.Rows[index].Cells[4].Value = "每2天";
+            dataGridView1.Rows[index].Cells[5].Value = "2019-01-01";
+            dataGridView1.Rows[index].Cells[6].Value = "2020-01-01";
         }
 
         private void dataGridView1_CellMouseClick(object sender, DataGridViewCellMouseEventArgs e)
@@ -62,10 +64,11 @@ namespace UI
             string name = row.Cells[0].Value.ToString();
             string community = row.Cells[1].Value.ToString();
             string orderNum = row.Cells[2].Value.ToString();
-            string deliverPeriod = row.Cells[3].Value.ToString();
-            string startDate = row.Cells[4].Value.ToString();
+            string deliverNumEveryTime = row.Cells[3].Value.ToString();
+            string deliverPeriod = row.Cells[4].Value.ToString();
+            string startDate = row.Cells[5].Value.ToString();
 
-            UpdateModifyForm updateModifyForm = new UpdateModifyForm(name, community, orderNum, deliverPeriod, startDate);
+            UpdateModifyForm updateModifyForm = new UpdateModifyForm(name, community, orderNum, deliverNumEveryTime, deliverPeriod, startDate);
             updateModifyForm.Show();
         }
 

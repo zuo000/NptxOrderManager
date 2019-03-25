@@ -53,8 +53,11 @@
             this.button_Submit = new System.Windows.Forms.Button();
             this.groupBox1 = new System.Windows.Forms.GroupBox();
             this.groupBox2 = new System.Windows.Forms.GroupBox();
-            this.monthCalendar1 = new System.Windows.Forms.MonthCalendar();
             this.label2 = new System.Windows.Forms.Label();
+            this.monthCalendar1 = new System.Windows.Forms.MonthCalendar();
+            this.label3 = new System.Windows.Forms.Label();
+            this.textBox_DeliverNumEveryTime = new System.Windows.Forms.TextBox();
+            this.label4 = new System.Windows.Forms.Label();
             this.panel_DeliverWeekly.SuspendLayout();
             this.panel_DeliverDaily.SuspendLayout();
             this.groupBox1.SuspendLayout();
@@ -138,7 +141,7 @@
             this.label_DeliverPeriod.Location = new System.Drawing.Point(10, 17);
             this.label_DeliverPeriod.Name = "label_DeliverPeriod";
             this.label_DeliverPeriod.Size = new System.Drawing.Size(65, 20);
-            this.label_DeliverPeriod.TabIndex = 10;
+            this.label_DeliverPeriod.TabIndex = 13;
             this.label_DeliverPeriod.Text = "送奶计划";
             // 
             // radioButton_ByWeek
@@ -333,12 +336,6 @@
             this.groupBox2.TabIndex = 20;
             this.groupBox2.TabStop = false;
             // 
-            // monthCalendar1
-            // 
-            this.monthCalendar1.Location = new System.Drawing.Point(4, 64);
-            this.monthCalendar1.Name = "monthCalendar1";
-            this.monthCalendar1.TabIndex = 0;
-            // 
             // label2
             // 
             this.label2.AutoSize = true;
@@ -349,11 +346,51 @@
             this.label2.TabIndex = 1;
             this.label2.Text = "送奶开始日期";
             // 
+            // monthCalendar1
+            // 
+            this.monthCalendar1.Location = new System.Drawing.Point(4, 64);
+            this.monthCalendar1.Name = "monthCalendar1";
+            this.monthCalendar1.TabIndex = 0;
+            // 
+            // label3
+            // 
+            this.label3.AutoSize = true;
+            this.label3.Font = new System.Drawing.Font("微软雅黑", 10.5F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
+            this.label3.Location = new System.Drawing.Point(398, 81);
+            this.label3.Name = "label3";
+            this.label3.Size = new System.Drawing.Size(23, 20);
+            this.label3.TabIndex = 12;
+            this.label3.Text = "袋";
+            this.label3.Click += new System.EventHandler(this.label3_Click);
+            // 
+            // textBox_DeliverNumEveryTime
+            // 
+            this.textBox_DeliverNumEveryTime.Font = new System.Drawing.Font("微软雅黑", 10.5F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
+            this.textBox_DeliverNumEveryTime.Location = new System.Drawing.Point(336, 81);
+            this.textBox_DeliverNumEveryTime.Name = "textBox_DeliverNumEveryTime";
+            this.textBox_DeliverNumEveryTime.Size = new System.Drawing.Size(56, 26);
+            this.textBox_DeliverNumEveryTime.TabIndex = 11;
+            this.textBox_DeliverNumEveryTime.TextChanged += new System.EventHandler(this.textBox_DeliverNumEveryTime_TextChanged);
+            // 
+            // label4
+            // 
+            this.label4.AutoSize = true;
+            this.label4.Font = new System.Drawing.Font("微软雅黑", 10.5F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
+            this.label4.Location = new System.Drawing.Point(263, 81);
+            this.label4.Name = "label4";
+            this.label4.Size = new System.Drawing.Size(51, 20);
+            this.label4.TabIndex = 10;
+            this.label4.Text = "每次送";
+            this.label4.Click += new System.EventHandler(this.label4_Click);
+            // 
             // UpdateModifyForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 12F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(542, 505);
+            this.Controls.Add(this.label3);
+            this.Controls.Add(this.textBox_DeliverNumEveryTime);
+            this.Controls.Add(this.label4);
             this.Controls.Add(this.groupBox2);
             this.Controls.Add(this.button_Submit);
             this.Controls.Add(this.label1);
@@ -412,5 +449,8 @@
         private System.Windows.Forms.GroupBox groupBox2;
         private System.Windows.Forms.MonthCalendar monthCalendar1;
         private System.Windows.Forms.Label label2;
+        private System.Windows.Forms.Label label3;
+        private System.Windows.Forms.TextBox textBox_DeliverNumEveryTime;
+        private System.Windows.Forms.Label label4;
     }
 }

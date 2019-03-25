@@ -40,7 +40,7 @@
             this.button_Checkin.Name = "button_Checkin";
             this.button_Checkin.Size = new System.Drawing.Size(257, 72);
             this.button_Checkin.TabIndex = 0;
-            this.button_Checkin.Text = "录入";
+            this.button_Checkin.Text = "订单录入";
             this.button_Checkin.UseVisualStyleBackColor = true;
             this.button_Checkin.Click += new System.EventHandler(this.buttonCheckin_Click);
             // 
@@ -51,7 +51,7 @@
             this.button_Checkout.Name = "button_Checkout";
             this.button_Checkout.Size = new System.Drawing.Size(257, 72);
             this.button_Checkout.TabIndex = 1;
-            this.button_Checkout.Text = "出库";
+            this.button_Checkout.Text = "订单出库";
             this.button_Checkout.UseVisualStyleBackColor = true;
             this.button_Checkout.Click += new System.EventHandler(this.buttonCheckout_Click);
             // 
@@ -62,7 +62,7 @@
             this.button_Update.Name = "button_Update";
             this.button_Update.Size = new System.Drawing.Size(257, 72);
             this.button_Update.TabIndex = 2;
-            this.button_Update.Text = "更新";
+            this.button_Update.Text = "订单更新";
             this.button_Update.UseVisualStyleBackColor = true;
             this.button_Update.Click += new System.EventHandler(this.buttonUpdate_Click);
             // 
@@ -78,7 +78,7 @@
             this.MaximizeBox = false;
             this.Name = "StartForm";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
-            this.Text = "奶品天下";
+            this.Text = "奶品天下订单管理系统 Version 0.1";
             this.ResumeLayout(false);
 
         }

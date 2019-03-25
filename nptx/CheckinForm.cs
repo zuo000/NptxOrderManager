@@ -167,5 +167,10 @@ namespace UI
         {
 
         }
+
+        private void textBox_DeliverNumEveryTime_TextChanged(object sender, EventArgs e)
+        {
+
+        }
     }
 }

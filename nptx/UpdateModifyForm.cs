@@ -22,9 +22,9 @@ namespace UI
         private List<string> listOnit = new List<string>();
         private List<string> listNew = new List<string>();
 
-        public UpdateModifyForm(string name, string community, string orderNum, string deliverPeriod, string startDate)
+        public UpdateModifyForm(string name, string community, string orderNum, string deliverNumEveryTime, string deliverPeriod, string startDate)
         {
-            this.orderInfo = new OrderInfo(name, community, orderNum, deliverPeriod, startDate);
+            this.orderInfo = new OrderInfo(name, community, orderNum, deliverNumEveryTime, deliverPeriod, startDate);
             InitializeComponent();
         }
 
@@ -34,6 +34,7 @@ namespace UI
             this.textBox_CustomerName.Text = this.orderInfo.name;
             this.comboBox_Community.Text = this.orderInfo.community;
             this.textBox_OrderNum.Text = this.orderInfo.orderNum;
+            this.textBox_DeliverNumEveryTime.Text = this.orderInfo.deliverNumEveryTime;
             if (this.orderInfo.deliverType == DeliverType.Weekly)
             {
                 this.radioButton_ByWeek.Checked = true;
@@ -228,6 +229,21 @@ namespace UI
         {
 
         }
+
+        private void textBox_DeliverNumEveryTime_TextChanged(object sender, EventArgs e)
+        {
+
+        }
+
+        private void label3_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void label4_Click(object sender, EventArgs e)
+        {
+
+        }
     }
 
     public class OrderInfo
@@ -235,15 +251,17 @@ namespace UI
         public string name;
         public string community;
         public string orderNum;
+        public string deliverNumEveryTime;
         public DeliverType deliverType;
         public string deliverPeriod;
         public string startDate;
 
-        public OrderInfo(string name, string community, string orderNum, string deliverPeriod, string startDate)
+        public OrderInfo(string name, string community, string orderNum, string deliverNumEveryTime, string deliverPeriod, string startDate)
         {
             this.name = name;
             this.community = community;
             this.orderNum = orderNum;
+            this.deliverNumEveryTime = deliverNumEveryTime;
             this.startDate = startDate;
 
             if (deliverPeriod.Contains("周"))

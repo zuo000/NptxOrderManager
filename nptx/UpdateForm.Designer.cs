@@ -30,17 +30,18 @@
         {
             this.dataGridView1 = new System.Windows.Forms.DataGridView();
             this.groupBox1 = new System.Windows.Forms.GroupBox();
-            this.Column_Name = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Column_Community = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Column_OrderNum = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Column_DeliverPeriod = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Column_StartDate = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Column_EndDate = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.textBox_SearchContent = new System.Windows.Forms.TextBox();
             this.button_Search = new System.Windows.Forms.Button();
+            this.textBox_SearchContent = new System.Windows.Forms.TextBox();
             this.contextMenuStrip1 = new System.Windows.Forms.ContextMenuStrip();
             this.ToolStripMenuItem_Modify = new System.Windows.Forms.ToolStripMenuItem();
             this.ToolStripMenuItem_Delete = new System.Windows.Forms.ToolStripMenuItem();
+            this.Column_Name = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Column_Community = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Column_OrderNum = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Column_DeliverNumEveryTime = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Column_DeliverPeriod = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Column_StartDate = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Column_EndDate = new System.Windows.Forms.DataGridViewTextBoxColumn();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
             this.groupBox1.SuspendLayout();
             this.contextMenuStrip1.SuspendLayout();
@@ -59,6 +60,7 @@
             this.Column_Name,
             this.Column_Community,
             this.Column_OrderNum,
+            this.Column_DeliverNumEveryTime,
             this.Column_DeliverPeriod,
             this.Column_StartDate,
             this.Column_EndDate});
@@ -82,6 +84,49 @@
             this.groupBox1.TabStop = false;
             this.groupBox1.Text = "可按照客户姓名或者所在小区查询,右键进行修改或删除";
             // 
+            // button_Search
+            // 
+            this.button_Search.Font = new System.Drawing.Font("微软雅黑", 10.5F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
+            this.button_Search.Location = new System.Drawing.Point(194, 20);
+            this.button_Search.Name = "button_Search";
+            this.button_Search.Size = new System.Drawing.Size(69, 27);
+            this.button_Search.TabIndex = 2;
+            this.button_Search.Text = "查询";
+            this.button_Search.UseVisualStyleBackColor = true;
+            this.button_Search.Click += new System.EventHandler(this.button_Search_Click);
+            // 
+            // textBox_SearchContent
+            // 
+            this.textBox_SearchContent.Font = new System.Drawing.Font("微软雅黑", 10.5F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
+            this.textBox_SearchContent.Location = new System.Drawing.Point(19, 22);
+            this.textBox_SearchContent.Name = "textBox_SearchContent";
+            this.textBox_SearchContent.Size = new System.Drawing.Size(139, 26);
+            this.textBox_SearchContent.TabIndex = 1;
+            this.textBox_SearchContent.TextChanged += new System.EventHandler(this.textBox_SearchContent_TextChanged);
+            // 
+            // contextMenuStrip1
+            // 
+            this.contextMenuStrip1.Font = new System.Drawing.Font("微软雅黑", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
+            this.contextMenuStrip1.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.ToolStripMenuItem_Modify,
+            this.ToolStripMenuItem_Delete});
+            this.contextMenuStrip1.Name = "contextMenuStrip1";
+            this.contextMenuStrip1.Size = new System.Drawing.Size(101, 48);
+            // 
+            // ToolStripMenuItem_Modify
+            // 
+            this.ToolStripMenuItem_Modify.Name = "ToolStripMenuItem_Modify";
+            this.ToolStripMenuItem_Modify.Size = new System.Drawing.Size(100, 22);
+            this.ToolStripMenuItem_Modify.Text = "修改";
+            this.ToolStripMenuItem_Modify.Click += new System.EventHandler(this.ToolStripMenuItem_Modify_Click);
+            // 
+            // ToolStripMenuItem_Delete
+            // 
+            this.ToolStripMenuItem_Delete.Name = "ToolStripMenuItem_Delete";
+            this.ToolStripMenuItem_Delete.Size = new System.Drawing.Size(100, 22);
+            this.ToolStripMenuItem_Delete.Text = "删除";
+            this.ToolStripMenuItem_Delete.Click += new System.EventHandler(this.ToolStripMenuItem_Delete_Click);
+            // 
             // Column_Name
             // 
             this.Column_Name.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
@@ -103,6 +148,11 @@
             this.Column_OrderNum.Name = "Column_OrderNum";
             this.Column_OrderNum.ReadOnly = true;
             // 
+            // Column_DeliverNumEveryTime
+            // 
+            this.Column_DeliverNumEveryTime.HeaderText = "每次送奶数量";
+            this.Column_DeliverNumEveryTime.Name = "Column_DeliverNumEveryTime";
+            // 
             // Column_DeliverPeriod
             // 
             this.Column_DeliverPeriod.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
@@ -123,49 +173,6 @@
             this.Column_EndDate.HeaderText = "结束送奶日期";
             this.Column_EndDate.Name = "Column_EndDate";
             this.Column_EndDate.ReadOnly = true;
-            // 
-            // textBox_SearchContent
-            // 
-            this.textBox_SearchContent.Font = new System.Drawing.Font("微软雅黑", 10.5F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
-            this.textBox_SearchContent.Location = new System.Drawing.Point(19, 22);
-            this.textBox_SearchContent.Name = "textBox_SearchContent";
-            this.textBox_SearchContent.Size = new System.Drawing.Size(139, 26);
-            this.textBox_SearchContent.TabIndex = 1;
-            this.textBox_SearchContent.TextChanged += new System.EventHandler(this.textBox_SearchContent_TextChanged);
-            // 
-            // button_Search
-            // 
-            this.button_Search.Font = new System.Drawing.Font("微软雅黑", 10.5F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
-            this.button_Search.Location = new System.Drawing.Point(194, 20);
-            this.button_Search.Name = "button_Search";
-            this.button_Search.Size = new System.Drawing.Size(69, 27);
-            this.button_Search.TabIndex = 2;
-            this.button_Search.Text = "查询";
-            this.button_Search.UseVisualStyleBackColor = true;
-            this.button_Search.Click += new System.EventHandler(this.button_Search_Click);
-            // 
-            // contextMenuStrip1
-            // 
-            this.contextMenuStrip1.Font = new System.Drawing.Font("微软雅黑", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
-            this.contextMenuStrip1.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.ToolStripMenuItem_Modify,
-            this.ToolStripMenuItem_Delete});
-            this.contextMenuStrip1.Name = "contextMenuStrip1";
-            this.contextMenuStrip1.Size = new System.Drawing.Size(181, 70);
-            // 
-            // ToolStripMenuItem_Modify
-            // 
-            this.ToolStripMenuItem_Modify.Name = "ToolStripMenuItem_Modify";
-            this.ToolStripMenuItem_Modify.Size = new System.Drawing.Size(180, 22);
-            this.ToolStripMenuItem_Modify.Text = "修改";
-            this.ToolStripMenuItem_Modify.Click += new System.EventHandler(this.ToolStripMenuItem_Modify_Click);
-            // 
-            // ToolStripMenuItem_Delete
-            // 
-            this.ToolStripMenuItem_Delete.Name = "ToolStripMenuItem_Delete";
-            this.ToolStripMenuItem_Delete.Size = new System.Drawing.Size(180, 22);
-            this.ToolStripMenuItem_Delete.Text = "删除";
-            this.ToolStripMenuItem_Delete.Click += new System.EventHandler(this.ToolStripMenuItem_Delete_Click);
             // 
             // UpdateForm
             // 
@@ -190,16 +197,17 @@
 
         private System.Windows.Forms.DataGridView dataGridView1;
         private System.Windows.Forms.GroupBox groupBox1;
-        private System.Windows.Forms.DataGridViewTextBoxColumn Column_Name;
-        private System.Windows.Forms.DataGridViewTextBoxColumn Column_Community;
-        private System.Windows.Forms.DataGridViewTextBoxColumn Column_OrderNum;
-        private System.Windows.Forms.DataGridViewTextBoxColumn Column_DeliverPeriod;
-        private System.Windows.Forms.DataGridViewTextBoxColumn Column_StartDate;
-        private System.Windows.Forms.DataGridViewTextBoxColumn Column_EndDate;
         private System.Windows.Forms.TextBox textBox_SearchContent;
         private System.Windows.Forms.Button button_Search;
         private System.Windows.Forms.ContextMenuStrip contextMenuStrip1;
         private System.Windows.Forms.ToolStripMenuItem ToolStripMenuItem_Modify;
         private System.Windows.Forms.ToolStripMenuItem ToolStripMenuItem_Delete;
+        private System.Windows.Forms.DataGridViewTextBoxColumn Column_Name;
+        private System.Windows.Forms.DataGridViewTextBoxColumn Column_Community;
+        private System.Windows.Forms.DataGridViewTextBoxColumn Column_OrderNum;
+        private System.Windows.Forms.DataGridViewTextBoxColumn Column_DeliverNumEveryTime;
+        private System.Windows.Forms.DataGridViewTextBoxColumn Column_DeliverPeriod;
+        private System.Windows.Forms.DataGridViewTextBoxColumn Column_StartDate;
+        private System.Windows.Forms.DataGridViewTextBoxColumn Column_EndDate;
     }
 }
