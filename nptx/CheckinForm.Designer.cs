@@ -58,6 +58,20 @@
             this.label3 = new System.Windows.Forms.Label();
             this.textBox_DeliverNumEveryTime = new System.Windows.Forms.TextBox();
             this.label4 = new System.Windows.Forms.Label();
+            this.textBox_NickName = new System.Windows.Forms.TextBox();
+            this.label5 = new System.Windows.Forms.Label();
+            this.textBox_PhoneNO = new System.Windows.Forms.TextBox();
+            this.label6 = new System.Windows.Forms.Label();
+            this.comboBox_CustomerDistrict = new System.Windows.Forms.ComboBox();
+            this.label7 = new System.Windows.Forms.Label();
+            this.textBox_CustomerAddr = new System.Windows.Forms.TextBox();
+            this.label8 = new System.Windows.Forms.Label();
+            this.comboBox_ProductBrand = new System.Windows.Forms.ComboBox();
+            this.label9 = new System.Windows.Forms.Label();
+            this.comboBox_ProductName = new System.Windows.Forms.ComboBox();
+            this.label10 = new System.Windows.Forms.Label();
+            this.label11 = new System.Windows.Forms.Label();
+            this.textBox_AdditionalGifts = new System.Windows.Forms.TextBox();
             this.panel_DeliverWeekly.SuspendLayout();
             this.panel_DeliverDaily.SuspendLayout();
             this.groupBox1.SuspendLayout();
@@ -78,20 +92,19 @@
             // 
             this.label_Community.AutoSize = true;
             this.label_Community.Font = new System.Drawing.Font("微软雅黑", 10.5F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
-            this.label_Community.Location = new System.Drawing.Point(254, 35);
+            this.label_Community.Location = new System.Drawing.Point(257, 85);
             this.label_Community.Name = "label_Community";
             this.label_Community.Size = new System.Drawing.Size(65, 20);
-            this.label_Community.TabIndex = 2;
+            this.label_Community.TabIndex = 8;
             this.label_Community.Text = "所在小区";
             // 
             // textBox_CustomerName
             // 
             this.textBox_CustomerName.Font = new System.Drawing.Font("微软雅黑", 10.5F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
-            this.textBox_CustomerName.Location = new System.Drawing.Point(108, 32);
+            this.textBox_CustomerName.Location = new System.Drawing.Point(91, 29);
             this.textBox_CustomerName.Name = "textBox_CustomerName";
             this.textBox_CustomerName.Size = new System.Drawing.Size(100, 26);
-            this.textBox_CustomerName.TabIndex = 5;
-            this.textBox_CustomerName.TextChanged += new System.EventHandler(this.textBox_CustomerName_TextChanged);
+            this.textBox_CustomerName.TabIndex = 1;
             // 
             // comboBox_Community
             // 
@@ -99,39 +112,38 @@
             this.comboBox_Community.AutoCompleteSource = System.Windows.Forms.AutoCompleteSource.CustomSource;
             this.comboBox_Community.Font = new System.Drawing.Font("微软雅黑", 10.5F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
             this.comboBox_Community.FormattingEnabled = true;
-            this.comboBox_Community.Location = new System.Drawing.Point(337, 32);
+            this.comboBox_Community.Location = new System.Drawing.Point(330, 82);
             this.comboBox_Community.Name = "comboBox_Community";
-            this.comboBox_Community.Size = new System.Drawing.Size(121, 28);
-            this.comboBox_Community.TabIndex = 6;
+            this.comboBox_Community.Size = new System.Drawing.Size(109, 28);
+            this.comboBox_Community.TabIndex = 9;
             this.comboBox_Community.TextUpdate += new System.EventHandler(this.comboBox_Community_TextUpdate);
             // 
             // label_OrderNum
             // 
             this.label_OrderNum.AutoSize = true;
             this.label_OrderNum.Font = new System.Drawing.Font("微软雅黑", 10.5F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
-            this.label_OrderNum.Location = new System.Drawing.Point(22, 78);
+            this.label_OrderNum.Location = new System.Drawing.Point(20, 184);
             this.label_OrderNum.Name = "label_OrderNum";
             this.label_OrderNum.Size = new System.Drawing.Size(65, 20);
-            this.label_OrderNum.TabIndex = 7;
+            this.label_OrderNum.TabIndex = 18;
             this.label_OrderNum.Text = "订奶数量";
             // 
             // textBox_OrderNum
             // 
             this.textBox_OrderNum.Font = new System.Drawing.Font("微软雅黑", 10.5F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
-            this.textBox_OrderNum.Location = new System.Drawing.Point(109, 78);
+            this.textBox_OrderNum.Location = new System.Drawing.Point(91, 181);
             this.textBox_OrderNum.Name = "textBox_OrderNum";
             this.textBox_OrderNum.Size = new System.Drawing.Size(56, 26);
-            this.textBox_OrderNum.TabIndex = 8;
-            this.textBox_OrderNum.TextChanged += new System.EventHandler(this.textBox_OrderNum_TextChanged);
+            this.textBox_OrderNum.TabIndex = 19;
             // 
             // label1
             // 
             this.label1.AutoSize = true;
             this.label1.Font = new System.Drawing.Font("微软雅黑", 10.5F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
-            this.label1.Location = new System.Drawing.Point(171, 78);
+            this.label1.Location = new System.Drawing.Point(153, 184);
             this.label1.Name = "label1";
             this.label1.Size = new System.Drawing.Size(23, 20);
-            this.label1.TabIndex = 9;
+            this.label1.TabIndex = 20;
             this.label1.Text = "袋";
             // 
             // label_DeliverPeriod
@@ -141,7 +153,7 @@
             this.label_DeliverPeriod.Location = new System.Drawing.Point(10, 17);
             this.label_DeliverPeriod.Name = "label_DeliverPeriod";
             this.label_DeliverPeriod.Size = new System.Drawing.Size(65, 20);
-            this.label_DeliverPeriod.TabIndex = 13;
+            this.label_DeliverPeriod.TabIndex = 0;
             this.label_DeliverPeriod.Text = "送奶计划";
             // 
             // radioButton_ByWeek
@@ -152,7 +164,7 @@
             this.radioButton_ByWeek.Location = new System.Drawing.Point(85, 17);
             this.radioButton_ByWeek.Name = "radioButton_ByWeek";
             this.radioButton_ByWeek.Size = new System.Drawing.Size(55, 24);
-            this.radioButton_ByWeek.TabIndex = 14;
+            this.radioButton_ByWeek.TabIndex = 1;
             this.radioButton_ByWeek.TabStop = true;
             this.radioButton_ByWeek.Text = "按周";
             this.radioButton_ByWeek.UseVisualStyleBackColor = true;
@@ -166,7 +178,7 @@
             this.radioButton_ByDay.Location = new System.Drawing.Point(151, 17);
             this.radioButton_ByDay.Name = "radioButton_ByDay";
             this.radioButton_ByDay.Size = new System.Drawing.Size(55, 24);
-            this.radioButton_ByDay.TabIndex = 15;
+            this.radioButton_ByDay.TabIndex = 2;
             this.radioButton_ByDay.Text = "按天";
             this.radioButton_ByDay.UseVisualStyleBackColor = true;
             this.radioButton_ByDay.CheckedChanged += new System.EventHandler(this.radioButton_ByDay_CheckedChanged);
@@ -184,7 +196,7 @@
             this.panel_DeliverWeekly.Location = new System.Drawing.Point(17, 59);
             this.panel_DeliverWeekly.Name = "panel_DeliverWeekly";
             this.panel_DeliverWeekly.Size = new System.Drawing.Size(197, 192);
-            this.panel_DeliverWeekly.TabIndex = 16;
+            this.panel_DeliverWeekly.TabIndex = 3;
             // 
             // checkBox_Sunday
             // 
@@ -271,7 +283,7 @@
             this.panel_DeliverDaily.Location = new System.Drawing.Point(20, 59);
             this.panel_DeliverDaily.Name = "panel_DeliverDaily";
             this.panel_DeliverDaily.Size = new System.Drawing.Size(200, 100);
-            this.panel_DeliverDaily.TabIndex = 17;
+            this.panel_DeliverDaily.TabIndex = 4;
             this.panel_DeliverDaily.Visible = false;
             // 
             // textBox_DeliverInterval
@@ -280,7 +292,7 @@
             this.textBox_DeliverInterval.Location = new System.Drawing.Point(76, 26);
             this.textBox_DeliverInterval.Name = "textBox_DeliverInterval";
             this.textBox_DeliverInterval.Size = new System.Drawing.Size(39, 26);
-            this.textBox_DeliverInterval.TabIndex = 2;
+            this.textBox_DeliverInterval.TabIndex = 1;
             // 
             // label_DeliverDay
             // 
@@ -289,7 +301,7 @@
             this.label_DeliverDay.Location = new System.Drawing.Point(121, 26);
             this.label_DeliverDay.Name = "label_DeliverDay";
             this.label_DeliverDay.Size = new System.Drawing.Size(23, 20);
-            this.label_DeliverDay.TabIndex = 1;
+            this.label_DeliverDay.TabIndex = 2;
             this.label_DeliverDay.Text = "天";
             // 
             // label_DeliverEvery
@@ -305,10 +317,10 @@
             // button_Submit
             // 
             this.button_Submit.Font = new System.Drawing.Font("微软雅黑", 10.5F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
-            this.button_Submit.Location = new System.Drawing.Point(228, 451);
+            this.button_Submit.Location = new System.Drawing.Point(334, 540);
             this.button_Submit.Name = "button_Submit";
             this.button_Submit.Size = new System.Drawing.Size(105, 42);
-            this.button_Submit.TabIndex = 18;
+            this.button_Submit.TabIndex = 26;
             this.button_Submit.Text = "提交";
             this.button_Submit.UseVisualStyleBackColor = true;
             this.button_Submit.Click += new System.EventHandler(this.button_Submit_Click);
@@ -316,24 +328,24 @@
             // groupBox1
             // 
             this.groupBox1.Controls.Add(this.panel_DeliverDaily);
-            this.groupBox1.Controls.Add(this.panel_DeliverWeekly);
             this.groupBox1.Controls.Add(this.radioButton_ByDay);
             this.groupBox1.Controls.Add(this.radioButton_ByWeek);
             this.groupBox1.Controls.Add(this.label_DeliverPeriod);
-            this.groupBox1.Location = new System.Drawing.Point(25, 127);
+            this.groupBox1.Controls.Add(this.panel_DeliverWeekly);
+            this.groupBox1.Location = new System.Drawing.Point(458, 241);
             this.groupBox1.Name = "groupBox1";
             this.groupBox1.Size = new System.Drawing.Size(250, 268);
-            this.groupBox1.TabIndex = 19;
+            this.groupBox1.TabIndex = 25;
             this.groupBox1.TabStop = false;
             // 
             // groupBox2
             // 
             this.groupBox2.Controls.Add(this.label2);
             this.groupBox2.Controls.Add(this.monthCalendar1);
-            this.groupBox2.Location = new System.Drawing.Point(302, 127);
+            this.groupBox2.Location = new System.Drawing.Point(94, 241);
             this.groupBox2.Name = "groupBox2";
             this.groupBox2.Size = new System.Drawing.Size(228, 268);
-            this.groupBox2.TabIndex = 20;
+            this.groupBox2.TabIndex = 24;
             this.groupBox2.TabStop = false;
             // 
             // label2
@@ -343,50 +355,200 @@
             this.label2.Location = new System.Drawing.Point(66, 22);
             this.label2.Name = "label2";
             this.label2.Size = new System.Drawing.Size(93, 20);
-            this.label2.TabIndex = 1;
+            this.label2.TabIndex = 0;
             this.label2.Text = "开始送奶日期";
             // 
             // monthCalendar1
             // 
             this.monthCalendar1.Location = new System.Drawing.Point(4, 64);
             this.monthCalendar1.Name = "monthCalendar1";
-            this.monthCalendar1.TabIndex = 0;
-            this.monthCalendar1.DateChanged += new System.Windows.Forms.DateRangeEventHandler(this.monthCalendar1_DateChanged);
+            this.monthCalendar1.TabIndex = 1;
             // 
             // label3
             // 
             this.label3.AutoSize = true;
             this.label3.Font = new System.Drawing.Font("微软雅黑", 10.5F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
-            this.label3.Location = new System.Drawing.Point(399, 81);
+            this.label3.Location = new System.Drawing.Point(392, 181);
             this.label3.Name = "label3";
             this.label3.Size = new System.Drawing.Size(23, 20);
-            this.label3.TabIndex = 12;
+            this.label3.TabIndex = 23;
             this.label3.Text = "袋";
             // 
             // textBox_DeliverNumEveryTime
             // 
             this.textBox_DeliverNumEveryTime.Font = new System.Drawing.Font("微软雅黑", 10.5F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
-            this.textBox_DeliverNumEveryTime.Location = new System.Drawing.Point(337, 81);
+            this.textBox_DeliverNumEveryTime.Location = new System.Drawing.Point(330, 181);
             this.textBox_DeliverNumEveryTime.Name = "textBox_DeliverNumEveryTime";
             this.textBox_DeliverNumEveryTime.Size = new System.Drawing.Size(56, 26);
-            this.textBox_DeliverNumEveryTime.TabIndex = 11;
-            this.textBox_DeliverNumEveryTime.TextChanged += new System.EventHandler(this.textBox_DeliverNumEveryTime_TextChanged);
+            this.textBox_DeliverNumEveryTime.TabIndex = 22;
             // 
             // label4
             // 
             this.label4.AutoSize = true;
             this.label4.Font = new System.Drawing.Font("微软雅黑", 10.5F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
-            this.label4.Location = new System.Drawing.Point(264, 81);
+            this.label4.Location = new System.Drawing.Point(271, 181);
             this.label4.Name = "label4";
             this.label4.Size = new System.Drawing.Size(51, 20);
-            this.label4.TabIndex = 10;
+            this.label4.TabIndex = 21;
             this.label4.Text = "每次送";
+            // 
+            // textBox_NickName
+            // 
+            this.textBox_NickName.Font = new System.Drawing.Font("微软雅黑", 10.5F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
+            this.textBox_NickName.Location = new System.Drawing.Point(330, 29);
+            this.textBox_NickName.Name = "textBox_NickName";
+            this.textBox_NickName.Size = new System.Drawing.Size(94, 26);
+            this.textBox_NickName.TabIndex = 3;
+            // 
+            // label5
+            // 
+            this.label5.AutoSize = true;
+            this.label5.Font = new System.Drawing.Font("微软雅黑", 10.5F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
+            this.label5.Location = new System.Drawing.Point(257, 32);
+            this.label5.Name = "label5";
+            this.label5.Size = new System.Drawing.Size(65, 20);
+            this.label5.TabIndex = 2;
+            this.label5.Text = "客户昵称";
+            // 
+            // textBox_PhoneNO
+            // 
+            this.textBox_PhoneNO.Font = new System.Drawing.Font("微软雅黑", 10.5F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
+            this.textBox_PhoneNO.Location = new System.Drawing.Point(548, 29);
+            this.textBox_PhoneNO.Name = "textBox_PhoneNO";
+            this.textBox_PhoneNO.Size = new System.Drawing.Size(100, 26);
+            this.textBox_PhoneNO.TabIndex = 5;
+            // 
+            // label6
+            // 
+            this.label6.AutoSize = true;
+            this.label6.Font = new System.Drawing.Font("微软雅黑", 10.5F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
+            this.label6.Location = new System.Drawing.Point(472, 32);
+            this.label6.Name = "label6";
+            this.label6.Size = new System.Drawing.Size(65, 20);
+            this.label6.TabIndex = 4;
+            this.label6.Text = "客户电话";
+            // 
+            // comboBox_CustomerDistrict
+            // 
+            this.comboBox_CustomerDistrict.AutoCompleteMode = System.Windows.Forms.AutoCompleteMode.Suggest;
+            this.comboBox_CustomerDistrict.AutoCompleteSource = System.Windows.Forms.AutoCompleteSource.CustomSource;
+            this.comboBox_CustomerDistrict.Font = new System.Drawing.Font("微软雅黑", 10.5F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
+            this.comboBox_CustomerDistrict.FormattingEnabled = true;
+            this.comboBox_CustomerDistrict.Location = new System.Drawing.Point(91, 77);
+            this.comboBox_CustomerDistrict.Name = "comboBox_CustomerDistrict";
+            this.comboBox_CustomerDistrict.Size = new System.Drawing.Size(100, 28);
+            this.comboBox_CustomerDistrict.TabIndex = 7;
+            this.comboBox_CustomerDistrict.TextUpdate += new System.EventHandler(this.comboBox_CustomerDistrict_TextUpdate);
+            // 
+            // label7
+            // 
+            this.label7.AutoSize = true;
+            this.label7.Font = new System.Drawing.Font("微软雅黑", 10.5F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
+            this.label7.Location = new System.Drawing.Point(6, 80);
+            this.label7.Name = "label7";
+            this.label7.Size = new System.Drawing.Size(79, 20);
+            this.label7.TabIndex = 6;
+            this.label7.Text = "所属行政区";
+            // 
+            // textBox_CustomerAddr
+            // 
+            this.textBox_CustomerAddr.Font = new System.Drawing.Font("微软雅黑", 10.5F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
+            this.textBox_CustomerAddr.Location = new System.Drawing.Point(548, 82);
+            this.textBox_CustomerAddr.Name = "textBox_CustomerAddr";
+            this.textBox_CustomerAddr.Size = new System.Drawing.Size(160, 26);
+            this.textBox_CustomerAddr.TabIndex = 11;
+            // 
+            // label8
+            // 
+            this.label8.AutoSize = true;
+            this.label8.Font = new System.Drawing.Font("微软雅黑", 10.5F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
+            this.label8.Location = new System.Drawing.Point(477, 85);
+            this.label8.Name = "label8";
+            this.label8.Size = new System.Drawing.Size(65, 20);
+            this.label8.TabIndex = 10;
+            this.label8.Text = "客户地址";
+            // 
+            // comboBox_ProductBrand
+            // 
+            this.comboBox_ProductBrand.AutoCompleteMode = System.Windows.Forms.AutoCompleteMode.Suggest;
+            this.comboBox_ProductBrand.AutoCompleteSource = System.Windows.Forms.AutoCompleteSource.CustomSource;
+            this.comboBox_ProductBrand.Font = new System.Drawing.Font("微软雅黑", 10.5F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
+            this.comboBox_ProductBrand.FormattingEnabled = true;
+            this.comboBox_ProductBrand.Location = new System.Drawing.Point(91, 128);
+            this.comboBox_ProductBrand.Name = "comboBox_ProductBrand";
+            this.comboBox_ProductBrand.Size = new System.Drawing.Size(100, 28);
+            this.comboBox_ProductBrand.TabIndex = 13;
+            this.comboBox_ProductBrand.TextUpdate += new System.EventHandler(this.comboBox_ProductBrand_TextUpdate);
+            // 
+            // label9
+            // 
+            this.label9.AutoSize = true;
+            this.label9.Font = new System.Drawing.Font("微软雅黑", 10.5F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
+            this.label9.Location = new System.Drawing.Point(20, 131);
+            this.label9.Name = "label9";
+            this.label9.Size = new System.Drawing.Size(65, 20);
+            this.label9.TabIndex = 12;
+            this.label9.Text = "订奶品牌";
+            // 
+            // comboBox_ProductName
+            // 
+            this.comboBox_ProductName.AutoCompleteMode = System.Windows.Forms.AutoCompleteMode.Suggest;
+            this.comboBox_ProductName.AutoCompleteSource = System.Windows.Forms.AutoCompleteSource.CustomSource;
+            this.comboBox_ProductName.Font = new System.Drawing.Font("微软雅黑", 10.5F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
+            this.comboBox_ProductName.FormattingEnabled = true;
+            this.comboBox_ProductName.Location = new System.Drawing.Point(330, 128);
+            this.comboBox_ProductName.Name = "comboBox_ProductName";
+            this.comboBox_ProductName.Size = new System.Drawing.Size(109, 28);
+            this.comboBox_ProductName.TabIndex = 15;
+            this.comboBox_ProductName.TextUpdate += new System.EventHandler(this.comboBox_ProductName_TextUpdate);
+            // 
+            // label10
+            // 
+            this.label10.AutoSize = true;
+            this.label10.Font = new System.Drawing.Font("微软雅黑", 10.5F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
+            this.label10.Location = new System.Drawing.Point(229, 133);
+            this.label10.Name = "label10";
+            this.label10.Size = new System.Drawing.Size(93, 20);
+            this.label10.TabIndex = 14;
+            this.label10.Text = "订奶商品名称";
+            // 
+            // label11
+            // 
+            this.label11.AutoSize = true;
+            this.label11.Font = new System.Drawing.Font("微软雅黑", 10.5F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
+            this.label11.Location = new System.Drawing.Point(500, 133);
+            this.label11.Name = "label11";
+            this.label11.Size = new System.Drawing.Size(37, 20);
+            this.label11.TabIndex = 16;
+            this.label11.Text = "赠品";
+            // 
+            // textBox_AdditionalGifts
+            // 
+            this.textBox_AdditionalGifts.Font = new System.Drawing.Font("微软雅黑", 10.5F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
+            this.textBox_AdditionalGifts.Location = new System.Drawing.Point(548, 133);
+            this.textBox_AdditionalGifts.Name = "textBox_AdditionalGifts";
+            this.textBox_AdditionalGifts.Size = new System.Drawing.Size(100, 26);
+            this.textBox_AdditionalGifts.TabIndex = 17;
             // 
             // CheckinForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 12F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(542, 505);
+            this.ClientSize = new System.Drawing.Size(774, 594);
+            this.Controls.Add(this.textBox_AdditionalGifts);
+            this.Controls.Add(this.label11);
+            this.Controls.Add(this.comboBox_ProductName);
+            this.Controls.Add(this.label10);
+            this.Controls.Add(this.comboBox_ProductBrand);
+            this.Controls.Add(this.label9);
+            this.Controls.Add(this.textBox_CustomerAddr);
+            this.Controls.Add(this.label8);
+            this.Controls.Add(this.comboBox_CustomerDistrict);
+            this.Controls.Add(this.label7);
+            this.Controls.Add(this.textBox_PhoneNO);
+            this.Controls.Add(this.label6);
+            this.Controls.Add(this.textBox_NickName);
+            this.Controls.Add(this.label5);
             this.Controls.Add(this.label3);
             this.Controls.Add(this.textBox_DeliverNumEveryTime);
             this.Controls.Add(this.label4);
@@ -451,5 +613,19 @@
         private System.Windows.Forms.Label label3;
         private System.Windows.Forms.TextBox textBox_DeliverNumEveryTime;
         private System.Windows.Forms.Label label4;
+        private System.Windows.Forms.TextBox textBox_NickName;
+        private System.Windows.Forms.Label label5;
+        private System.Windows.Forms.TextBox textBox_PhoneNO;
+        private System.Windows.Forms.Label label6;
+        private System.Windows.Forms.ComboBox comboBox_CustomerDistrict;
+        private System.Windows.Forms.Label label7;
+        private System.Windows.Forms.TextBox textBox_CustomerAddr;
+        private System.Windows.Forms.Label label8;
+        private System.Windows.Forms.ComboBox comboBox_ProductBrand;
+        private System.Windows.Forms.Label label9;
+        private System.Windows.Forms.ComboBox comboBox_ProductName;
+        private System.Windows.Forms.Label label10;
+        private System.Windows.Forms.Label label11;
+        private System.Windows.Forms.TextBox textBox_AdditionalGifts;
     }
 }

@@ -12,8 +12,19 @@ namespace UI
 {
     public partial class CheckinForm : Form
     {
-        private List<string> listOnit = new List<string>();
-        private List<string> listNew = new List<string>();
+        private Model.Order m_orderInfo;
+
+        private List<string> m_districtList = BLL.Instance.GetAllDistrictNames();
+        private List<string> m_districtListNew = new List<string>();
+
+        private List<string> m_communityNameList = BLL.Instance.GetAllCommunityNames();
+        private List<string> m_communityNameListNew = new List<string>();
+
+        private List<string> m_productBrandList = BLL.Instance.GetAllProductBrands();
+        private List<string> m_productBrandListNew = new List<string>();
+
+        private List<string> m_productNameList = BLL.Instance.GetAllProductName();
+        private List<string> m_productNameListNew = new List<string>();
 
         public CheckinForm()
         {
@@ -22,46 +33,30 @@ namespace UI
 
         private void CheckinForm_Load(object sender, EventArgs e)
         {
-            BindComboBox();
+            this.comboBox_CustomerDistrict.Items.AddRange(this.m_districtList.ToArray());
+            this.comboBox_Community.Items.AddRange(this.m_communityNameList.ToArray());
+            this.comboBox_ProductBrand.Items.AddRange(this.m_productBrandList.ToArray());
+            this.comboBox_ProductName.Items.AddRange(this.m_productNameList.ToArray());
         }
 
-        private void BindComboBox()
+        private void ComboBoxUpdate(ref ComboBox box, ref List<string> listInit, ref List<string> listNew)
         {
-            listOnit.Add("高科荣境");
-            listOnit.Add("东方天郡");
-            listOnit.Add("钟山府");
-            listOnit.Add("亚东城");
-            listOnit.Add("康桥圣菲");
-            listOnit.Add("璞樾钟山");
-            listOnit.Add("雁鸣山庄");
-            listOnit.Add("羊山湖花园");
-            listOnit.Add("仙林新村");
-
-            /*
-             * 1.注意用Item.Add(obj)或者Item.AddRange(obj)方式添加
-             * 2.如果用DataSource绑定，后面再进行绑定是不行的，即便是Add或者Clear也不行
-             */
-            this.comboBox_Community.Items.AddRange(listOnit.ToArray());
-        }
-
-        private void comboBox_Community_TextUpdate(object sender, EventArgs e)
-        {
-            if (comboBox_Community.Text.Length == 0)
+            if (box.Text.Length == 0)
             {
-                if (this.comboBox_Community.DroppedDown)
+                if (box.DroppedDown)
                 {
-                    this.comboBox_Community.DroppedDown = false;
+                    box.DroppedDown = false;
                 }
                 return;
             }
             //清空combobox
-            this.comboBox_Community.Items.Clear();
+            box.Items.Clear();
             //清空listNew
             listNew.Clear();
             //遍历全部备查数据
-            foreach (var item in listOnit)
+            foreach (var item in listInit)
             {
-                if (item.Contains(this.comboBox_Community.Text))
+                if (item.Contains(box.Text))
                 {
                     //符合，插入ListNew
                     listNew.Add(item);
@@ -71,34 +66,44 @@ namespace UI
             if (listNew.Count == 0)
             {
                 //设置光标位置，否则光标位置始终保持在第一列，造成输入关键词的倒序排列
-                this.comboBox_Community.SelectionStart = this.comboBox_Community.Text.Length;
+                box.SelectionStart = box.Text.Length;
 
-                if (this.comboBox_Community.DroppedDown)
+                if (box.DroppedDown)
                 {
-                    this.comboBox_Community.DroppedDown = false;
+                    box.DroppedDown = false;
                 }
 
                 return;
             }
 
             //combobox添加已经查到的关键词
-            this.comboBox_Community.Items.AddRange(listNew.ToArray());
+            box.Items.AddRange(listNew.ToArray());
             //设置光标位置，否则光标位置始终保持在第一列，造成输入关键词的倒序排列
-            this.comboBox_Community.SelectionStart = this.comboBox_Community.Text.Length;
+            box.SelectionStart = box.Text.Length;
             //保持鼠标指针原来状态，有时候鼠标指针会被下拉框覆盖，所以要进行一次设置。
-            Cursor = Cursors.Default;
+            this.Cursor = Cursors.Default;
             //自动弹出下拉框
-            this.comboBox_Community.DroppedDown = true;
+            box.DroppedDown = true;
         }
 
-        private void textBox_OrderNum_TextChanged(object sender, EventArgs e)
+        private void comboBox_Community_TextUpdate(object sender, EventArgs e)
         {
-
+            ComboBoxUpdate(ref this.comboBox_Community, ref this.m_communityNameList, ref this.m_communityNameListNew);
         }
 
-        private void textBox_CustomerName_TextChanged(object sender, EventArgs e)
+        private void comboBox_ProductBrand_TextUpdate(object sender, EventArgs e)
         {
+            ComboBoxUpdate(ref this.comboBox_ProductBrand, ref this.m_productBrandList, ref this.m_productBrandListNew);
+        }
 
+        private void comboBox_ProductName_TextUpdate(object sender, EventArgs e)
+        {
+            ComboBoxUpdate(ref this.comboBox_ProductName, ref this.m_productNameList, ref this.m_productNameListNew);
+        }
+
+        private void comboBox_CustomerDistrict_TextUpdate(object sender, EventArgs e)
+        {
+            ComboBoxUpdate(ref this.comboBox_CustomerDistrict, ref this.m_districtList, ref this.m_districtListNew);
         }
 
         private void checkedListBox_DeliverPeriod_ItemCheck(object sender, ItemCheckEventArgs e)
@@ -160,17 +165,30 @@ namespace UI
 
         private void button_Submit_Click(object sender, EventArgs e)
         {
+            m_orderInfo.CustomerName = this.textBox_CustomerName.Text;
+            m_orderInfo.CustomerNickName = this.textBox_NickName.Text;
+            m_orderInfo.CustomerPhoneNumber = this.textBox_PhoneNO.Text;
+            m_orderInfo.CustomerDistrict = this.comboBox_CustomerDistrict.Text;
+            m_orderInfo.CustomerCommunity = this.comboBox_Community.Text;
+            m_orderInfo.CustomerAddress = this.textBox_CustomerAddr.Text;
+            m_orderInfo.ProductBrand = this.comboBox_ProductBrand.Text;
+            m_orderInfo.ProductName = this.comboBox_ProductName.Text;
+            m_orderInfo.ProductOrderNumber = Convert.ToUInt16(this.textBox_OrderNum.Text);
+            if (radioButton_ByDay.Checked)
+            {
+                m_orderInfo.DeliverType = Model.DeliverType.Daily;
+            }
+            else
+            {
+                m_orderInfo.DeliverType = Model.DeliverType.Weekly;
+            }
+            //deliverInterval
+            m_orderInfo.DeliverNumberEveryTime = Convert.ToUInt16(this.textBox_DeliverNumEveryTime.Text);
+            m_orderInfo.DeliverBeginDate = this.monthCalendar1.SelectionStart.ToString("yyyy-MM-dd");
+            m_orderInfo.AdditionalGifts = this.textBox_AdditionalGifts.Text;
+            m_orderInfo.Timestamp = DateTime.Now.ToLocalTime().ToString();
 
-        }
-
-        private void monthCalendar1_DateChanged(object sender, DateRangeEventArgs e)
-        {
-
-        }
-
-        private void textBox_DeliverNumEveryTime_TextChanged(object sender, EventArgs e)
-        {
-
+            BLL.Instance.AddOrder(m_orderInfo);
         }
     }
 }
