@@ -7,12 +7,11 @@ using System.Configuration;
 
 namespace DAL
 {
-    public class Class1
+    public abstract class MySQLHelper
     {
-        public Class1()
+        public static void Get()
         {
-            var a = ConfigurationManager.ConnectionStrings["connectStr"];
-            int b = 0;
+
         }
     }
 }

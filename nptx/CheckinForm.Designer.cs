@@ -72,6 +72,8 @@
             this.label10 = new System.Windows.Forms.Label();
             this.label11 = new System.Windows.Forms.Label();
             this.textBox_AdditionalGifts = new System.Windows.Forms.TextBox();
+            this.textBox_Comments = new System.Windows.Forms.TextBox();
+            this.label12 = new System.Windows.Forms.Label();
             this.panel_DeliverWeekly.SuspendLayout();
             this.panel_DeliverDaily.SuspendLayout();
             this.groupBox1.SuspendLayout();
@@ -135,6 +137,7 @@
             this.textBox_OrderNum.Name = "textBox_OrderNum";
             this.textBox_OrderNum.Size = new System.Drawing.Size(56, 26);
             this.textBox_OrderNum.TabIndex = 19;
+            this.textBox_OrderNum.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.textBox_OrderNum_KeyPress);
             // 
             // label1
             // 
@@ -381,6 +384,7 @@
             this.textBox_DeliverNumEveryTime.Name = "textBox_DeliverNumEveryTime";
             this.textBox_DeliverNumEveryTime.Size = new System.Drawing.Size(56, 26);
             this.textBox_DeliverNumEveryTime.TabIndex = 22;
+            this.textBox_DeliverNumEveryTime.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.textBox_DeliverNumEveryTime_KeyPress);
             // 
             // label4
             // 
@@ -417,6 +421,7 @@
             this.textBox_PhoneNO.Name = "textBox_PhoneNO";
             this.textBox_PhoneNO.Size = new System.Drawing.Size(100, 26);
             this.textBox_PhoneNO.TabIndex = 5;
+            this.textBox_PhoneNO.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.textBox_PhoneNO_KeyPress);
             // 
             // label6
             // 
@@ -530,11 +535,31 @@
             this.textBox_AdditionalGifts.Size = new System.Drawing.Size(100, 26);
             this.textBox_AdditionalGifts.TabIndex = 17;
             // 
+            // textBox_Comments
+            // 
+            this.textBox_Comments.Font = new System.Drawing.Font("微软雅黑", 10.5F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
+            this.textBox_Comments.Location = new System.Drawing.Point(548, 178);
+            this.textBox_Comments.Name = "textBox_Comments";
+            this.textBox_Comments.Size = new System.Drawing.Size(100, 26);
+            this.textBox_Comments.TabIndex = 28;
+            // 
+            // label12
+            // 
+            this.label12.AutoSize = true;
+            this.label12.Font = new System.Drawing.Font("微软雅黑", 10.5F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
+            this.label12.Location = new System.Drawing.Point(471, 178);
+            this.label12.Name = "label12";
+            this.label12.Size = new System.Drawing.Size(65, 20);
+            this.label12.TabIndex = 27;
+            this.label12.Text = "配送要求";
+            // 
             // CheckinForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 12F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(774, 594);
+            this.Controls.Add(this.textBox_Comments);
+            this.Controls.Add(this.label12);
             this.Controls.Add(this.textBox_AdditionalGifts);
             this.Controls.Add(this.label11);
             this.Controls.Add(this.comboBox_ProductName);
@@ -627,5 +652,7 @@
         private System.Windows.Forms.Label label10;
         private System.Windows.Forms.Label label11;
         private System.Windows.Forms.TextBox textBox_AdditionalGifts;
+        private System.Windows.Forms.TextBox textBox_Comments;
+        private System.Windows.Forms.Label label12;
     }
 }

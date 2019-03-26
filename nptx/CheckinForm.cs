@@ -12,7 +12,7 @@ namespace UI
 {
     public partial class CheckinForm : Form
     {
-        private Model.Order m_orderInfo;
+        private Model.Order m_orderInfo = new Model.Order();
 
         private List<string> m_districtList = BLL.Instance.GetAllDistrictNames();
         private List<string> m_districtListNew = new List<string>();
@@ -176,19 +176,75 @@ namespace UI
             m_orderInfo.ProductOrderNumber = Convert.ToUInt16(this.textBox_OrderNum.Text);
             if (radioButton_ByDay.Checked)
             {
-                m_orderInfo.DeliverType = Model.DeliverType.Daily;
+                string interval = "每" + this.textBox_DeliverInterval.Text + "天";
+                m_orderInfo.DeliverPeriod = interval;
             }
             else
             {
-                m_orderInfo.DeliverType = Model.DeliverType.Weekly;
+                string interval = "每";
+
+                if (this.checkBox_Monday.Checked)
+                {
+                    interval = interval + "周一";
+                }
+                if (this.checkBox_Tuesday.Checked)
+                {
+                    interval = interval + "周二";
+                }
+                if (this.checkBox_Wednesday.Checked)
+                {
+                    interval = interval + "周三";
+                }
+                if (this.checkBox_Thursday.Checked)
+                {
+                    interval = interval + "周四";
+                }
+                if (this.checkBox_Friday.Checked)
+                {
+                    interval = interval + "周五";
+                }
+                if (this.checkBox_Saturday.Checked)
+                {
+                    interval = interval + "周六";
+                }
+                if (this.checkBox_Sunday.Checked)
+                {
+                    interval = interval + "周日";
+                }
+
+                m_orderInfo.DeliverPeriod = interval;
             }
-            //deliverInterval
             m_orderInfo.DeliverNumberEveryTime = Convert.ToUInt16(this.textBox_DeliverNumEveryTime.Text);
             m_orderInfo.DeliverBeginDate = this.monthCalendar1.SelectionStart.ToString("yyyy-MM-dd");
             m_orderInfo.AdditionalGifts = this.textBox_AdditionalGifts.Text;
-            m_orderInfo.Timestamp = DateTime.Now.ToLocalTime().ToString();
+            m_orderInfo.Comments = this.textBox_Comments.Text;
+            m_orderInfo.Timestamp = DateTime.Now.ToLocalTime().ToString("G");
 
-            BLL.Instance.AddOrder(m_orderInfo);
+            BLL.Instance.CheckinOrder(m_orderInfo);
+        }
+
+        private void textBox_PhoneNO_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            if (e.KeyChar != '\b' && !Char.IsDigit(e.KeyChar))
+            {
+                e.Handled = true;
+            }
+        }
+
+        private void textBox_OrderNum_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            if (e.KeyChar != '\b' && !Char.IsDigit(e.KeyChar))
+            {
+                e.Handled = true;
+            }
+        }
+
+        private void textBox_DeliverNumEveryTime_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            if (e.KeyChar != '\b' && !Char.IsDigit(e.KeyChar))
+            {
+                e.Handled = true;
+            }
         }
     }
 }

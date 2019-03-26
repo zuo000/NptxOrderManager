@@ -67,7 +67,7 @@ namespace BLL
             };
         }
 
-        public static void AddOrder(Model.Order order)
+        public static void CheckinOrder(Model.Order order)
         {
 
         }
