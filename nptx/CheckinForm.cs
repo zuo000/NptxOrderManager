@@ -29,6 +29,8 @@ namespace UI
         public CheckinForm()
         {
             InitializeComponent();
+
+            var aaa = BLL.Instance.QueryOne("select * from order_table");
         }
 
         private void CheckinForm_Load(object sender, EventArgs e)
@@ -218,7 +220,7 @@ namespace UI
             m_orderInfo.DeliverBeginDate = this.monthCalendar1.SelectionStart.ToString("yyyy-MM-dd");
             m_orderInfo.AdditionalGifts = this.textBox_AdditionalGifts.Text;
             m_orderInfo.Comments = this.textBox_Comments.Text;
-            m_orderInfo.Timestamp = DateTime.Now.ToLocalTime().ToString("G");
+            m_orderInfo.OrderDateTime = DateTime.Now.ToLocalTime().ToString("yyyy-MM-dd HH:mm:ss");
 
             BLL.Instance.CheckinOrder(m_orderInfo);
         }

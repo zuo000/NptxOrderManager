@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Data;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -70,6 +71,11 @@ namespace BLL
         public static void CheckinOrder(Model.Order order)
         {
 
+        }
+
+        public static DataSet QueryOne(string conn)
+        {
+            return DAL.MySQLHelper.QueryOne(conn);
         }
     }
 }

@@ -8,6 +8,7 @@ namespace Model
 {
     public class Order
     {
+        private string m_orderDateTime = null;
         private string m_customerName = null;
         private string m_customerNickName = null;
         private string m_customerPhoneNumber = null;
@@ -22,7 +23,6 @@ namespace Model
         private string m_deliverBeginDate = null;
         private string m_additionalGifts = null;
         private string m_comments = null;
-        private string m_timestamp = null;
 
         public string CustomerName { get => m_customerName; set => m_customerName = value; }
         public string CustomerNickName { get => m_customerNickName; set => m_customerNickName = value; }
@@ -36,8 +36,8 @@ namespace Model
         public ushort DeliverNumberEveryTime { get => m_deliverNumberEveryTime; set => m_deliverNumberEveryTime = value; }
         public string DeliverBeginDate { get => m_deliverBeginDate; set => m_deliverBeginDate = value; }
         public string AdditionalGifts { get => m_additionalGifts; set => m_additionalGifts = value; }
-        public string Timestamp { get => m_timestamp; set => m_timestamp = value; }
         public string DeliverPeriod { get => m_deliverPeriod; set => m_deliverPeriod = value; }
         public string Comments { get => m_comments; set => m_comments = value; }
+        public string OrderDateTime { get => m_orderDateTime; set => m_orderDateTime = value; }
     }
 }
