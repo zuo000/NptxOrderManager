@@ -14,23 +14,21 @@ namespace UI
     {
         private Model.Order m_orderInfo = new Model.Order();
 
-        private List<string> m_districtList = BLL.Instance.GetAllDistrictNames();
+        private List<string> m_districtList = BLL.SingleInstance.GetAllDistrictNames();
         private List<string> m_districtListNew = new List<string>();
 
-        private List<string> m_communityNameList = BLL.Instance.GetAllCommunityNames();
+        private List<string> m_communityNameList = BLL.SingleInstance.GetAllCommunityNames();
         private List<string> m_communityNameListNew = new List<string>();
 
-        private List<string> m_productBrandList = BLL.Instance.GetAllProductBrands();
+        private List<string> m_productBrandList = BLL.SingleInstance.GetAllProductBrands();
         private List<string> m_productBrandListNew = new List<string>();
 
-        private List<string> m_productNameList = BLL.Instance.GetAllProductName();
+        private List<string> m_productNameList = BLL.SingleInstance.GetAllProductName();
         private List<string> m_productNameListNew = new List<string>();
 
         public CheckinForm()
         {
             InitializeComponent();
-
-            var aaa = BLL.Instance.QueryOne("select * from order_table");
         }
 
         private void CheckinForm_Load(object sender, EventArgs e)
@@ -222,7 +220,14 @@ namespace UI
             m_orderInfo.Comments = this.textBox_Comments.Text;
             m_orderInfo.OrderDateTime = DateTime.Now.ToLocalTime().ToString("yyyy-MM-dd HH:mm:ss");
 
-            BLL.Instance.CheckinOrder(m_orderInfo);
+            if (BLL.SingleInstance.CheckinOrder(m_orderInfo) == 1)
+            {
+                MessageBox.Show("订单录入成功", "录入订单", MessageBoxButtons.OK, MessageBoxIcon.Information);
+            }
+            else
+            {
+                MessageBox.Show("订单录入失败", "录入订单", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
         }
 
         private void textBox_PhoneNO_KeyPress(object sender, KeyPressEventArgs e)

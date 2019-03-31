@@ -7,7 +7,7 @@ using System.Threading.Tasks;
 
 namespace BLL
 {
-    public abstract class Instance
+    public abstract class SingleInstance
     {
         public static List<string> GetAllDistrictNames()
         {
@@ -68,9 +68,15 @@ namespace BLL
             };
         }
 
-        public static void CheckinOrder(Model.Order order)
+        public static int CheckinOrder(Model.Order order)
         {
-
+            string cmdBase = "insert into `order_table` (`order_time`, `customer_name`, `customer_nick_name`, `customer_phone_number`, `customer_district`, `customer_community`, `customer_address`, `product_brand`, `product_name`, `product_order_number`, `deliver_period`, `deliver_number_everytime`, `deliver_begin_date`, `additional_gifts`, `comments`) values";
+            string sqlCommand = cmdBase + "('" + order.OrderDateTime + "','" + order.CustomerName + "','" + order.CustomerNickName
+                                + "','" + order.CustomerPhoneNumber + "','" + order.CustomerDistrict + "','" + order.CustomerCommunity
+                                + "','" + order.CustomerAddress + "','" + order.ProductBrand + "','" + order.ProductName + "','" + order.ProductOrderNumber.ToString()
+                                + "','" + order.DeliverPeriod + "','" + order.DeliverNumberEveryTime.ToString() + "','" + order.DeliverBeginDate
+                                + "','" + order.AdditionalGifts + "','" + order.Comments + "')";
+            return DAL.MySQLHelper.ExecuteSql(sqlCommand);
         }
 
         public static DataSet QueryOne(string conn)
