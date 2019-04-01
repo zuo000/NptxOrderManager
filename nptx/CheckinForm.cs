@@ -228,6 +228,7 @@ namespace UI
             {
                 MessageBox.Show("订单录入失败", "录入订单", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
+            //this.Close();
         }
 
         private void textBox_PhoneNO_KeyPress(object sender, KeyPressEventArgs e)
