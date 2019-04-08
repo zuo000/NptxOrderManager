@@ -39,7 +39,7 @@ namespace DAL
             }
         }
 
-        public static DataSet QueryOne(string SQLString)
+        public static DataSet QueryOrder(string SQLString)
         {
             using (MySqlConnection connection = new MySqlConnection(mySqlConnectionString))
             {
@@ -48,8 +48,7 @@ namespace DAL
                 {
                     connection.Open();
                     MySqlDataAdapter command = new MySqlDataAdapter(SQLString, connection);
-                    command.Fill(ds, "ds");
-                    string aa = ds.Tables[0].Rows[0].ItemArray[3].ToString();
+                    command.Fill(ds, "order_table");
                 }
                 catch (MySql.Data.MySqlClient.MySqlException ex)
                 {

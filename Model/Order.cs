@@ -8,6 +8,7 @@ namespace Model
 {
     public class Order
     {
+        private string m_orderId = null;
         private string m_orderDateTime = null;
         private string m_customerName = null;
         private string m_customerNickName = null;
@@ -39,5 +40,6 @@ namespace Model
         public string DeliverPeriod { get => m_deliverPeriod; set => m_deliverPeriod = value; }
         public string Comments { get => m_comments; set => m_comments = value; }
         public string OrderDateTime { get => m_orderDateTime; set => m_orderDateTime = value; }
+        public string OrderId { get => m_orderId; set => m_orderId = value; }
     }
 }

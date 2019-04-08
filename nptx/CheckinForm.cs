@@ -39,6 +39,11 @@ namespace UI
             this.comboBox_ProductName.Items.AddRange(this.m_productNameList.ToArray());
         }
 
+        //定义委托
+        public delegate void MyDelegate();
+        //定义事件
+        public event MyDelegate MyEvent;
+
         private void ComboBoxUpdate(ref ComboBox box, ref List<string> listInit, ref List<string> listNew)
         {
             if (box.Text.Length == 0)
@@ -163,8 +168,27 @@ namespace UI
             radioButton_ByDay.Checked = true;
         }
 
+        private bool checkInputInfo()
+        {
+            if (this.textBox_PhoneNO.Text.Length > 11)
+            {
+                MessageBox.Show("联系电话错误", "录入订单", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                this.textBox_PhoneNO.Focus();
+                this.textBox_PhoneNO.Select(0, this.textBox_PhoneNO.Text.Length);
+                return false;
+            }
+
+            return true;
+        }
+
         private void button_Submit_Click(object sender, EventArgs e)
         {
+            if (!checkInputInfo())
+            {
+                return;
+            }
+
+            m_orderInfo.OrderId = UniqueOrderId.Gener("B");
             m_orderInfo.CustomerName = this.textBox_CustomerName.Text;
             m_orderInfo.CustomerNickName = this.textBox_NickName.Text;
             m_orderInfo.CustomerPhoneNumber = this.textBox_PhoneNO.Text;
@@ -227,6 +251,12 @@ namespace UI
             else
             {
                 MessageBox.Show("订单录入失败", "录入订单", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+
+
+            if (MyEvent != null)
+            {
+                MyEvent();
             }
             //this.Close();
         }

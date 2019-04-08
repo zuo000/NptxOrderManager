@@ -86,8 +86,8 @@ namespace BLL
                         deliverNumber = Convert.ToInt32(order.ProductOrderNumber) - alreadyDeliveredNumber;
                         deliverEnd = true;
                     }
-                    string sql = "insert into `deliver_table` (`customer_name`, `customer_nick_name`, `customer_community`, `customer_district`, `product_brand`, `product_name`, `deliver_date`, `deliver_number`) values ('"
-                                 + order.CustomerName + "','" + order.CustomerNickName + "','" + order.CustomerCommunity + "','"
+                    string sql = "insert into `deliver_table` (`order_id`, `customer_name`, `customer_nick_name`, `customer_community`, `customer_district`, `product_brand`, `product_name`, `deliver_date`, `deliver_number`) values ('"
+                                 + order.OrderId + "','" + order.CustomerName + "','" + order.CustomerNickName + "','" + order.CustomerCommunity + "','"
                                  + order.CustomerDistrict + "','" + order.ProductBrand + "','" + order.ProductName + "','"
                                  + nextDeliverDate.ToString("yyyy-MM-dd") + "','" + deliverNumber.ToString() + "')";
                     DAL.MySQLHelper.ExecuteSql(sql);
@@ -144,8 +144,8 @@ namespace BLL
                             deliverNumber = Convert.ToInt32(order.ProductOrderNumber) - alreadyDeliveredNumber;
                             deliverEnd = true;
                         }
-                        string sql = "insert into `deliver_table` (`customer_name`, `customer_nick_name`, `customer_community`, `customer_district`, `product_brand`, `product_name`, `deliver_date`, `deliver_number`) values ('"
-                                     + order.CustomerName + "','" + order.CustomerNickName + "','" + order.CustomerCommunity + "','"
+                        string sql = "insert into `deliver_table` (`order_id`, `customer_name`, `customer_nick_name`, `customer_community`, `customer_district`, `product_brand`, `product_name`, `deliver_date`, `deliver_number`) values ('"
+                                     + order.OrderId + "','" + order.CustomerName + "','" + order.CustomerNickName + "','" + order.CustomerCommunity + "','"
                                      + order.CustomerDistrict + "','" + order.ProductBrand + "','" + order.ProductName + "','"
                                      + deliverBeginDate.AddDays(dow - deliverBeginDayofWeek).ToString("yyyy-MM-dd") + "','" + deliverNumber.ToString() + "')";
                         DAL.MySQLHelper.ExecuteSql(sql);
@@ -165,8 +165,8 @@ namespace BLL
                             deliverNumber = Convert.ToInt32(order.ProductOrderNumber) - alreadyDeliveredNumber;
                             deliverEnd = true;
                         }
-                        string sql = "insert into `deliver_table` (`customer_name`, `customer_nick_name`, `customer_community`, `customer_district`, `product_brand`, `product_name`, `deliver_date`, `deliver_number`) values ('"
-                                     + order.CustomerName + "','" + order.CustomerNickName + "','" + order.CustomerCommunity + "','"
+                        string sql = "insert into `deliver_table` (`order_id`, `customer_name`, `customer_nick_name`, `customer_community`, `customer_district`, `product_brand`, `product_name`, `deliver_date`, `deliver_number`) values ('"
+                                     + order.OrderId + "','" + order.CustomerName + "','" + order.CustomerNickName + "','" + order.CustomerCommunity + "','"
                                      + order.CustomerDistrict + "','" + order.ProductBrand + "','" + order.ProductName + "','"
                                      + deliverBeginDate.AddDays(weekIndex*7 + dow - deliverBeginDayofWeek).ToString("yyyy-MM-dd") + "','" + deliverNumber.ToString() + "')";
                         DAL.MySQLHelper.ExecuteSql(sql);
@@ -177,8 +177,8 @@ namespace BLL
                 }
             }
 
-            string cmdBase = "insert into `order_table` (`order_time`, `customer_name`, `customer_nick_name`, `customer_phone_number`, `customer_district`, `customer_community`, `customer_address`, `product_brand`, `product_name`, `product_order_number`, `deliver_period`, `deliver_number_everytime`, `deliver_begin_date`, `additional_gifts`, `comments`) values";
-            string sqlCommand = cmdBase + "('" + order.OrderDateTime + "','" + order.CustomerName + "','" + order.CustomerNickName
+            string cmdBase = "insert into `order_table` (`order_id`, `order_time`, `customer_name`, `customer_nick_name`, `customer_phone_number`, `customer_district`, `customer_community`, `customer_address`, `product_brand`, `product_name`, `product_order_number`, `deliver_period`, `deliver_number_everytime`, `deliver_begin_date`, `additional_gifts`, `comments`) values";
+            string sqlCommand = cmdBase + "('" + order.OrderId + "','" + order.OrderDateTime + "','" + order.CustomerName + "','" + order.CustomerNickName
                                 + "','" + order.CustomerPhoneNumber + "','" + order.CustomerDistrict + "','" + order.CustomerCommunity
                                 + "','" + order.CustomerAddress + "','" + order.ProductBrand + "','" + order.ProductName + "','" + order.ProductOrderNumber.ToString()
                                 + "','" + order.DeliverPeriod + "','" + order.DeliverNumberEveryTime.ToString() + "','" + order.DeliverBeginDate
@@ -186,9 +186,9 @@ namespace BLL
             return DAL.MySQLHelper.ExecuteSql(sqlCommand);
         }
 
-        public static DataSet QueryOne(string conn)
+        public static DataSet GetAllOrderData()
         {
-            return DAL.MySQLHelper.QueryOne(conn);
+            return DAL.MySQLHelper.QueryOrder("select * from order_table");
         }
     }
 }
