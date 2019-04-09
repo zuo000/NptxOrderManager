@@ -29,9 +29,7 @@
         private void InitializeComponent()
         {
             this.label_CustomerName = new System.Windows.Forms.Label();
-            this.label_Community = new System.Windows.Forms.Label();
             this.textBox_CustomerName = new System.Windows.Forms.TextBox();
-            this.comboBox_Community = new System.Windows.Forms.ComboBox();
             this.label_OrderNum = new System.Windows.Forms.Label();
             this.textBox_OrderNum = new System.Windows.Forms.TextBox();
             this.label1 = new System.Windows.Forms.Label();
@@ -90,16 +88,6 @@
             this.label_CustomerName.TabIndex = 0;
             this.label_CustomerName.Text = "客户姓名";
             // 
-            // label_Community
-            // 
-            this.label_Community.AutoSize = true;
-            this.label_Community.Font = new System.Drawing.Font("微软雅黑", 10.5F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
-            this.label_Community.Location = new System.Drawing.Point(257, 85);
-            this.label_Community.Name = "label_Community";
-            this.label_Community.Size = new System.Drawing.Size(65, 20);
-            this.label_Community.TabIndex = 8;
-            this.label_Community.Text = "所在小区";
-            // 
             // textBox_CustomerName
             // 
             this.textBox_CustomerName.Font = new System.Drawing.Font("微软雅黑", 10.5F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
@@ -107,18 +95,6 @@
             this.textBox_CustomerName.Name = "textBox_CustomerName";
             this.textBox_CustomerName.Size = new System.Drawing.Size(100, 26);
             this.textBox_CustomerName.TabIndex = 1;
-            // 
-            // comboBox_Community
-            // 
-            this.comboBox_Community.AutoCompleteMode = System.Windows.Forms.AutoCompleteMode.Suggest;
-            this.comboBox_Community.AutoCompleteSource = System.Windows.Forms.AutoCompleteSource.CustomSource;
-            this.comboBox_Community.Font = new System.Drawing.Font("微软雅黑", 10.5F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
-            this.comboBox_Community.FormattingEnabled = true;
-            this.comboBox_Community.Location = new System.Drawing.Point(330, 82);
-            this.comboBox_Community.Name = "comboBox_Community";
-            this.comboBox_Community.Size = new System.Drawing.Size(109, 28);
-            this.comboBox_Community.TabIndex = 9;
-            this.comboBox_Community.TextUpdate += new System.EventHandler(this.comboBox_Community_TextUpdate);
             // 
             // label_OrderNum
             // 
@@ -296,6 +272,7 @@
             this.textBox_DeliverInterval.Name = "textBox_DeliverInterval";
             this.textBox_DeliverInterval.Size = new System.Drawing.Size(39, 26);
             this.textBox_DeliverInterval.TabIndex = 1;
+            this.textBox_DeliverInterval.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.textBox_DeliverInterval_KeyPress);
             // 
             // label_DeliverDay
             // 
@@ -458,16 +435,16 @@
             // textBox_CustomerAddr
             // 
             this.textBox_CustomerAddr.Font = new System.Drawing.Font("微软雅黑", 10.5F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
-            this.textBox_CustomerAddr.Location = new System.Drawing.Point(548, 82);
+            this.textBox_CustomerAddr.Location = new System.Drawing.Point(330, 77);
             this.textBox_CustomerAddr.Name = "textBox_CustomerAddr";
-            this.textBox_CustomerAddr.Size = new System.Drawing.Size(160, 26);
+            this.textBox_CustomerAddr.Size = new System.Drawing.Size(218, 26);
             this.textBox_CustomerAddr.TabIndex = 11;
             // 
             // label8
             // 
             this.label8.AutoSize = true;
             this.label8.Font = new System.Drawing.Font("微软雅黑", 10.5F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
-            this.label8.Location = new System.Drawing.Point(477, 85);
+            this.label8.Location = new System.Drawing.Point(257, 80);
             this.label8.Name = "label8";
             this.label8.Size = new System.Drawing.Size(65, 20);
             this.label8.TabIndex = 10;
@@ -538,7 +515,7 @@
             // textBox_Comments
             // 
             this.textBox_Comments.Font = new System.Drawing.Font("微软雅黑", 10.5F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
-            this.textBox_Comments.Location = new System.Drawing.Point(548, 178);
+            this.textBox_Comments.Location = new System.Drawing.Point(548, 181);
             this.textBox_Comments.Name = "textBox_Comments";
             this.textBox_Comments.Size = new System.Drawing.Size(100, 26);
             this.textBox_Comments.TabIndex = 28;
@@ -547,7 +524,7 @@
             // 
             this.label12.AutoSize = true;
             this.label12.Font = new System.Drawing.Font("微软雅黑", 10.5F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
-            this.label12.Location = new System.Drawing.Point(471, 178);
+            this.label12.Location = new System.Drawing.Point(471, 184);
             this.label12.Name = "label12";
             this.label12.Size = new System.Drawing.Size(65, 20);
             this.label12.TabIndex = 27;
@@ -583,8 +560,6 @@
             this.Controls.Add(this.textBox_OrderNum);
             this.Controls.Add(this.label_OrderNum);
             this.Controls.Add(this.textBox_CustomerName);
-            this.Controls.Add(this.comboBox_Community);
-            this.Controls.Add(this.label_Community);
             this.Controls.Add(this.label_CustomerName);
             this.Controls.Add(this.groupBox1);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedSingle;
@@ -609,9 +584,7 @@
         #endregion
 
         private System.Windows.Forms.Label label_CustomerName;
-        private System.Windows.Forms.Label label_Community;
         private System.Windows.Forms.TextBox textBox_CustomerName;
-        private System.Windows.Forms.ComboBox comboBox_Community;
         private System.Windows.Forms.Label label_OrderNum;
         private System.Windows.Forms.TextBox textBox_OrderNum;
         private System.Windows.Forms.Label label1;

@@ -51,8 +51,8 @@
             this.Column_ProductBrand = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Column_ProductName = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Column_OrderNum = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Column_DeliverNumEveryTime = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Column_DeliverPeriod = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Column_DeliverNumEveryTime = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Column_StartDate = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.groupBox1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
@@ -146,8 +146,8 @@
             this.Column_ProductBrand,
             this.Column_ProductName,
             this.Column_OrderNum,
-            this.Column_DeliverNumEveryTime,
             this.Column_DeliverPeriod,
+            this.Column_DeliverNumEveryTime,
             this.Column_StartDate});
             this.dataGridView1.Location = new System.Drawing.Point(3, 79);
             this.dataGridView1.MultiSelect = false;
@@ -290,13 +290,6 @@
             this.Column_OrderNum.Name = "Column_OrderNum";
             this.Column_OrderNum.ReadOnly = true;
             // 
-            // Column_DeliverNumEveryTime
-            // 
-            this.Column_DeliverNumEveryTime.DataPropertyName = "deliver_number_everytime";
-            this.Column_DeliverNumEveryTime.FillWeight = 105.999F;
-            this.Column_DeliverNumEveryTime.HeaderText = "每次送奶数量";
-            this.Column_DeliverNumEveryTime.Name = "Column_DeliverNumEveryTime";
-            // 
             // Column_DeliverPeriod
             // 
             this.Column_DeliverPeriod.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
@@ -305,6 +298,13 @@
             this.Column_DeliverPeriod.HeaderText = "送奶计划";
             this.Column_DeliverPeriod.Name = "Column_DeliverPeriod";
             this.Column_DeliverPeriod.ReadOnly = true;
+            // 
+            // Column_DeliverNumEveryTime
+            // 
+            this.Column_DeliverNumEveryTime.DataPropertyName = "deliver_number_everytime";
+            this.Column_DeliverNumEveryTime.FillWeight = 105.999F;
+            this.Column_DeliverNumEveryTime.HeaderText = "每次送奶数量";
+            this.Column_DeliverNumEveryTime.Name = "Column_DeliverNumEveryTime";
             // 
             // Column_StartDate
             // 
@@ -358,8 +358,8 @@
         private System.Windows.Forms.DataGridViewTextBoxColumn Column_ProductBrand;
         private System.Windows.Forms.DataGridViewTextBoxColumn Column_ProductName;
         private System.Windows.Forms.DataGridViewTextBoxColumn Column_OrderNum;
-        private System.Windows.Forms.DataGridViewTextBoxColumn Column_DeliverNumEveryTime;
         private System.Windows.Forms.DataGridViewTextBoxColumn Column_DeliverPeriod;
+        private System.Windows.Forms.DataGridViewTextBoxColumn Column_DeliverNumEveryTime;
         private System.Windows.Forms.DataGridViewTextBoxColumn Column_StartDate;
     }
 }

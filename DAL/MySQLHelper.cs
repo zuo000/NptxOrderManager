@@ -18,7 +18,7 @@ namespace DAL
         /// </summary>
         /// <param name="SQLString">SQL语句</param>
         /// <returns>影响的记录数</returns>
-        public static int ExecuteSql(string SQLString)
+        public static int ExecuteSqlNonQuery(string SQLString)
         {
             using (MySqlConnection connection = new MySqlConnection(mySqlConnectionString))
             {
@@ -39,7 +39,7 @@ namespace DAL
             }
         }
 
-        public static DataSet QueryOrder(string SQLString)
+        public static DataSet QueryOrderTable(string SQLString)
         {
             using (MySqlConnection connection = new MySqlConnection(mySqlConnectionString))
             {
@@ -55,6 +55,56 @@ namespace DAL
                     throw new Exception(ex.Message);
                 }
                 return ds;
+            }
+        }
+
+        private static object GetSingle(string SQLString)
+        {
+            using (MySqlConnection connection = new MySqlConnection(mySqlConnectionString))
+            {
+                using (MySqlCommand cmd = new MySqlCommand(SQLString, connection))
+                {
+                    try
+                    {
+                        connection.Open();
+                        object obj = cmd.ExecuteScalar();
+                        if ((Object.Equals(obj, null)) || (Object.Equals(obj, System.DBNull.Value)))
+                        {
+                            return null;
+                        }
+                        else
+                        {
+                            return obj;
+                        }
+                    }
+                    catch (MySql.Data.MySqlClient.MySqlException e)
+                    {
+                        connection.Close();
+                        throw e;
+                    }
+                }
+            }
+        }
+
+        public static bool Exists(string strSql)
+        {
+            object obj = GetSingle(strSql);
+            int cmdresult;
+            if ((Object.Equals(obj, null)) || (Object.Equals(obj, System.DBNull.Value)))
+            {
+                cmdresult = 0;
+            }
+            else
+            {
+                cmdresult = int.Parse(obj.ToString());
+            }
+            if (cmdresult == 0)
+            {
+                return false;
+            }
+            else
+            {
+                return true;
             }
         }
     }

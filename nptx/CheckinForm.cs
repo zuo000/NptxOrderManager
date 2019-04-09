@@ -12,14 +12,12 @@ namespace UI
 {
     public partial class CheckinForm : Form
     {
+        private bool m_initFromModify = false;
         private Model.Order m_orderInfo = new Model.Order();
 
         private List<string> m_districtList = BLL.SingleInstance.GetAllDistrictNames();
         private List<string> m_districtListNew = new List<string>();
-
-        private List<string> m_communityNameList = BLL.SingleInstance.GetAllCommunityNames();
-        private List<string> m_communityNameListNew = new List<string>();
-
+        
         private List<string> m_productBrandList = BLL.SingleInstance.GetAllProductBrands();
         private List<string> m_productBrandListNew = new List<string>();
 
@@ -31,10 +29,85 @@ namespace UI
             InitializeComponent();
         }
 
+        public CheckinForm(Model.Order order)
+        {
+            InitializeComponent();
+            this.textBox_CustomerName.Text = order.CustomerName;
+            this.textBox_NickName.Text = order.CustomerNickName;
+            this.textBox_PhoneNO.Text = order.CustomerPhoneNumber;
+            this.comboBox_CustomerDistrict.Text = order.CustomerDistrict;
+            this.textBox_CustomerAddr.Text = order.CustomerAddress;
+            this.comboBox_ProductBrand.Text = order.ProductBrand;
+            this.comboBox_ProductName.Text = order.ProductName;
+            this.textBox_AdditionalGifts.Text = order.AdditionalGifts;
+            this.textBox_OrderNum.Text = order.ProductOrderNumber.ToString();
+            this.textBox_DeliverNumEveryTime.Text = order.DeliverNumberEveryTime.ToString();
+            this.textBox_Comments.Text = order.Comments;
+            this.monthCalendar1.SetDate(Convert.ToDateTime(order.DeliverBeginDate));
+
+            if (order.DeliverPeriod.Contains("周"))
+            {
+                this.radioButton_ByWeek.Checked = true;
+                this.radioButton_ByDay.Checked = false;
+
+                this.checkBox_Monday.Checked = false;
+                this.checkBox_Tuesday.Checked = false;
+                this.checkBox_Wednesday.Checked = false;
+                this.checkBox_Thursday.Checked = false;
+                this.checkBox_Friday.Checked = false;
+                this.checkBox_Saturday.Checked = false;
+                this.checkBox_Sunday.Checked = false;
+
+                if (order.DeliverPeriod.Contains("一"))
+                {
+                    this.checkBox_Monday.Checked = true;
+                }
+
+                if (order.DeliverPeriod.Contains("二"))
+                {
+                    this.checkBox_Tuesday.Checked = true;
+                }
+
+                if (order.DeliverPeriod.Contains("三"))
+                {
+                    this.checkBox_Wednesday.Checked = true;
+                }
+
+                if (order.DeliverPeriod.Contains("四"))
+                {
+                    this.checkBox_Thursday.Checked = true;
+                }
+
+                if (order.DeliverPeriod.Contains("五"))
+                {
+                    this.checkBox_Friday.Checked = true;
+                }
+
+                if (order.DeliverPeriod.Contains("六"))
+                {
+                    this.checkBox_Saturday.Checked = true;
+                }
+
+                if (order.DeliverPeriod.Contains("日"))
+                {
+                    this.checkBox_Sunday.Checked = true;
+                }
+            }
+            else
+            {
+                this.radioButton_ByDay.Checked = true;
+                this.radioButton_ByWeek.Checked = false;
+                this.textBox_DeliverInterval.Text = order.DeliverPeriod.Replace("每", string.Empty).Replace("天", string.Empty);
+            }
+
+            this.button_Submit.TabIndex = 0;
+            this.m_initFromModify = true;
+            this.m_orderInfo.OrderId = order.OrderId;
+        }
+
         private void CheckinForm_Load(object sender, EventArgs e)
         {
             this.comboBox_CustomerDistrict.Items.AddRange(this.m_districtList.ToArray());
-            this.comboBox_Community.Items.AddRange(this.m_communityNameList.ToArray());
             this.comboBox_ProductBrand.Items.AddRange(this.m_productBrandList.ToArray());
             this.comboBox_ProductName.Items.AddRange(this.m_productNameList.ToArray());
         }
@@ -89,11 +162,6 @@ namespace UI
             this.Cursor = Cursors.Default;
             //自动弹出下拉框
             box.DroppedDown = true;
-        }
-
-        private void comboBox_Community_TextUpdate(object sender, EventArgs e)
-        {
-            ComboBoxUpdate(ref this.comboBox_Community, ref this.m_communityNameList, ref this.m_communityNameListNew);
         }
 
         private void comboBox_ProductBrand_TextUpdate(object sender, EventArgs e)
@@ -188,12 +256,14 @@ namespace UI
                 return;
             }
 
-            m_orderInfo.OrderId = UniqueOrderId.Gener("B");
+            if (!m_initFromModify)
+            {
+                m_orderInfo.OrderId = UniqueOrderId.Gener("B");
+            }
             m_orderInfo.CustomerName = this.textBox_CustomerName.Text;
             m_orderInfo.CustomerNickName = this.textBox_NickName.Text;
             m_orderInfo.CustomerPhoneNumber = this.textBox_PhoneNO.Text;
             m_orderInfo.CustomerDistrict = this.comboBox_CustomerDistrict.Text;
-            m_orderInfo.CustomerCommunity = this.comboBox_Community.Text;
             m_orderInfo.CustomerAddress = this.textBox_CustomerAddr.Text;
             m_orderInfo.ProductBrand = this.comboBox_ProductBrand.Text;
             m_orderInfo.ProductName = this.comboBox_ProductName.Text;
@@ -278,6 +348,14 @@ namespace UI
         }
 
         private void textBox_DeliverNumEveryTime_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            if (e.KeyChar != '\b' && !Char.IsDigit(e.KeyChar))
+            {
+                e.Handled = true;
+            }
+        }
+
+        private void textBox_DeliverInterval_KeyPress(object sender, KeyPressEventArgs e)
         {
             if (e.KeyChar != '\b' && !Char.IsDigit(e.KeyChar))
             {

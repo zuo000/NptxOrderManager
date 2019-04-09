@@ -14,7 +14,6 @@ namespace Model
         private string m_customerNickName = null;
         private string m_customerPhoneNumber = null;
         private string m_customerDistrict = null;
-        private string m_customerCommunity = null;
         private string m_customerAddress = null;
         private string m_productBrand = null;
         private string m_productName = null;
@@ -29,7 +28,6 @@ namespace Model
         public string CustomerNickName { get => m_customerNickName; set => m_customerNickName = value; }
         public string CustomerPhoneNumber { get => m_customerPhoneNumber; set => m_customerPhoneNumber = value; }
         public string CustomerDistrict { get => m_customerDistrict; set => m_customerDistrict = value; }
-        public string CustomerCommunity { get => m_customerCommunity; set => m_customerCommunity = value; }
         public string CustomerAddress { get => m_customerAddress; set => m_customerAddress = value; }
         public string ProductBrand { get => m_productBrand; set => m_productBrand = value; }
         public string ProductName { get => m_productName; set => m_productName = value; }

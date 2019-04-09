@@ -82,18 +82,36 @@ namespace UI
 
         private void ToolStripMenuItem_check_Click(object sender, EventArgs e)
         {
-
+            //CheckinForm checkinForm = new CheckinForm();
+            //checkinForm.MyEvent += new CheckinForm.MyDelegate(RefreshDataGrid);
+            //checkinForm.ShowDialog();
         }
 
         private void ToolStripMenuItem_modify_Click(object sender, EventArgs e)
         {
-            //UpdateModifyForm updateModifyForm = new UpdateModifyForm();
-            //updateModifyForm.Show();
+            var row = dataGridView1.SelectedRows[0];
+            string order_id = row.Cells[0].Value.ToString();
+
+            CheckinForm checkinForm = new CheckinForm(BLL.SingleInstance.QueryOrderById(order_id));
+            checkinForm.MyEvent += new CheckinForm.MyDelegate(RefreshDataGrid);
+            checkinForm.ShowDialog();
         }
 
         private void ToolStripMenuItem_delete_Click(object sender, EventArgs e)
         {
+            var row = dataGridView1.SelectedRows[0];
+            string order_id = row.Cells[0].Value.ToString();
 
+            if (BLL.SingleInstance.DeleteOrder(order_id))
+            {
+                MessageBox.Show("订单删除成功", "删除订单", MessageBoxButtons.OK, MessageBoxIcon.Information);
+            }
+            else
+            {
+                MessageBox.Show("订单删除失败", "删除订单", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+
+            RefreshDataGrid();
         }
     }
 }
