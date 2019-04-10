@@ -177,6 +177,12 @@ namespace BLL
             return DAL.MySQLHelper.QueryOrderTable("select * from order_table");
         }
 
+        public static DataSet GetOrderDataByColumn(string column_name, string column_content)
+        {
+            string sqlCmd = "select * from `order_table` where `" + column_name + "` like '%" + column_content + "%'";
+            return DAL.MySQLHelper.QueryOrderTable(sqlCmd);
+        }
+
         public static bool DeleteOrder(string order_id)
         {
             string sqlCommand = "delete from `order_table` where (`order_id` = '" + order_id + "')";

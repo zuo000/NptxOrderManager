@@ -13,6 +13,7 @@ namespace UI
     public partial class CheckinForm : Form
     {
         private bool m_initFromModify = false;
+        private string m_messageBoxTitle = "订单录入";
         private Model.Order m_orderInfo = new Model.Order();
 
         private List<string> m_districtList = BLL.SingleInstance.GetAllDistrictNames();
@@ -101,19 +102,22 @@ namespace UI
             }
 
             this.button_Submit.TabIndex = 0;
+
             this.m_initFromModify = true;
+            this.m_messageBoxTitle = "订单修改";
             this.m_orderInfo.OrderId = order.OrderId;
         }
 
         private void CheckinForm_Load(object sender, EventArgs e)
         {
+            this.Text = m_messageBoxTitle;
             this.comboBox_CustomerDistrict.Items.AddRange(this.m_districtList.ToArray());
             this.comboBox_ProductBrand.Items.AddRange(this.m_productBrandList.ToArray());
             this.comboBox_ProductName.Items.AddRange(this.m_productNameList.ToArray());
         }
 
         //定义委托
-        public delegate void MyDelegate();
+        public delegate void MyDelegate(string order_id);
         //定义事件
         public event MyDelegate MyEvent;
 
@@ -240,7 +244,7 @@ namespace UI
         {
             if (this.textBox_PhoneNO.Text.Length > 11)
             {
-                MessageBox.Show("联系电话错误", "录入订单", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                MessageBox.Show("联系电话错误", m_messageBoxTitle, MessageBoxButtons.OK, MessageBoxIcon.Error);
                 this.textBox_PhoneNO.Focus();
                 this.textBox_PhoneNO.Select(0, this.textBox_PhoneNO.Text.Length);
                 return false;
@@ -316,19 +320,19 @@ namespace UI
 
             if (BLL.SingleInstance.CheckinOrder(m_orderInfo) == 1)
             {
-                MessageBox.Show("订单录入成功", "录入订单", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                MessageBox.Show(m_messageBoxTitle + "成功", m_messageBoxTitle, MessageBoxButtons.OK, MessageBoxIcon.Information);
             }
             else
             {
-                MessageBox.Show("订单录入失败", "录入订单", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                MessageBox.Show(m_messageBoxTitle + "失败", m_messageBoxTitle, MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
 
 
             if (MyEvent != null)
             {
-                MyEvent();
+                MyEvent(m_orderInfo.OrderId);
             }
-            //this.Close();
+            this.Close();
         }
 
         private void textBox_PhoneNO_KeyPress(object sender, KeyPressEventArgs e)

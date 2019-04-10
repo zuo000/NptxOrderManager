@@ -12,6 +12,13 @@ namespace UI
 {
     public partial class StartForm2 : Form
     {
+        public class SearchTypeInfo
+        {
+            public string SearchType { get; set; }
+            public string SearchName { get; set; }
+
+        }
+
         public StartForm2()
         {
             InitializeComponent();
@@ -20,39 +27,83 @@ namespace UI
         private void RefreshDataGrid()
         {
             DataSet ds = BLL.SingleInstance.GetAllOrderData();
+
             this.dataGridView1.AutoGenerateColumns = false;
             this.dataGridView1.DataSource = ds.Tables[0];
             this.dataGridView1.ClearSelection();
         }
+
+        private void RefreshDataGridAndSetSelection(string order_id)
+        {
+            RefreshDataGrid();
+
+            foreach(DataGridViewRow row in this.dataGridView1.Rows)
+            {
+                if (row.Cells[0].Value.ToString() == order_id)
+                {
+                    this.dataGridView1.CurrentCell = row.Cells[0];
+                    this.dataGridView1.Rows[row.Index].Selected = true;
+                    return;
+                }
+            }
+        }
+
+        private void BindSearchTypeComboBox()
+        {
+            IList<SearchTypeInfo> infoList = new List<SearchTypeInfo>();
+            SearchTypeInfo info1 = new SearchTypeInfo() { SearchType = "customer_name", SearchName = "客户姓名" };
+            SearchTypeInfo info2 = new SearchTypeInfo() { SearchType = "customer_nick_name", SearchName = "客户昵称" };
+            SearchTypeInfo info3 = new SearchTypeInfo() { SearchType = "customer_phone_number", SearchName = "联系电话" };
+            SearchTypeInfo info4 = new SearchTypeInfo() { SearchType = "customer_district", SearchName = "所在区域" };
+            SearchTypeInfo info5 = new SearchTypeInfo() { SearchType = "customer_address", SearchName = "配送地址" };
+            SearchTypeInfo info6 = new SearchTypeInfo() { SearchType = "product_brand", SearchName = "商品" };
+            infoList.Add(info1);
+            infoList.Add(info2);
+            infoList.Add(info3);
+            infoList.Add(info4);
+            infoList.Add(info5);
+            infoList.Add(info6);
+            this.toolStripComboBox_SearchType.ComboBox.DataSource = infoList;
+            this.toolStripComboBox_SearchType.ComboBox.ValueMember = "SearchType";
+            this.toolStripComboBox_SearchType.ComboBox.DisplayMember = "SearchName";
+            this.toolStripComboBox_SearchType.ComboBox.SelectedIndex = 0;
+        }
                
         private void StartForm2_Load(object sender, EventArgs e)
         {
+            BindSearchTypeComboBox();
             RefreshDataGrid();
         }
 
-        private void button_Refresh_Click(object sender, EventArgs e)
+        private void toolStripButton_Search_Click(object sender, EventArgs e)
+        {
+            string content = this.toolStripTextBox_SearchContent.Text;
+            if (content.Length == 0)
+            {
+                return;
+            }
+
+            string column_name = this.toolStripComboBox_SearchType.ComboBox.SelectedValue.ToString();
+            DataSet ds = BLL.SingleInstance.GetOrderDataByColumn(column_name, content);
+
+            this.dataGridView1.AutoGenerateColumns = false;
+            this.dataGridView1.DataSource = ds.Tables[0];
+            this.dataGridView1.ClearSelection();
+        }
+
+        private void toolStripButton_CancelSearch_Click(object sender, EventArgs e)
         {
             RefreshDataGrid();
         }
 
-        private void button_Search_Click(object sender, EventArgs e)
-        {
-
-        }
-
-        private void button_cancelSearch_Click(object sender, EventArgs e)
-        {
-            RefreshDataGrid();
-        }
-
-        private void button_CheckinOrder_Click(object sender, EventArgs e)
+        private void toolStripButton_Checkin_Click(object sender, EventArgs e)
         {
             CheckinForm checkinForm = new CheckinForm();
-            checkinForm.MyEvent += new CheckinForm.MyDelegate(RefreshDataGrid);
+            checkinForm.MyEvent += new CheckinForm.MyDelegate(RefreshDataGridAndSetSelection);
             checkinForm.ShowDialog();
         }
 
-        private void button_ImportOrder_Click(object sender, EventArgs e)
+        private void toolStripButton_Import_Click(object sender, EventArgs e)
         {
             OpenFileDialog ofd = new OpenFileDialog();
             ofd.Filter = "Excel文件(*.xls;*.xlsx)|*.xls;*.xlsx|所有文件|*.*";
@@ -93,7 +144,7 @@ namespace UI
             string order_id = row.Cells[0].Value.ToString();
 
             CheckinForm checkinForm = new CheckinForm(BLL.SingleInstance.QueryOrderById(order_id));
-            checkinForm.MyEvent += new CheckinForm.MyDelegate(RefreshDataGrid);
+            checkinForm.MyEvent += new CheckinForm.MyDelegate(RefreshDataGridAndSetSelection);
             checkinForm.ShowDialog();
         }
 
@@ -112,6 +163,12 @@ namespace UI
             }
 
             RefreshDataGrid();
+        }
+
+        private void dataGridView1_RowStateChanged(object sender, DataGridViewRowStateChangedEventArgs e)
+        {
+            //e.Row.HeaderCell.Value = (e.Row.Index + 1).ToString();
+            e.Row.HeaderCell.Value = string.Format("{0}", e.Row.Index + 1);
         }
     }
 }

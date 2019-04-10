@@ -566,7 +566,6 @@
             this.MaximizeBox = false;
             this.Name = "CheckinForm";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
-            this.Text = "录入";
             this.Load += new System.EventHandler(this.CheckinForm_Load);
             this.panel_DeliverWeekly.ResumeLayout(false);
             this.panel_DeliverWeekly.PerformLayout();

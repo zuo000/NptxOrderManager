@@ -29,18 +29,8 @@
         private void InitializeComponent()
         {
             this.components = new System.ComponentModel.Container();
-            this.groupBox1 = new System.Windows.Forms.GroupBox();
-            this.button_ImportOrder = new System.Windows.Forms.Button();
-            this.button_CheckinOrder = new System.Windows.Forms.Button();
-            this.button_cancelSearch = new System.Windows.Forms.Button();
-            this.button_Search = new System.Windows.Forms.Button();
-            this.textBox_SearchContent = new System.Windows.Forms.TextBox();
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(StartForm2));
             this.dataGridView1 = new System.Windows.Forms.DataGridView();
-            this.contextMenuStrip1 = new System.Windows.Forms.ContextMenuStrip(this.components);
-            this.ToolStripMenuItem_check = new System.Windows.Forms.ToolStripMenuItem();
-            this.ToolStripMenuItem_modify = new System.Windows.Forms.ToolStripMenuItem();
-            this.ToolStripMenuItem_delete = new System.Windows.Forms.ToolStripMenuItem();
-            this.button_Refresh = new System.Windows.Forms.Button();
             this.Column_OrderId = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Column_OrderTime = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Column_Name = new System.Windows.Forms.DataGridViewTextBoxColumn();
@@ -54,77 +44,22 @@
             this.Column_DeliverPeriod = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Column_DeliverNumEveryTime = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Column_StartDate = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.groupBox1.SuspendLayout();
+            this.contextMenuStrip1 = new System.Windows.Forms.ContextMenuStrip(this.components);
+            this.ToolStripMenuItem_check = new System.Windows.Forms.ToolStripMenuItem();
+            this.ToolStripMenuItem_modify = new System.Windows.Forms.ToolStripMenuItem();
+            this.ToolStripMenuItem_delete = new System.Windows.Forms.ToolStripMenuItem();
+            this.toolStrip1 = new System.Windows.Forms.ToolStrip();
+            this.toolStripComboBox_SearchType = new System.Windows.Forms.ToolStripComboBox();
+            this.toolStripTextBox_SearchContent = new System.Windows.Forms.ToolStripTextBox();
+            this.toolStripButton_Search = new System.Windows.Forms.ToolStripButton();
+            this.toolStripButton_CancelSearch = new System.Windows.Forms.ToolStripButton();
+            this.toolStripSeparator1 = new System.Windows.Forms.ToolStripSeparator();
+            this.toolStripButton_Checkin = new System.Windows.Forms.ToolStripButton();
+            this.toolStripButton_Import = new System.Windows.Forms.ToolStripButton();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
             this.contextMenuStrip1.SuspendLayout();
+            this.toolStrip1.SuspendLayout();
             this.SuspendLayout();
-            // 
-            // groupBox1
-            // 
-            this.groupBox1.Controls.Add(this.button_Refresh);
-            this.groupBox1.Controls.Add(this.button_ImportOrder);
-            this.groupBox1.Controls.Add(this.button_CheckinOrder);
-            this.groupBox1.Controls.Add(this.button_cancelSearch);
-            this.groupBox1.Controls.Add(this.button_Search);
-            this.groupBox1.Controls.Add(this.textBox_SearchContent);
-            this.groupBox1.Location = new System.Drawing.Point(12, 12);
-            this.groupBox1.Name = "groupBox1";
-            this.groupBox1.Size = new System.Drawing.Size(800, 61);
-            this.groupBox1.TabIndex = 0;
-            this.groupBox1.TabStop = false;
-            this.groupBox1.Text = "可按照客户姓名或者所在小区或者区域查询,右键进行修改或删除";
-            // 
-            // button_ImportOrder
-            // 
-            this.button_ImportOrder.Font = new System.Drawing.Font("微软雅黑", 10.5F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
-            this.button_ImportOrder.Location = new System.Drawing.Point(569, 22);
-            this.button_ImportOrder.Name = "button_ImportOrder";
-            this.button_ImportOrder.Size = new System.Drawing.Size(85, 27);
-            this.button_ImportOrder.TabIndex = 5;
-            this.button_ImportOrder.Text = "订单导入";
-            this.button_ImportOrder.UseVisualStyleBackColor = true;
-            this.button_ImportOrder.Click += new System.EventHandler(this.button_ImportOrder_Click);
-            // 
-            // button_CheckinOrder
-            // 
-            this.button_CheckinOrder.Font = new System.Drawing.Font("微软雅黑", 10.5F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
-            this.button_CheckinOrder.Location = new System.Drawing.Point(445, 22);
-            this.button_CheckinOrder.Name = "button_CheckinOrder";
-            this.button_CheckinOrder.Size = new System.Drawing.Size(85, 27);
-            this.button_CheckinOrder.TabIndex = 4;
-            this.button_CheckinOrder.Text = "订单录入";
-            this.button_CheckinOrder.UseVisualStyleBackColor = true;
-            this.button_CheckinOrder.Click += new System.EventHandler(this.button_CheckinOrder_Click);
-            // 
-            // button_cancelSearch
-            // 
-            this.button_cancelSearch.Font = new System.Drawing.Font("微软雅黑", 10.5F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
-            this.button_cancelSearch.Location = new System.Drawing.Point(326, 22);
-            this.button_cancelSearch.Name = "button_cancelSearch";
-            this.button_cancelSearch.Size = new System.Drawing.Size(85, 27);
-            this.button_cancelSearch.TabIndex = 3;
-            this.button_cancelSearch.Text = "取消查询";
-            this.button_cancelSearch.UseVisualStyleBackColor = true;
-            this.button_cancelSearch.Click += new System.EventHandler(this.button_cancelSearch_Click);
-            // 
-            // button_Search
-            // 
-            this.button_Search.Font = new System.Drawing.Font("微软雅黑", 10.5F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
-            this.button_Search.Location = new System.Drawing.Point(219, 22);
-            this.button_Search.Name = "button_Search";
-            this.button_Search.Size = new System.Drawing.Size(69, 27);
-            this.button_Search.TabIndex = 2;
-            this.button_Search.Text = "查询";
-            this.button_Search.UseVisualStyleBackColor = true;
-            this.button_Search.Click += new System.EventHandler(this.button_Search_Click);
-            // 
-            // textBox_SearchContent
-            // 
-            this.textBox_SearchContent.Font = new System.Drawing.Font("微软雅黑", 10.5F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
-            this.textBox_SearchContent.Location = new System.Drawing.Point(19, 22);
-            this.textBox_SearchContent.Name = "textBox_SearchContent";
-            this.textBox_SearchContent.Size = new System.Drawing.Size(173, 26);
-            this.textBox_SearchContent.TabIndex = 1;
             // 
             // dataGridView1
             // 
@@ -149,56 +84,17 @@
             this.Column_DeliverPeriod,
             this.Column_DeliverNumEveryTime,
             this.Column_StartDate});
-            this.dataGridView1.Location = new System.Drawing.Point(3, 79);
+            this.dataGridView1.Location = new System.Drawing.Point(3, 31);
             this.dataGridView1.MultiSelect = false;
             this.dataGridView1.Name = "dataGridView1";
+            this.dataGridView1.RowHeadersWidthSizeMode = System.Windows.Forms.DataGridViewRowHeadersWidthSizeMode.AutoSizeToAllHeaders;
             this.dataGridView1.RowTemplate.Height = 23;
             this.dataGridView1.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
-            this.dataGridView1.Size = new System.Drawing.Size(1150, 492);
+            this.dataGridView1.Size = new System.Drawing.Size(1150, 540);
             this.dataGridView1.TabIndex = 7;
             this.dataGridView1.CellMouseClick += new System.Windows.Forms.DataGridViewCellMouseEventHandler(this.dataGridView1_CellMouseClick);
             this.dataGridView1.CellMouseDoubleClick += new System.Windows.Forms.DataGridViewCellMouseEventHandler(this.dataGridView1_CellMouseDoubleClick);
-            // 
-            // contextMenuStrip1
-            // 
-            this.contextMenuStrip1.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.ToolStripMenuItem_check,
-            this.ToolStripMenuItem_modify,
-            this.ToolStripMenuItem_delete});
-            this.contextMenuStrip1.Name = "contextMenuStrip1";
-            this.contextMenuStrip1.Size = new System.Drawing.Size(101, 70);
-            // 
-            // ToolStripMenuItem_check
-            // 
-            this.ToolStripMenuItem_check.Name = "ToolStripMenuItem_check";
-            this.ToolStripMenuItem_check.Size = new System.Drawing.Size(100, 22);
-            this.ToolStripMenuItem_check.Text = "查看";
-            this.ToolStripMenuItem_check.Click += new System.EventHandler(this.ToolStripMenuItem_check_Click);
-            // 
-            // ToolStripMenuItem_modify
-            // 
-            this.ToolStripMenuItem_modify.Name = "ToolStripMenuItem_modify";
-            this.ToolStripMenuItem_modify.Size = new System.Drawing.Size(100, 22);
-            this.ToolStripMenuItem_modify.Text = "修改";
-            this.ToolStripMenuItem_modify.Click += new System.EventHandler(this.ToolStripMenuItem_modify_Click);
-            // 
-            // ToolStripMenuItem_delete
-            // 
-            this.ToolStripMenuItem_delete.Name = "ToolStripMenuItem_delete";
-            this.ToolStripMenuItem_delete.Size = new System.Drawing.Size(100, 22);
-            this.ToolStripMenuItem_delete.Text = "删除";
-            this.ToolStripMenuItem_delete.Click += new System.EventHandler(this.ToolStripMenuItem_delete_Click);
-            // 
-            // button_Refresh
-            // 
-            this.button_Refresh.Font = new System.Drawing.Font("微软雅黑", 10.5F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
-            this.button_Refresh.Location = new System.Drawing.Point(691, 22);
-            this.button_Refresh.Name = "button_Refresh";
-            this.button_Refresh.Size = new System.Drawing.Size(85, 27);
-            this.button_Refresh.TabIndex = 6;
-            this.button_Refresh.Text = "刷新";
-            this.button_Refresh.UseVisualStyleBackColor = true;
-            this.button_Refresh.Click += new System.EventHandler(this.button_Refresh_Click);
+            this.dataGridView1.RowStateChanged += new System.Windows.Forms.DataGridViewRowStateChangedEventHandler(this.dataGridView1_RowStateChanged);
             // 
             // Column_OrderId
             // 
@@ -223,7 +119,7 @@
             this.Column_Name.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
             this.Column_Name.DataPropertyName = "customer_name";
             this.Column_Name.FillWeight = 68.02077F;
-            this.Column_Name.HeaderText = "姓名";
+            this.Column_Name.HeaderText = "客户姓名";
             this.Column_Name.Name = "Column_Name";
             this.Column_Name.ReadOnly = true;
             // 
@@ -315,39 +211,137 @@
             this.Column_StartDate.Name = "Column_StartDate";
             this.Column_StartDate.ReadOnly = true;
             // 
+            // contextMenuStrip1
+            // 
+            this.contextMenuStrip1.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.ToolStripMenuItem_check,
+            this.ToolStripMenuItem_modify,
+            this.ToolStripMenuItem_delete});
+            this.contextMenuStrip1.Name = "contextMenuStrip1";
+            this.contextMenuStrip1.Size = new System.Drawing.Size(101, 70);
+            // 
+            // ToolStripMenuItem_check
+            // 
+            this.ToolStripMenuItem_check.Name = "ToolStripMenuItem_check";
+            this.ToolStripMenuItem_check.Size = new System.Drawing.Size(100, 22);
+            this.ToolStripMenuItem_check.Text = "查看";
+            this.ToolStripMenuItem_check.Click += new System.EventHandler(this.ToolStripMenuItem_check_Click);
+            // 
+            // ToolStripMenuItem_modify
+            // 
+            this.ToolStripMenuItem_modify.Name = "ToolStripMenuItem_modify";
+            this.ToolStripMenuItem_modify.Size = new System.Drawing.Size(100, 22);
+            this.ToolStripMenuItem_modify.Text = "修改";
+            this.ToolStripMenuItem_modify.Click += new System.EventHandler(this.ToolStripMenuItem_modify_Click);
+            // 
+            // ToolStripMenuItem_delete
+            // 
+            this.ToolStripMenuItem_delete.Name = "ToolStripMenuItem_delete";
+            this.ToolStripMenuItem_delete.Size = new System.Drawing.Size(100, 22);
+            this.ToolStripMenuItem_delete.Text = "删除";
+            this.ToolStripMenuItem_delete.Click += new System.EventHandler(this.ToolStripMenuItem_delete_Click);
+            // 
+            // toolStrip1
+            // 
+            this.toolStrip1.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.toolStripComboBox_SearchType,
+            this.toolStripTextBox_SearchContent,
+            this.toolStripButton_Search,
+            this.toolStripButton_CancelSearch,
+            this.toolStripSeparator1,
+            this.toolStripButton_Checkin,
+            this.toolStripButton_Import});
+            this.toolStrip1.Location = new System.Drawing.Point(0, 0);
+            this.toolStrip1.Name = "toolStrip1";
+            this.toolStrip1.RenderMode = System.Windows.Forms.ToolStripRenderMode.System;
+            this.toolStrip1.Size = new System.Drawing.Size(1156, 28);
+            this.toolStrip1.TabIndex = 8;
+            this.toolStrip1.Text = "toolStrip1";
+            // 
+            // toolStripComboBox_SearchType
+            // 
+            this.toolStripComboBox_SearchType.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.toolStripComboBox_SearchType.Font = new System.Drawing.Font("微软雅黑", 10.5F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
+            this.toolStripComboBox_SearchType.Name = "toolStripComboBox_SearchType";
+            this.toolStripComboBox_SearchType.Size = new System.Drawing.Size(90, 28);
+            // 
+            // toolStripTextBox_SearchContent
+            // 
+            this.toolStripTextBox_SearchContent.Font = new System.Drawing.Font("微软雅黑", 10.5F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
+            this.toolStripTextBox_SearchContent.Name = "toolStripTextBox_SearchContent";
+            this.toolStripTextBox_SearchContent.Size = new System.Drawing.Size(90, 28);
+            // 
+            // toolStripButton_Search
+            // 
+            this.toolStripButton_Search.Font = new System.Drawing.Font("微软雅黑", 10.5F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
+            this.toolStripButton_Search.Image = ((System.Drawing.Image)(resources.GetObject("toolStripButton_Search.Image")));
+            this.toolStripButton_Search.ImageTransparentColor = System.Drawing.Color.Magenta;
+            this.toolStripButton_Search.Name = "toolStripButton_Search";
+            this.toolStripButton_Search.Size = new System.Drawing.Size(57, 25);
+            this.toolStripButton_Search.Text = "查询";
+            this.toolStripButton_Search.Click += new System.EventHandler(this.toolStripButton_Search_Click);
+            // 
+            // toolStripButton_CancelSearch
+            // 
+            this.toolStripButton_CancelSearch.Font = new System.Drawing.Font("微软雅黑", 10.5F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
+            this.toolStripButton_CancelSearch.Image = ((System.Drawing.Image)(resources.GetObject("toolStripButton_CancelSearch.Image")));
+            this.toolStripButton_CancelSearch.ImageTransparentColor = System.Drawing.Color.Magenta;
+            this.toolStripButton_CancelSearch.Name = "toolStripButton_CancelSearch";
+            this.toolStripButton_CancelSearch.Size = new System.Drawing.Size(85, 25);
+            this.toolStripButton_CancelSearch.Text = "取消查询";
+            this.toolStripButton_CancelSearch.Click += new System.EventHandler(this.toolStripButton_CancelSearch_Click);
+            // 
+            // toolStripSeparator1
+            // 
+            this.toolStripSeparator1.Name = "toolStripSeparator1";
+            this.toolStripSeparator1.Size = new System.Drawing.Size(6, 28);
+            // 
+            // toolStripButton_Checkin
+            // 
+            this.toolStripButton_Checkin.Font = new System.Drawing.Font("微软雅黑", 10.5F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
+            this.toolStripButton_Checkin.Image = ((System.Drawing.Image)(resources.GetObject("toolStripButton_Checkin.Image")));
+            this.toolStripButton_Checkin.ImageTransparentColor = System.Drawing.Color.Magenta;
+            this.toolStripButton_Checkin.Name = "toolStripButton_Checkin";
+            this.toolStripButton_Checkin.Size = new System.Drawing.Size(85, 25);
+            this.toolStripButton_Checkin.Text = "订单录入";
+            this.toolStripButton_Checkin.Click += new System.EventHandler(this.toolStripButton_Checkin_Click);
+            // 
+            // toolStripButton_Import
+            // 
+            this.toolStripButton_Import.Font = new System.Drawing.Font("微软雅黑", 10.5F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
+            this.toolStripButton_Import.Image = ((System.Drawing.Image)(resources.GetObject("toolStripButton_Import.Image")));
+            this.toolStripButton_Import.ImageTransparentColor = System.Drawing.Color.Magenta;
+            this.toolStripButton_Import.Name = "toolStripButton_Import";
+            this.toolStripButton_Import.Size = new System.Drawing.Size(85, 25);
+            this.toolStripButton_Import.Text = "订单导入";
+            this.toolStripButton_Import.Click += new System.EventHandler(this.toolStripButton_Import_Click);
+            // 
             // StartForm2
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 12F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(1156, 574);
+            this.Controls.Add(this.toolStrip1);
             this.Controls.Add(this.dataGridView1);
-            this.Controls.Add(this.groupBox1);
             this.Name = "StartForm2";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "奶品天下订单管理系统 Version 0.1";
             this.Load += new System.EventHandler(this.StartForm2_Load);
-            this.groupBox1.ResumeLayout(false);
-            this.groupBox1.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).EndInit();
             this.contextMenuStrip1.ResumeLayout(false);
+            this.toolStrip1.ResumeLayout(false);
+            this.toolStrip1.PerformLayout();
             this.ResumeLayout(false);
+            this.PerformLayout();
 
         }
 
         #endregion
-
-        private System.Windows.Forms.GroupBox groupBox1;
-        private System.Windows.Forms.Button button_Search;
-        private System.Windows.Forms.TextBox textBox_SearchContent;
-        private System.Windows.Forms.Button button_cancelSearch;
         private System.Windows.Forms.DataGridView dataGridView1;
-        private System.Windows.Forms.Button button_ImportOrder;
-        private System.Windows.Forms.Button button_CheckinOrder;
         private System.Windows.Forms.ContextMenuStrip contextMenuStrip1;
         private System.Windows.Forms.ToolStripMenuItem ToolStripMenuItem_check;
         private System.Windows.Forms.ToolStripMenuItem ToolStripMenuItem_modify;
         private System.Windows.Forms.ToolStripMenuItem ToolStripMenuItem_delete;
-        private System.Windows.Forms.Button button_Refresh;
         private System.Windows.Forms.DataGridViewTextBoxColumn Column_OrderId;
         private System.Windows.Forms.DataGridViewTextBoxColumn Column_OrderTime;
         private System.Windows.Forms.DataGridViewTextBoxColumn Column_Name;
@@ -361,5 +355,13 @@
         private System.Windows.Forms.DataGridViewTextBoxColumn Column_DeliverPeriod;
         private System.Windows.Forms.DataGridViewTextBoxColumn Column_DeliverNumEveryTime;
         private System.Windows.Forms.DataGridViewTextBoxColumn Column_StartDate;
+        private System.Windows.Forms.ToolStrip toolStrip1;
+        private System.Windows.Forms.ToolStripComboBox toolStripComboBox_SearchType;
+        private System.Windows.Forms.ToolStripButton toolStripButton_Search;
+        private System.Windows.Forms.ToolStripButton toolStripButton_CancelSearch;
+        private System.Windows.Forms.ToolStripSeparator toolStripSeparator1;
+        private System.Windows.Forms.ToolStripButton toolStripButton_Checkin;
+        private System.Windows.Forms.ToolStripButton toolStripButton_Import;
+        private System.Windows.Forms.ToolStripTextBox toolStripTextBox_SearchContent;
     }
 }
