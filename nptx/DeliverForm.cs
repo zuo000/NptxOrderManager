@@ -42,17 +42,43 @@ namespace UI
 
         private void ToolStripMenuItem_add_Click(object sender, EventArgs e)
         {
+            var row = dataGridView1.SelectedRows[0];
 
+            Model.DeliverItem item = new Model.DeliverItem();
+            item.OrderId = row.Cells[1].Value.ToString();
+            item.CustomerName = row.Cells[2].Value.ToString();
+            item.CustomerNickName = row.Cells[3].Value.ToString();
+            item.CustomerAddress = row.Cells[4].Value.ToString();
+            item.ProductBrand = row.Cells[5].Value.ToString();
+            item.ProductName = row.Cells[6].Value.ToString();
+            item.DeliverDate = row.Cells[7].Value.ToString();
+            item.DeliverNumber = Convert.ToUInt16(row.Cells[8].Value.ToString());
+
+            DeliverUpdateForm form = new DeliverUpdateForm(item, true);
+            form.ShowDialog();
         }
 
         private void ToolStripMenuItem_modify_Click(object sender, EventArgs e)
         {
+            var row = dataGridView1.SelectedRows[0];
 
+            Model.DeliverItem item = new Model.DeliverItem();
+            item.OrderId = row.Cells[1].Value.ToString();
+            item.CustomerName = row.Cells[2].Value.ToString();
+            item.CustomerNickName = row.Cells[3].Value.ToString();
+            item.CustomerAddress = row.Cells[4].Value.ToString();
+            item.ProductBrand = row.Cells[5].Value.ToString();
+            item.ProductName = row.Cells[6].Value.ToString();
+            item.DeliverDate = row.Cells[7].Value.ToString();
+            item.DeliverNumber = Convert.ToUInt16(row.Cells[8].Value.ToString());
+
+            DeliverUpdateForm form = new DeliverUpdateForm(item, false);
+            form.ShowDialog();
         }
 
         private void ToolStripMenuItem_delete_Click(object sender, EventArgs e)
         {
-
+            BLL.Interface.DeleteDeliverItem(dataGridView1.SelectedRows[0].Cells[0].Value.ToString());
         }
 
         private void dataGridView1_CellMouseClick(object sender, DataGridViewCellMouseEventArgs e)

@@ -230,6 +230,12 @@ namespace BLL
             return true;
         }
 
+        public static void DeleteDeliverItem(string deliverId)
+        {
+            string sqlCommand = "delete from `deliver_table` where (`deliver_id` = '" + deliverId + "')" ;
+            DAL.MySQLHelper.ExecuteSqlNonQuery(sqlCommand);
+        }
+
         public static Model.Order QueryOrderById(string order_id)
         {
             Model.Order order = new Model.Order();
