@@ -26,7 +26,7 @@ namespace UI
 
         private void RefreshDataGrid()
         {
-            DataSet ds = BLL.SingleInstance.GetAllOrderData();
+            DataSet ds = BLL.Interface.GetAllOrderData();
 
             this.dataGridView1.AutoGenerateColumns = false;
             this.dataGridView1.DataSource = ds.Tables[0];
@@ -84,7 +84,7 @@ namespace UI
             }
 
             string column_name = this.toolStripComboBox_SearchType.ComboBox.SelectedValue.ToString();
-            DataSet ds = BLL.SingleInstance.GetOrderDataByColumn(column_name, content);
+            DataSet ds = BLL.Interface.GetOrderDataByColumn(column_name, content);
 
             this.dataGridView1.AutoGenerateColumns = false;
             this.dataGridView1.DataSource = ds.Tables[0];
@@ -133,9 +133,11 @@ namespace UI
 
         private void ToolStripMenuItem_check_Click(object sender, EventArgs e)
         {
-            //CheckinForm checkinForm = new CheckinForm();
-            //checkinForm.MyEvent += new CheckinForm.MyDelegate(RefreshDataGrid);
-            //checkinForm.ShowDialog();
+            var row = dataGridView1.SelectedRows[0];
+            string order_id = row.Cells[0].Value.ToString();
+
+            DeliverForm form = new DeliverForm(order_id);
+            form.ShowDialog();
         }
 
         private void ToolStripMenuItem_modify_Click(object sender, EventArgs e)
@@ -143,7 +145,7 @@ namespace UI
             var row = dataGridView1.SelectedRows[0];
             string order_id = row.Cells[0].Value.ToString();
 
-            CheckinForm checkinForm = new CheckinForm(BLL.SingleInstance.QueryOrderById(order_id));
+            CheckinForm checkinForm = new CheckinForm(BLL.Interface.QueryOrderById(order_id));
             checkinForm.MyEvent += new CheckinForm.MyDelegate(RefreshDataGridAndSetSelection);
             checkinForm.ShowDialog();
         }
@@ -153,7 +155,7 @@ namespace UI
             var row = dataGridView1.SelectedRows[0];
             string order_id = row.Cells[0].Value.ToString();
 
-            if (BLL.SingleInstance.DeleteOrder(order_id))
+            if (BLL.Interface.DeleteOrder(order_id))
             {
                 MessageBox.Show("订单删除成功", "删除订单", MessageBoxButtons.OK, MessageBoxIcon.Information);
             }

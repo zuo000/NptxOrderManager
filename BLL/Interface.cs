@@ -7,7 +7,7 @@ using System.Threading.Tasks;
 
 namespace BLL
 {
-    public abstract class SingleInstance
+    public abstract class Interface
     {
         public static List<string> GetAllDistrictNames()
         {
@@ -48,6 +48,15 @@ namespace BLL
             return list;
         }
 
+        public static int CheckinDeliverItem(Model.DeliverItem item)
+        {
+            string sql = "insert into `deliver_table` (`order_id`, `customer_name`, `customer_nick_name`, `customer_address`, `product_brand`, `product_name`, `deliver_date`, `deliver_number`) values ('"
+                         + item.OrderId + "','" + item.CustomerName + "','" + item.CustomerNickName + "','"
+                         + item.CustomerAddress + "','" + item.ProductBrand + "','" + item.ProductName + "','"
+                         + item.DeliverDate + "','" + item.DeliverNumber.ToString() + "')";
+            return DAL.MySQLHelper.ExecuteSqlNonQuery(sql);
+        }
+
         public static int CheckinOrder(Model.Order order)
         {
             if (DAL.MySQLHelper.Exists("select * from `order_table` where (`order_id` = '" + order.OrderId + "')"))
@@ -55,27 +64,39 @@ namespace BLL
                 DeleteOrder(order.OrderId);
             }
 
+            Model.DeliverItem item = new Model.DeliverItem();
+            item.OrderId = order.OrderId;
+            item.CustomerName = order.CustomerName;
+            item.CustomerNickName = order.CustomerNickName;
+            item.CustomerAddress = order.CustomerAddress;
+            item.ProductBrand = order.ProductBrand;
+            item.ProductName = order.ProductName;
+
             if (order.DeliverPeriod.EndsWith("天")) //每3天
             {
                 string intervalStr = order.DeliverPeriod.Replace("每", string.Empty).Replace("天", string.Empty);
-                int interval = Convert.ToInt32(intervalStr);
+                ushort interval = Convert.ToUInt16(intervalStr);
 
                 DateTime nextDeliverDate = Convert.ToDateTime(order.DeliverBeginDate);
-                int alreadyDeliveredNumber = 0;
-                int deliverNumber = Convert.ToInt32(order.DeliverNumberEveryTime);
+                ushort alreadyDeliveredNumber = 0;
+                ushort deliverNumber = order.DeliverNumberEveryTime;
                 bool deliverEnd = false;
                 do
                 {
-                    if (deliverNumber + alreadyDeliveredNumber >= Convert.ToInt32(order.ProductOrderNumber))
+                    if (deliverNumber + alreadyDeliveredNumber >= order.ProductOrderNumber)
                     {
-                        deliverNumber = Convert.ToInt32(order.ProductOrderNumber) - alreadyDeliveredNumber;
+                        deliverNumber = Convert.ToUInt16(order.ProductOrderNumber - alreadyDeliveredNumber);
                         deliverEnd = true;
                     }
-                    string sql = "insert into `deliver_table` (`order_id`, `customer_name`, `customer_nick_name`, `customer_district`, `product_brand`, `product_name`, `deliver_date`, `deliver_number`) values ('"
-                                 + order.OrderId + "','" + order.CustomerName + "','" + order.CustomerNickName + "','"
-                                 + order.CustomerDistrict + "','" + order.ProductBrand + "','" + order.ProductName + "','"
-                                 + nextDeliverDate.ToString("yyyy-MM-dd") + "','" + deliverNumber.ToString() + "')";
-                    DAL.MySQLHelper.ExecuteSqlNonQuery(sql);
+
+                    item.DeliverDate = nextDeliverDate.ToString("yyyy-MM-dd");
+                    item.DeliverNumber = deliverNumber;
+                    //string sql = "insert into `deliver_table` (`order_id`, `customer_name`, `customer_nick_name`, `customer_address`, `product_brand`, `product_name`, `deliver_date`, `deliver_number`) values ('"
+                    //             + order.OrderId + "','" + order.CustomerName + "','" + order.CustomerNickName + "','"
+                    //             + order.CustomerAddress + "','" + order.ProductBrand + "','" + order.ProductName + "','"
+                    //             + nextDeliverDate.ToString("yyyy-MM-dd") + "','" + deliverNumber.ToString() + "')";
+                    //DAL.MySQLHelper.ExecuteSqlNonQuery(sql);
+                    CheckinDeliverItem(item);
 
                     alreadyDeliveredNumber += deliverNumber;
                     nextDeliverDate = nextDeliverDate.AddDays(interval);
@@ -114,8 +135,8 @@ namespace BLL
                 }
 
 
-                int deliverNumber = Convert.ToInt32(order.DeliverNumberEveryTime);
-                int alreadyDeliveredNumber = 0;
+                ushort deliverNumber = order.DeliverNumberEveryTime;
+                ushort alreadyDeliveredNumber = 0;
                 bool deliverEnd = false;
                 DateTime deliverBeginDate = Convert.ToDateTime(order.DeliverBeginDate);
                 DayOfWeek deliverBeginDayofWeek = deliverBeginDate.DayOfWeek;
@@ -124,22 +145,26 @@ namespace BLL
                     if (deliverEnd) break;
                     if (dow >= deliverBeginDayofWeek)//先把本周的牛奶送了
                     {
-                        if (deliverNumber + alreadyDeliveredNumber >= Convert.ToInt32(order.ProductOrderNumber))
+                        if (deliverNumber + alreadyDeliveredNumber >= order.ProductOrderNumber)
                         {
-                            deliverNumber = Convert.ToInt32(order.ProductOrderNumber) - alreadyDeliveredNumber;
+                            deliverNumber = Convert.ToUInt16(order.ProductOrderNumber - alreadyDeliveredNumber);
                             deliverEnd = true;
                         }
-                        string sql = "insert into `deliver_table` (`order_id`, `customer_name`, `customer_nick_name`, `customer_district`, `product_brand`, `product_name`, `deliver_date`, `deliver_number`) values ('"
-                                     + order.OrderId + "','" + order.CustomerName + "','" + order.CustomerNickName + "','"
-                                     + order.CustomerDistrict + "','" + order.ProductBrand + "','" + order.ProductName + "','"
-                                     + deliverBeginDate.AddDays(dow - deliverBeginDayofWeek).ToString("yyyy-MM-dd") + "','" + deliverNumber.ToString() + "')";
-                        DAL.MySQLHelper.ExecuteSqlNonQuery(sql);
+                        //string sql = "insert into `deliver_table` (`order_id`, `customer_name`, `customer_nick_name`, `customer_address`, `product_brand`, `product_name`, `deliver_date`, `deliver_number`) values ('"
+                        //             + order.OrderId + "','" + order.CustomerName + "','" + order.CustomerNickName + "','"
+                        //             + order.CustomerAddress + "','" + order.ProductBrand + "','" + order.ProductName + "','"
+                        //             + deliverBeginDate.AddDays(dow - deliverBeginDayofWeek).ToString("yyyy-MM-dd") + "','" + deliverNumber.ToString() + "')";
+                        //DAL.MySQLHelper.ExecuteSqlNonQuery(sql);
+
+                        item.DeliverDate = deliverBeginDate.AddDays(dow - deliverBeginDayofWeek).ToString("yyyy-MM-dd");
+                        item.DeliverNumber = deliverNumber;
+                        CheckinDeliverItem(item);
 
                         alreadyDeliveredNumber += deliverNumber;
                     }
                 }
 
-                int weekIndex = 1;
+                ushort weekIndex = 1;
                 while (!deliverEnd)
                 {               
                     foreach (var dow in deliverDayofWeek)
@@ -147,14 +172,18 @@ namespace BLL
                         if (deliverEnd) break;
                         if (deliverNumber + alreadyDeliveredNumber >= Convert.ToInt32(order.ProductOrderNumber))
                         {
-                            deliverNumber = Convert.ToInt32(order.ProductOrderNumber) - alreadyDeliveredNumber;
+                            deliverNumber = Convert.ToUInt16(order.ProductOrderNumber - alreadyDeliveredNumber);
                             deliverEnd = true;
                         }
-                        string sql = "insert into `deliver_table` (`order_id`, `customer_name`, `customer_nick_name`, `customer_district`, `product_brand`, `product_name`, `deliver_date`, `deliver_number`) values ('"
-                                     + order.OrderId + "','" + order.CustomerName + "','" + order.CustomerNickName + "','"
-                                     + order.CustomerDistrict + "','" + order.ProductBrand + "','" + order.ProductName + "','"
-                                     + deliverBeginDate.AddDays(weekIndex*7 + dow - deliverBeginDayofWeek).ToString("yyyy-MM-dd") + "','" + deliverNumber.ToString() + "')";
-                        DAL.MySQLHelper.ExecuteSqlNonQuery(sql);
+                        //string sql = "insert into `deliver_table` (`order_id`, `customer_name`, `customer_nick_name`, `customer_address`, `product_brand`, `product_name`, `deliver_date`, `deliver_number`) values ('"
+                        //             + order.OrderId + "','" + order.CustomerName + "','" + order.CustomerNickName + "','"
+                        //             + order.CustomerAddress + "','" + order.ProductBrand + "','" + order.ProductName + "','"
+                        //             + deliverBeginDate.AddDays(weekIndex*7 + dow - deliverBeginDayofWeek).ToString("yyyy-MM-dd") + "','" + deliverNumber.ToString() + "')";
+                        //DAL.MySQLHelper.ExecuteSqlNonQuery(sql);
+
+                        item.DeliverDate = deliverBeginDate.AddDays(weekIndex * 7 + dow - deliverBeginDayofWeek).ToString("yyyy-MM-dd");
+                        item.DeliverNumber = deliverNumber;
+                        CheckinDeliverItem(item);
 
                         alreadyDeliveredNumber += deliverNumber;
                     }
@@ -175,6 +204,11 @@ namespace BLL
         public static DataSet GetAllOrderData()
         {
             return DAL.MySQLHelper.QueryOrderTable("select * from order_table");
+        }
+
+        public static DataSet GetDeliverItemsByOrderId(string orderId)
+        {
+            return DAL.MySQLHelper.QueryDeliverTable("select * from deliver_table where (`order_id` = '" + orderId + "')");
         }
 
         public static DataSet GetOrderDataByColumn(string column_name, string column_content)

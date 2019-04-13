@@ -73,6 +73,18 @@
     <Compile Include="CheckoutForm.Designer.cs">
       <DependentUpon>CheckoutForm.cs</DependentUpon>
     </Compile>
+    <Compile Include="DeliverForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="DeliverForm.Designer.cs">
+      <DependentUpon>DeliverForm.cs</DependentUpon>
+    </Compile>
+    <Compile Include="DeliverUpdateForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="DeliverUpdateForm.Designer.cs">
+      <DependentUpon>DeliverUpdateForm.cs</DependentUpon>
+    </Compile>
     <Compile Include="StartForm.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -105,6 +117,12 @@
     </EmbeddedResource>
     <EmbeddedResource Include="CheckoutForm.resx">
       <DependentUpon>CheckoutForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="DeliverForm.resx">
+      <DependentUpon>DeliverForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="DeliverUpdateForm.resx">
+      <DependentUpon>DeliverUpdateForm.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Properties\Resources.resx">
       <Generator>ResXFileCodeGenerator</Generator>

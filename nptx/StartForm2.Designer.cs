@@ -31,19 +31,6 @@
             this.components = new System.ComponentModel.Container();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(StartForm2));
             this.dataGridView1 = new System.Windows.Forms.DataGridView();
-            this.Column_OrderId = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Column_OrderTime = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Column_Name = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Column_NickName = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Column_PhoneNumber = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Column_District = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Column_Address = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Column_ProductBrand = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Column_ProductName = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Column_OrderNum = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Column_DeliverPeriod = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Column_DeliverNumEveryTime = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Column_StartDate = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.contextMenuStrip1 = new System.Windows.Forms.ContextMenuStrip(this.components);
             this.ToolStripMenuItem_check = new System.Windows.Forms.ToolStripMenuItem();
             this.ToolStripMenuItem_modify = new System.Windows.Forms.ToolStripMenuItem();
@@ -56,6 +43,19 @@
             this.toolStripSeparator1 = new System.Windows.Forms.ToolStripSeparator();
             this.toolStripButton_Checkin = new System.Windows.Forms.ToolStripButton();
             this.toolStripButton_Import = new System.Windows.Forms.ToolStripButton();
+            this.Column_OrderId = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Column_OrderTime = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Column1_Name = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Column_NickName = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Column_PhoneNumber = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Column_District = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Column_Address = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Column_ProductBrand = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Column_ProductName = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Column_OrderNum = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Column_DeliverPeriod = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Column_DeliverNumEveryTime = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Column_StartDate = new System.Windows.Forms.DataGridViewTextBoxColumn();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
             this.contextMenuStrip1.SuspendLayout();
             this.toolStrip1.SuspendLayout();
@@ -69,11 +69,12 @@
             | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
             this.dataGridView1.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
+            this.dataGridView1.BackgroundColor = System.Drawing.Color.WhiteSmoke;
             this.dataGridView1.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.dataGridView1.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
             this.Column_OrderId,
             this.Column_OrderTime,
-            this.Column_Name,
+            this.Column1_Name,
             this.Column_NickName,
             this.Column_PhoneNumber,
             this.Column_District,
@@ -84,132 +85,18 @@
             this.Column_DeliverPeriod,
             this.Column_DeliverNumEveryTime,
             this.Column_StartDate});
-            this.dataGridView1.Location = new System.Drawing.Point(3, 31);
+            this.dataGridView1.Location = new System.Drawing.Point(3, 44);
+            this.dataGridView1.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.dataGridView1.MultiSelect = false;
             this.dataGridView1.Name = "dataGridView1";
-            this.dataGridView1.RowHeadersWidthSizeMode = System.Windows.Forms.DataGridViewRowHeadersWidthSizeMode.AutoSizeToAllHeaders;
+            this.dataGridView1.RowHeadersWidthSizeMode = System.Windows.Forms.DataGridViewRowHeadersWidthSizeMode.AutoSizeToDisplayedHeaders;
             this.dataGridView1.RowTemplate.Height = 23;
             this.dataGridView1.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
-            this.dataGridView1.Size = new System.Drawing.Size(1150, 540);
+            this.dataGridView1.Size = new System.Drawing.Size(1175, 438);
             this.dataGridView1.TabIndex = 7;
             this.dataGridView1.CellMouseClick += new System.Windows.Forms.DataGridViewCellMouseEventHandler(this.dataGridView1_CellMouseClick);
             this.dataGridView1.CellMouseDoubleClick += new System.Windows.Forms.DataGridViewCellMouseEventHandler(this.dataGridView1_CellMouseDoubleClick);
             this.dataGridView1.RowStateChanged += new System.Windows.Forms.DataGridViewRowStateChangedEventHandler(this.dataGridView1_RowStateChanged);
-            // 
-            // Column_OrderId
-            // 
-            this.Column_OrderId.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
-            this.Column_OrderId.DataPropertyName = "order_id";
-            this.Column_OrderId.FillWeight = 105.999F;
-            this.Column_OrderId.HeaderText = "订单号";
-            this.Column_OrderId.Name = "Column_OrderId";
-            this.Column_OrderId.ReadOnly = true;
-            // 
-            // Column_OrderTime
-            // 
-            this.Column_OrderTime.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
-            this.Column_OrderTime.DataPropertyName = "order_time";
-            this.Column_OrderTime.FillWeight = 105.999F;
-            this.Column_OrderTime.HeaderText = "订单时间";
-            this.Column_OrderTime.Name = "Column_OrderTime";
-            this.Column_OrderTime.ReadOnly = true;
-            // 
-            // Column_Name
-            // 
-            this.Column_Name.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
-            this.Column_Name.DataPropertyName = "customer_name";
-            this.Column_Name.FillWeight = 68.02077F;
-            this.Column_Name.HeaderText = "客户姓名";
-            this.Column_Name.Name = "Column_Name";
-            this.Column_Name.ReadOnly = true;
-            // 
-            // Column_NickName
-            // 
-            this.Column_NickName.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
-            this.Column_NickName.DataPropertyName = "customer_nick_name";
-            this.Column_NickName.FillWeight = 65.98985F;
-            this.Column_NickName.HeaderText = "客户昵称";
-            this.Column_NickName.Name = "Column_NickName";
-            this.Column_NickName.ReadOnly = true;
-            // 
-            // Column_PhoneNumber
-            // 
-            this.Column_PhoneNumber.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
-            this.Column_PhoneNumber.DataPropertyName = "customer_phone_number";
-            this.Column_PhoneNumber.FillWeight = 105.999F;
-            this.Column_PhoneNumber.HeaderText = "联系电话";
-            this.Column_PhoneNumber.Name = "Column_PhoneNumber";
-            this.Column_PhoneNumber.ReadOnly = true;
-            // 
-            // Column_District
-            // 
-            this.Column_District.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
-            this.Column_District.DataPropertyName = "customer_district";
-            this.Column_District.FillWeight = 105.999F;
-            this.Column_District.HeaderText = "所在区域";
-            this.Column_District.Name = "Column_District";
-            this.Column_District.ReadOnly = true;
-            // 
-            // Column_Address
-            // 
-            this.Column_Address.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
-            this.Column_Address.DataPropertyName = "customer_address";
-            this.Column_Address.FillWeight = 105.999F;
-            this.Column_Address.HeaderText = "配送地址";
-            this.Column_Address.Name = "Column_Address";
-            this.Column_Address.ReadOnly = true;
-            // 
-            // Column_ProductBrand
-            // 
-            this.Column_ProductBrand.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
-            this.Column_ProductBrand.DataPropertyName = "product_brand";
-            this.Column_ProductBrand.FillWeight = 105.999F;
-            this.Column_ProductBrand.HeaderText = "商品";
-            this.Column_ProductBrand.Name = "Column_ProductBrand";
-            this.Column_ProductBrand.ReadOnly = true;
-            // 
-            // Column_ProductName
-            // 
-            this.Column_ProductName.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
-            this.Column_ProductName.DataPropertyName = "product_name";
-            this.Column_ProductName.FillWeight = 105.999F;
-            this.Column_ProductName.HeaderText = "型号";
-            this.Column_ProductName.Name = "Column_ProductName";
-            this.Column_ProductName.ReadOnly = true;
-            // 
-            // Column_OrderNum
-            // 
-            this.Column_OrderNum.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
-            this.Column_OrderNum.DataPropertyName = "product_order_number";
-            this.Column_OrderNum.FillWeight = 105.999F;
-            this.Column_OrderNum.HeaderText = "订奶袋数";
-            this.Column_OrderNum.Name = "Column_OrderNum";
-            this.Column_OrderNum.ReadOnly = true;
-            // 
-            // Column_DeliverPeriod
-            // 
-            this.Column_DeliverPeriod.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
-            this.Column_DeliverPeriod.DataPropertyName = "deliver_period";
-            this.Column_DeliverPeriod.FillWeight = 105.999F;
-            this.Column_DeliverPeriod.HeaderText = "送奶计划";
-            this.Column_DeliverPeriod.Name = "Column_DeliverPeriod";
-            this.Column_DeliverPeriod.ReadOnly = true;
-            // 
-            // Column_DeliverNumEveryTime
-            // 
-            this.Column_DeliverNumEveryTime.DataPropertyName = "deliver_number_everytime";
-            this.Column_DeliverNumEveryTime.FillWeight = 105.999F;
-            this.Column_DeliverNumEveryTime.HeaderText = "每次送奶数量";
-            this.Column_DeliverNumEveryTime.Name = "Column_DeliverNumEveryTime";
-            // 
-            // Column_StartDate
-            // 
-            this.Column_StartDate.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
-            this.Column_StartDate.DataPropertyName = "deliver_begin_date";
-            this.Column_StartDate.FillWeight = 105.999F;
-            this.Column_StartDate.HeaderText = "开始送奶日期";
-            this.Column_StartDate.Name = "Column_StartDate";
-            this.Column_StartDate.ReadOnly = true;
             // 
             // contextMenuStrip1
             // 
@@ -254,7 +141,7 @@
             this.toolStrip1.Location = new System.Drawing.Point(0, 0);
             this.toolStrip1.Name = "toolStrip1";
             this.toolStrip1.RenderMode = System.Windows.Forms.ToolStripRenderMode.System;
-            this.toolStrip1.Size = new System.Drawing.Size(1156, 28);
+            this.toolStrip1.Size = new System.Drawing.Size(1182, 28);
             this.toolStrip1.TabIndex = 8;
             this.toolStrip1.Text = "toolStrip1";
             // 
@@ -316,13 +203,123 @@
             this.toolStripButton_Import.Text = "订单导入";
             this.toolStripButton_Import.Click += new System.EventHandler(this.toolStripButton_Import_Click);
             // 
+            // Column_OrderId
+            // 
+            this.Column_OrderId.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
+            this.Column_OrderId.DataPropertyName = "order_id";
+            this.Column_OrderId.FillWeight = 105.999F;
+            this.Column_OrderId.HeaderText = "订单号";
+            this.Column_OrderId.Name = "Column_OrderId";
+            this.Column_OrderId.ReadOnly = true;
+            // 
+            // Column_OrderTime
+            // 
+            this.Column_OrderTime.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
+            this.Column_OrderTime.DataPropertyName = "order_time";
+            this.Column_OrderTime.FillWeight = 105.999F;
+            this.Column_OrderTime.HeaderText = "订单时间";
+            this.Column_OrderTime.Name = "Column_OrderTime";
+            this.Column_OrderTime.ReadOnly = true;
+            // 
+            // Column1_Name
+            // 
+            this.Column1_Name.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
+            this.Column1_Name.DataPropertyName = "customer_name";
+            this.Column1_Name.HeaderText = "客户姓名";
+            this.Column1_Name.Name = "Column1_Name";
+            this.Column1_Name.ReadOnly = true;
+            // 
+            // Column_NickName
+            // 
+            this.Column_NickName.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
+            this.Column_NickName.DataPropertyName = "customer_nick_name";
+            this.Column_NickName.HeaderText = "客户昵称";
+            this.Column_NickName.Name = "Column_NickName";
+            this.Column_NickName.ReadOnly = true;
+            // 
+            // Column_PhoneNumber
+            // 
+            this.Column_PhoneNumber.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
+            this.Column_PhoneNumber.DataPropertyName = "customer_phone_number";
+            this.Column_PhoneNumber.FillWeight = 105.999F;
+            this.Column_PhoneNumber.HeaderText = "联系电话";
+            this.Column_PhoneNumber.Name = "Column_PhoneNumber";
+            this.Column_PhoneNumber.ReadOnly = true;
+            // 
+            // Column_District
+            // 
+            this.Column_District.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
+            this.Column_District.DataPropertyName = "customer_district";
+            this.Column_District.HeaderText = "所在区域";
+            this.Column_District.Name = "Column_District";
+            this.Column_District.ReadOnly = true;
+            // 
+            // Column_Address
+            // 
+            this.Column_Address.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
+            this.Column_Address.DataPropertyName = "customer_address";
+            this.Column_Address.FillWeight = 105.999F;
+            this.Column_Address.HeaderText = "配送地址";
+            this.Column_Address.Name = "Column_Address";
+            this.Column_Address.ReadOnly = true;
+            // 
+            // Column_ProductBrand
+            // 
+            this.Column_ProductBrand.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
+            this.Column_ProductBrand.DataPropertyName = "product_brand";
+            this.Column_ProductBrand.HeaderText = "商品";
+            this.Column_ProductBrand.Name = "Column_ProductBrand";
+            this.Column_ProductBrand.ReadOnly = true;
+            // 
+            // Column_ProductName
+            // 
+            this.Column_ProductName.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
+            this.Column_ProductName.DataPropertyName = "product_name";
+            this.Column_ProductName.HeaderText = "型号";
+            this.Column_ProductName.Name = "Column_ProductName";
+            this.Column_ProductName.ReadOnly = true;
+            // 
+            // Column_OrderNum
+            // 
+            this.Column_OrderNum.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
+            this.Column_OrderNum.DataPropertyName = "product_order_number";
+            this.Column_OrderNum.HeaderText = "订奶袋数";
+            this.Column_OrderNum.Name = "Column_OrderNum";
+            this.Column_OrderNum.ReadOnly = true;
+            // 
+            // Column_DeliverPeriod
+            // 
+            this.Column_DeliverPeriod.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
+            this.Column_DeliverPeriod.DataPropertyName = "deliver_period";
+            this.Column_DeliverPeriod.FillWeight = 105.999F;
+            this.Column_DeliverPeriod.HeaderText = "送奶计划";
+            this.Column_DeliverPeriod.Name = "Column_DeliverPeriod";
+            this.Column_DeliverPeriod.ReadOnly = true;
+            // 
+            // Column_DeliverNumEveryTime
+            // 
+            this.Column_DeliverNumEveryTime.DataPropertyName = "deliver_number_everytime";
+            this.Column_DeliverNumEveryTime.HeaderText = "每次送奶数量";
+            this.Column_DeliverNumEveryTime.Name = "Column_DeliverNumEveryTime";
+            // 
+            // Column_StartDate
+            // 
+            this.Column_StartDate.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
+            this.Column_StartDate.DataPropertyName = "deliver_begin_date";
+            this.Column_StartDate.FillWeight = 105.999F;
+            this.Column_StartDate.HeaderText = "开始送奶日期";
+            this.Column_StartDate.Name = "Column_StartDate";
+            this.Column_StartDate.ReadOnly = true;
+            // 
             // StartForm2
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 12F);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 17F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(1156, 574);
+            this.ClientSize = new System.Drawing.Size(1182, 486);
             this.Controls.Add(this.toolStrip1);
             this.Controls.Add(this.dataGridView1);
+            this.Font = new System.Drawing.Font("微软雅黑", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
+            this.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.Name = "StartForm2";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "奶品天下订单管理系统 Version 0.1";
@@ -342,9 +339,17 @@
         private System.Windows.Forms.ToolStripMenuItem ToolStripMenuItem_check;
         private System.Windows.Forms.ToolStripMenuItem ToolStripMenuItem_modify;
         private System.Windows.Forms.ToolStripMenuItem ToolStripMenuItem_delete;
+        private System.Windows.Forms.ToolStrip toolStrip1;
+        private System.Windows.Forms.ToolStripComboBox toolStripComboBox_SearchType;
+        private System.Windows.Forms.ToolStripButton toolStripButton_Search;
+        private System.Windows.Forms.ToolStripButton toolStripButton_CancelSearch;
+        private System.Windows.Forms.ToolStripSeparator toolStripSeparator1;
+        private System.Windows.Forms.ToolStripButton toolStripButton_Checkin;
+        private System.Windows.Forms.ToolStripButton toolStripButton_Import;
+        private System.Windows.Forms.ToolStripTextBox toolStripTextBox_SearchContent;
         private System.Windows.Forms.DataGridViewTextBoxColumn Column_OrderId;
         private System.Windows.Forms.DataGridViewTextBoxColumn Column_OrderTime;
-        private System.Windows.Forms.DataGridViewTextBoxColumn Column_Name;
+        private System.Windows.Forms.DataGridViewTextBoxColumn Column1_Name;
         private System.Windows.Forms.DataGridViewTextBoxColumn Column_NickName;
         private System.Windows.Forms.DataGridViewTextBoxColumn Column_PhoneNumber;
         private System.Windows.Forms.DataGridViewTextBoxColumn Column_District;
@@ -355,13 +360,5 @@
         private System.Windows.Forms.DataGridViewTextBoxColumn Column_DeliverPeriod;
         private System.Windows.Forms.DataGridViewTextBoxColumn Column_DeliverNumEveryTime;
         private System.Windows.Forms.DataGridViewTextBoxColumn Column_StartDate;
-        private System.Windows.Forms.ToolStrip toolStrip1;
-        private System.Windows.Forms.ToolStripComboBox toolStripComboBox_SearchType;
-        private System.Windows.Forms.ToolStripButton toolStripButton_Search;
-        private System.Windows.Forms.ToolStripButton toolStripButton_CancelSearch;
-        private System.Windows.Forms.ToolStripSeparator toolStripSeparator1;
-        private System.Windows.Forms.ToolStripButton toolStripButton_Checkin;
-        private System.Windows.Forms.ToolStripButton toolStripButton_Import;
-        private System.Windows.Forms.ToolStripTextBox toolStripTextBox_SearchContent;
     }
 }

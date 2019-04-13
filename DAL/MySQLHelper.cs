@@ -58,6 +58,25 @@ namespace DAL
             }
         }
 
+        public static DataSet QueryDeliverTable(string SQLString)
+        {
+            using (MySqlConnection connection = new MySqlConnection(mySqlConnectionString))
+            {
+                DataSet ds = new DataSet();
+                try
+                {
+                    connection.Open();
+                    MySqlDataAdapter command = new MySqlDataAdapter(SQLString, connection);
+                    command.Fill(ds, "deliver_table");
+                }
+                catch (MySql.Data.MySqlClient.MySqlException ex)
+                {
+                    throw new Exception(ex.Message);
+                }
+                return ds;
+            }
+        }
+
         private static object GetSingle(string SQLString)
         {
             using (MySqlConnection connection = new MySqlConnection(mySqlConnectionString))

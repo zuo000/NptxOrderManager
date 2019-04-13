@@ -470,7 +470,7 @@
             this.label9.Name = "label9";
             this.label9.Size = new System.Drawing.Size(65, 20);
             this.label9.TabIndex = 12;
-            this.label9.Text = "订奶品牌";
+            this.label9.Text = "订购商品";
             // 
             // comboBox_ProductName
             // 
@@ -488,11 +488,11 @@
             // 
             this.label10.AutoSize = true;
             this.label10.Font = new System.Drawing.Font("微软雅黑", 10.5F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
-            this.label10.Location = new System.Drawing.Point(229, 133);
+            this.label10.Location = new System.Drawing.Point(257, 133);
             this.label10.Name = "label10";
-            this.label10.Size = new System.Drawing.Size(93, 20);
+            this.label10.Size = new System.Drawing.Size(65, 20);
             this.label10.TabIndex = 14;
-            this.label10.Text = "订奶商品名称";
+            this.label10.Text = "商品类型";
             // 
             // label11
             // 

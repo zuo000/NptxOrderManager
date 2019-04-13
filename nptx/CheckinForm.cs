@@ -16,13 +16,13 @@ namespace UI
         private string m_messageBoxTitle = "订单录入";
         private Model.Order m_orderInfo = new Model.Order();
 
-        private List<string> m_districtList = BLL.SingleInstance.GetAllDistrictNames();
+        private List<string> m_districtList = BLL.Interface.GetAllDistrictNames();
         private List<string> m_districtListNew = new List<string>();
         
-        private List<string> m_productBrandList = BLL.SingleInstance.GetAllProductBrands();
+        private List<string> m_productBrandList = BLL.Interface.GetAllProductBrands();
         private List<string> m_productBrandListNew = new List<string>();
 
-        private List<string> m_productNameList = BLL.SingleInstance.GetAllProductName();
+        private List<string> m_productNameList = BLL.Interface.GetAllProductName();
         private List<string> m_productNameListNew = new List<string>();
 
         public CheckinForm()
@@ -250,6 +250,28 @@ namespace UI
                 return false;
             }
 
+            if (this.radioButton_ByDay.Checked)
+            {
+                if (this.textBox_DeliverInterval.Text.Length == 0)
+                {
+                    return false;
+                }
+            }
+
+            if (this.radioButton_ByWeek.Checked)
+            {
+                if (!this.checkBox_Monday.Checked &&
+                    !this.checkBox_Tuesday.Checked &&
+                    !this.checkBox_Wednesday.Checked &&
+                    !this.checkBox_Thursday.Checked &&
+                    !this.checkBox_Friday.Checked &&
+                    !this.checkBox_Saturday.Checked &&
+                    !this.checkBox_Sunday.Checked)
+                {
+                    return false;
+                }
+            }
+
             return true;
         }
 
@@ -318,7 +340,7 @@ namespace UI
             m_orderInfo.Comments = this.textBox_Comments.Text;
             m_orderInfo.OrderDateTime = DateTime.Now.ToLocalTime().ToString("yyyy-MM-dd HH:mm:ss");
 
-            if (BLL.SingleInstance.CheckinOrder(m_orderInfo) == 1)
+            if (BLL.Interface.CheckinOrder(m_orderInfo) == 1)
             {
                 MessageBox.Show(m_messageBoxTitle + "成功", m_messageBoxTitle, MessageBoxButtons.OK, MessageBoxIcon.Information);
             }
