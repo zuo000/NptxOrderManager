@@ -161,6 +161,7 @@
             this.button_Submit.TabIndex = 53;
             this.button_Submit.Text = "提交";
             this.button_Submit.UseVisualStyleBackColor = true;
+            this.button_Submit.Click += new System.EventHandler(this.button_Submit_Click);
             // 
             // textBox_CustomerName
             // 
@@ -206,6 +207,7 @@
             this.textBox_deliverNumber.Name = "textBox_deliverNumber";
             this.textBox_deliverNumber.Size = new System.Drawing.Size(100, 26);
             this.textBox_deliverNumber.TabIndex = 15;
+            this.textBox_deliverNumber.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.textBox_deliverNumber_KeyPress);
             // 
             // label1
             // 
@@ -241,7 +243,9 @@
             this.Font = new System.Drawing.Font("微软雅黑", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
             this.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.Name = "DeliverUpdateForm";
+            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "配送计划更新";
+            this.Activated += new System.EventHandler(this.DeliverUpdateForm_Activated);
             this.Load += new System.EventHandler(this.DeliverUpdateForm_Load);
             this.groupBox2.ResumeLayout(false);
             this.groupBox2.PerformLayout();

@@ -26,8 +26,9 @@ namespace UI
         private List<string> m_productNameListNew = new List<string>();
 
         public CheckinForm()
-        {
+        {            
             InitializeComponent();
+            this.radioButton_ByWeek.Checked = true;
         }
 
         public CheckinForm(Model.Order order)
@@ -46,7 +47,13 @@ namespace UI
             this.textBox_Comments.Text = order.Comments;
             this.monthCalendar1.SetDate(Convert.ToDateTime(order.DeliverBeginDate));
 
-            if (order.DeliverPeriod.Contains("周"))
+            if (order.DeliverPeriod.EndsWith("天"))
+            {
+                this.radioButton_ByDay.Checked = true;
+                this.radioButton_ByWeek.Checked = false;
+                this.textBox_DeliverInterval.Text = order.DeliverPeriod.Replace("每", string.Empty).Replace("天", string.Empty);
+            }
+            else
             {
                 this.radioButton_ByWeek.Checked = true;
                 this.radioButton_ByDay.Checked = false;
@@ -93,12 +100,6 @@ namespace UI
                 {
                     this.checkBox_Sunday.Checked = true;
                 }
-            }
-            else
-            {
-                this.radioButton_ByDay.Checked = true;
-                this.radioButton_ByWeek.Checked = false;
-                this.textBox_DeliverInterval.Text = order.DeliverPeriod.Replace("每", string.Empty).Replace("天", string.Empty);
             }
 
             this.button_Submit.TabIndex = 0;
@@ -250,26 +251,40 @@ namespace UI
                 return false;
             }
 
-            if (this.radioButton_ByDay.Checked)
+            if (this.textBox_OrderNum.Text.Length == 0)
             {
-                if (this.textBox_DeliverInterval.Text.Length == 0)
-                {
-                    return false;
-                }
+                MessageBox.Show("订奶数量错误", m_messageBoxTitle, MessageBoxButtons.OK, MessageBoxIcon.Error);
+                this.textBox_OrderNum.Focus();
+                this.textBox_OrderNum.Select(0, this.textBox_OrderNum.Text.Length);
+                return false;
             }
 
-            if (this.radioButton_ByWeek.Checked)
+            if (this.textBox_DeliverNumEveryTime.Text.Length > 0)
             {
-                if (!this.checkBox_Monday.Checked &&
-                    !this.checkBox_Tuesday.Checked &&
-                    !this.checkBox_Wednesday.Checked &&
-                    !this.checkBox_Thursday.Checked &&
-                    !this.checkBox_Friday.Checked &&
-                    !this.checkBox_Saturday.Checked &&
-                    !this.checkBox_Sunday.Checked)
+                if (this.radioButton_ByDay.Checked)
                 {
-                    return false;
+                    if (this.textBox_DeliverInterval.Text.Length == 0)
+                    {
+                        MessageBox.Show("请输入送奶计划", m_messageBoxTitle, MessageBoxButtons.OK, MessageBoxIcon.Error);
+                        this.textBox_DeliverInterval.Focus();
+                        this.textBox_DeliverInterval.Select(0, 0);
+                        return false;
+                    }
                 }
+                else if (this.radioButton_ByWeek.Checked)
+                {
+                    if (!this.checkBox_Monday.Checked &&
+                        !this.checkBox_Tuesday.Checked &&
+                        !this.checkBox_Wednesday.Checked &&
+                        !this.checkBox_Thursday.Checked &&
+                        !this.checkBox_Friday.Checked &&
+                        !this.checkBox_Saturday.Checked &&
+                        !this.checkBox_Sunday.Checked)
+                    {
+                        MessageBox.Show("请选择送奶计划", m_messageBoxTitle, MessageBoxButtons.OK, MessageBoxIcon.Error);
+                        return false;
+                    }
+                }                
             }
 
             return true;
@@ -294,47 +309,59 @@ namespace UI
             m_orderInfo.ProductBrand = this.comboBox_ProductBrand.Text;
             m_orderInfo.ProductName = this.comboBox_ProductName.Text;
             m_orderInfo.ProductOrderNumber = Convert.ToUInt16(this.textBox_OrderNum.Text);
-            if (radioButton_ByDay.Checked)
+            
+
+            if (this.textBox_DeliverNumEveryTime.Text.Length == 0 || this.textBox_DeliverNumEveryTime.Text == this.textBox_OrderNum.Text)
             {
-                string interval = "每" + this.textBox_DeliverInterval.Text + "天";
-                m_orderInfo.DeliverPeriod = interval;
+                m_orderInfo.DeliverNumberEveryTime = m_orderInfo.ProductOrderNumber;
+                m_orderInfo.DeliverPeriod = "";
             }
             else
             {
-                string interval = "每";
+                m_orderInfo.DeliverNumberEveryTime = Convert.ToUInt16(this.textBox_DeliverNumEveryTime.Text);
 
-                if (this.checkBox_Monday.Checked)
+                if (radioButton_ByDay.Checked)
                 {
-                    interval = interval + "周一";
+                    string interval = "每" + this.textBox_DeliverInterval.Text + "天";
+                    m_orderInfo.DeliverPeriod = interval;
                 }
-                if (this.checkBox_Tuesday.Checked)
+                else
                 {
-                    interval = interval + "周二";
-                }
-                if (this.checkBox_Wednesday.Checked)
-                {
-                    interval = interval + "周三";
-                }
-                if (this.checkBox_Thursday.Checked)
-                {
-                    interval = interval + "周四";
-                }
-                if (this.checkBox_Friday.Checked)
-                {
-                    interval = interval + "周五";
-                }
-                if (this.checkBox_Saturday.Checked)
-                {
-                    interval = interval + "周六";
-                }
-                if (this.checkBox_Sunday.Checked)
-                {
-                    interval = interval + "周日";
-                }
+                    string interval = "每";
 
-                m_orderInfo.DeliverPeriod = interval;
+                    if (this.checkBox_Monday.Checked)
+                    {
+                        interval = interval + "周一";
+                    }
+                    if (this.checkBox_Tuesday.Checked)
+                    {
+                        interval = interval + "周二";
+                    }
+                    if (this.checkBox_Wednesday.Checked)
+                    {
+                        interval = interval + "周三";
+                    }
+                    if (this.checkBox_Thursday.Checked)
+                    {
+                        interval = interval + "周四";
+                    }
+                    if (this.checkBox_Friday.Checked)
+                    {
+                        interval = interval + "周五";
+                    }
+                    if (this.checkBox_Saturday.Checked)
+                    {
+                        interval = interval + "周六";
+                    }
+                    if (this.checkBox_Sunday.Checked)
+                    {
+                        interval = interval + "周日";
+                    }
+
+                    m_orderInfo.DeliverPeriod = interval;
+                }
             }
-            m_orderInfo.DeliverNumberEveryTime = Convert.ToUInt16(this.textBox_DeliverNumEveryTime.Text);
+            
             m_orderInfo.DeliverBeginDate = this.monthCalendar1.SelectionStart.ToString("yyyy-MM-dd");
             m_orderInfo.AdditionalGifts = this.textBox_AdditionalGifts.Text;
             m_orderInfo.Comments = this.textBox_Comments.Text;
@@ -387,6 +414,11 @@ namespace UI
             {
                 e.Handled = true;
             }
+        }
+
+        private void CheckinForm_Activated(object sender, EventArgs e)
+        {
+
         }
     }
 }

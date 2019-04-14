@@ -50,10 +50,10 @@ namespace BLL
 
         public static int CheckinDeliverItem(Model.DeliverItem item)
         {
-            string sql = "insert into `deliver_table` (`order_id`, `customer_name`, `customer_nick_name`, `customer_address`, `product_brand`, `product_name`, `deliver_date`, `deliver_number`) values ('"
+            string sql = "insert into `deliver_table` (`order_id`, `customer_name`, `customer_nick_name`, `customer_address`, `product_brand`, `product_name`, `deliver_date`, `deliver_number`, `deliver_status`) values ('"
                          + item.OrderId + "','" + item.CustomerName + "','" + item.CustomerNickName + "','"
                          + item.CustomerAddress + "','" + item.ProductBrand + "','" + item.ProductName + "','"
-                         + item.DeliverDate + "','" + item.DeliverNumber.ToString() + "')";
+                         + item.DeliverDate + "','" + item.DeliverNumber.ToString() + "','" + item.Status + "')";
             return DAL.MySQLHelper.ExecuteSqlNonQuery(sql);
         }
 
@@ -71,125 +71,154 @@ namespace BLL
             item.CustomerAddress = order.CustomerAddress;
             item.ProductBrand = order.ProductBrand;
             item.ProductName = order.ProductName;
+            item.Status = "未完成";
 
-            if (order.DeliverPeriod.EndsWith("天")) //每3天
+            if (order.DeliverNumberEveryTime == order.ProductOrderNumber)
             {
-                string intervalStr = order.DeliverPeriod.Replace("每", string.Empty).Replace("天", string.Empty);
-                ushort interval = Convert.ToUInt16(intervalStr);
-
-                DateTime nextDeliverDate = Convert.ToDateTime(order.DeliverBeginDate);
-                ushort alreadyDeliveredNumber = 0;
-                ushort deliverNumber = order.DeliverNumberEveryTime;
-                bool deliverEnd = false;
-                do
+                item.DeliverDate = Convert.ToDateTime(order.DeliverBeginDate).ToString("yyyy-MM-dd");
+                item.DeliverNumber = order.DeliverNumberEveryTime;
+                CheckinDeliverItem(item);
+            }
+            else
+            {
+                if (order.DeliverPeriod.EndsWith("天")) //每3天
                 {
-                    if (deliverNumber + alreadyDeliveredNumber >= order.ProductOrderNumber)
+                    DateTime nextDeliverDate = Convert.ToDateTime(order.DeliverBeginDate);
+                    ushort alreadyDeliveredNumber = 0;
+                    ushort deliverNumber = order.DeliverNumberEveryTime;
+                    bool deliverEnd = false;
+
+                    string intervalStr = order.DeliverPeriod.Replace("每", string.Empty).Replace("天", string.Empty);
+                    ushort interval = 0;
+                    if (intervalStr != string.Empty)
                     {
-                        deliverNumber = Convert.ToUInt16(order.ProductOrderNumber - alreadyDeliveredNumber);
-                        deliverEnd = true;
+                        interval = Convert.ToUInt16(intervalStr);
                     }
 
-                    item.DeliverDate = nextDeliverDate.ToString("yyyy-MM-dd");
-                    item.DeliverNumber = deliverNumber;
-                    //string sql = "insert into `deliver_table` (`order_id`, `customer_name`, `customer_nick_name`, `customer_address`, `product_brand`, `product_name`, `deliver_date`, `deliver_number`) values ('"
-                    //             + order.OrderId + "','" + order.CustomerName + "','" + order.CustomerNickName + "','"
-                    //             + order.CustomerAddress + "','" + order.ProductBrand + "','" + order.ProductName + "','"
-                    //             + nextDeliverDate.ToString("yyyy-MM-dd") + "','" + deliverNumber.ToString() + "')";
-                    //DAL.MySQLHelper.ExecuteSqlNonQuery(sql);
-                    CheckinDeliverItem(item);
-
-                    alreadyDeliveredNumber += deliverNumber;
-                    nextDeliverDate = nextDeliverDate.AddDays(interval);
-                } while (!deliverEnd);
-            }
-            else //每周一周二
-            {
-                List<DayOfWeek> deliverDayofWeek = new List<DayOfWeek>();
-                if (order.DeliverPeriod.Contains("周日"))
-                {
-                    deliverDayofWeek.Add(DayOfWeek.Sunday);
-                }
-                if (order.DeliverPeriod.Contains("周一"))
-                {
-                    deliverDayofWeek.Add(DayOfWeek.Monday);
-                }
-                if (order.DeliverPeriod.Contains("周二"))
-                {
-                    deliverDayofWeek.Add(DayOfWeek.Tuesday);
-                }
-                if (order.DeliverPeriod.Contains("周三"))
-                {
-                    deliverDayofWeek.Add(DayOfWeek.Wednesday);
-                }
-                if (order.DeliverPeriod.Contains("周四"))
-                {
-                    deliverDayofWeek.Add(DayOfWeek.Thursday);
-                }
-                if (order.DeliverPeriod.Contains("周五"))
-                {
-                    deliverDayofWeek.Add(DayOfWeek.Friday);
-                }
-                if (order.DeliverPeriod.Contains("周六"))
-                {
-                    deliverDayofWeek.Add(DayOfWeek.Saturday);
-                }
-
-
-                ushort deliverNumber = order.DeliverNumberEveryTime;
-                ushort alreadyDeliveredNumber = 0;
-                bool deliverEnd = false;
-                DateTime deliverBeginDate = Convert.ToDateTime(order.DeliverBeginDate);
-                DayOfWeek deliverBeginDayofWeek = deliverBeginDate.DayOfWeek;
-                foreach(var dow in deliverDayofWeek)
-                {
-                    if (deliverEnd) break;
-                    if (dow >= deliverBeginDayofWeek)//先把本周的牛奶送了
+                    do
                     {
                         if (deliverNumber + alreadyDeliveredNumber >= order.ProductOrderNumber)
                         {
                             deliverNumber = Convert.ToUInt16(order.ProductOrderNumber - alreadyDeliveredNumber);
                             deliverEnd = true;
                         }
+
+                        item.DeliverDate = nextDeliverDate.ToString("yyyy-MM-dd");
+                        item.DeliverNumber = deliverNumber;
                         //string sql = "insert into `deliver_table` (`order_id`, `customer_name`, `customer_nick_name`, `customer_address`, `product_brand`, `product_name`, `deliver_date`, `deliver_number`) values ('"
                         //             + order.OrderId + "','" + order.CustomerName + "','" + order.CustomerNickName + "','"
                         //             + order.CustomerAddress + "','" + order.ProductBrand + "','" + order.ProductName + "','"
-                        //             + deliverBeginDate.AddDays(dow - deliverBeginDayofWeek).ToString("yyyy-MM-dd") + "','" + deliverNumber.ToString() + "')";
+                        //             + nextDeliverDate.ToString("yyyy-MM-dd") + "','" + deliverNumber.ToString() + "')";
                         //DAL.MySQLHelper.ExecuteSqlNonQuery(sql);
-
-                        item.DeliverDate = deliverBeginDate.AddDays(dow - deliverBeginDayofWeek).ToString("yyyy-MM-dd");
-                        item.DeliverNumber = deliverNumber;
                         CheckinDeliverItem(item);
 
                         alreadyDeliveredNumber += deliverNumber;
-                    }
+                        nextDeliverDate = nextDeliverDate.AddDays(interval);
+                    } while (!deliverEnd);
                 }
+                else //每周一周二
+                {
+                    List<DayOfWeek> deliverDayofWeek = new List<DayOfWeek>();
+                    if (order.DeliverPeriod.Contains("周日"))
+                    {
+                        deliverDayofWeek.Add(DayOfWeek.Sunday);
+                    }
+                    if (order.DeliverPeriod.Contains("周一"))
+                    {
+                        deliverDayofWeek.Add(DayOfWeek.Monday);
+                    }
+                    if (order.DeliverPeriod.Contains("周二"))
+                    {
+                        deliverDayofWeek.Add(DayOfWeek.Tuesday);
+                    }
+                    if (order.DeliverPeriod.Contains("周三"))
+                    {
+                        deliverDayofWeek.Add(DayOfWeek.Wednesday);
+                    }
+                    if (order.DeliverPeriod.Contains("周四"))
+                    {
+                        deliverDayofWeek.Add(DayOfWeek.Thursday);
+                    }
+                    if (order.DeliverPeriod.Contains("周五"))
+                    {
+                        deliverDayofWeek.Add(DayOfWeek.Friday);
+                    }
+                    if (order.DeliverPeriod.Contains("周六"))
+                    {
+                        deliverDayofWeek.Add(DayOfWeek.Saturday);
+                    }
 
-                ushort weekIndex = 1;
-                while (!deliverEnd)
-                {               
+
+                    ushort deliverNumber = order.DeliverNumberEveryTime;
+                    ushort alreadyDeliveredNumber = 0;
+                    bool deliverEnd = false;
+                    DateTime deliverBeginDate = Convert.ToDateTime(order.DeliverBeginDate);
+                    DayOfWeek deliverBeginDayofWeek = deliverBeginDate.DayOfWeek;
+
+                    //先把起始日期的送了
+                    if (deliverNumber + alreadyDeliveredNumber >= order.ProductOrderNumber)
+                    {
+                        deliverNumber = Convert.ToUInt16(order.ProductOrderNumber - alreadyDeliveredNumber);
+                        deliverEnd = true;
+                    }
+
+                    item.DeliverDate = deliverBeginDate.ToString("yyyy-MM-dd");
+                    item.DeliverNumber = deliverNumber;
+                    CheckinDeliverItem(item);
+
+                    alreadyDeliveredNumber += deliverNumber;
+
                     foreach (var dow in deliverDayofWeek)
                     {
                         if (deliverEnd) break;
-                        if (deliverNumber + alreadyDeliveredNumber >= Convert.ToInt32(order.ProductOrderNumber))
+                        if (dow >= deliverBeginDayofWeek)//先把本周的牛奶送了
                         {
-                            deliverNumber = Convert.ToUInt16(order.ProductOrderNumber - alreadyDeliveredNumber);
-                            deliverEnd = true;
+                            if (deliverNumber + alreadyDeliveredNumber >= order.ProductOrderNumber)
+                            {
+                                deliverNumber = Convert.ToUInt16(order.ProductOrderNumber - alreadyDeliveredNumber);
+                                deliverEnd = true;
+                            }
+                            //string sql = "insert into `deliver_table` (`order_id`, `customer_name`, `customer_nick_name`, `customer_address`, `product_brand`, `product_name`, `deliver_date`, `deliver_number`) values ('"
+                            //             + order.OrderId + "','" + order.CustomerName + "','" + order.CustomerNickName + "','"
+                            //             + order.CustomerAddress + "','" + order.ProductBrand + "','" + order.ProductName + "','"
+                            //             + deliverBeginDate.AddDays(dow - deliverBeginDayofWeek).ToString("yyyy-MM-dd") + "','" + deliverNumber.ToString() + "')";
+                            //DAL.MySQLHelper.ExecuteSqlNonQuery(sql);
+
+                            item.DeliverDate = deliverBeginDate.AddDays(dow - deliverBeginDayofWeek).ToString("yyyy-MM-dd");
+                            item.DeliverNumber = deliverNumber;
+                            CheckinDeliverItem(item);
+
+                            alreadyDeliveredNumber += deliverNumber;
                         }
-                        //string sql = "insert into `deliver_table` (`order_id`, `customer_name`, `customer_nick_name`, `customer_address`, `product_brand`, `product_name`, `deliver_date`, `deliver_number`) values ('"
-                        //             + order.OrderId + "','" + order.CustomerName + "','" + order.CustomerNickName + "','"
-                        //             + order.CustomerAddress + "','" + order.ProductBrand + "','" + order.ProductName + "','"
-                        //             + deliverBeginDate.AddDays(weekIndex*7 + dow - deliverBeginDayofWeek).ToString("yyyy-MM-dd") + "','" + deliverNumber.ToString() + "')";
-                        //DAL.MySQLHelper.ExecuteSqlNonQuery(sql);
-
-                        item.DeliverDate = deliverBeginDate.AddDays(weekIndex * 7 + dow - deliverBeginDayofWeek).ToString("yyyy-MM-dd");
-                        item.DeliverNumber = deliverNumber;
-                        CheckinDeliverItem(item);
-
-                        alreadyDeliveredNumber += deliverNumber;
                     }
-                    weekIndex++;
+
+                    ushort weekIndex = 1;
+                    while (!deliverEnd && deliverDayofWeek.Count != 0)
+                    {
+                        foreach (var dow in deliverDayofWeek)
+                        {
+                            if (deliverEnd) break;
+                            if (deliverNumber + alreadyDeliveredNumber >= Convert.ToInt32(order.ProductOrderNumber))
+                            {
+                                deliverNumber = Convert.ToUInt16(order.ProductOrderNumber - alreadyDeliveredNumber);
+                                deliverEnd = true;
+                            }
+                            //string sql = "insert into `deliver_table` (`order_id`, `customer_name`, `customer_nick_name`, `customer_address`, `product_brand`, `product_name`, `deliver_date`, `deliver_number`) values ('"
+                            //             + order.OrderId + "','" + order.CustomerName + "','" + order.CustomerNickName + "','"
+                            //             + order.CustomerAddress + "','" + order.ProductBrand + "','" + order.ProductName + "','"
+                            //             + deliverBeginDate.AddDays(weekIndex*7 + dow - deliverBeginDayofWeek).ToString("yyyy-MM-dd") + "','" + deliverNumber.ToString() + "')";
+                            //DAL.MySQLHelper.ExecuteSqlNonQuery(sql);
+
+                            item.DeliverDate = deliverBeginDate.AddDays(weekIndex * 7 + dow - deliverBeginDayofWeek).ToString("yyyy-MM-dd");
+                            item.DeliverNumber = deliverNumber;
+                            CheckinDeliverItem(item);
+
+                            alreadyDeliveredNumber += deliverNumber;
+                        }
+                        weekIndex++;
+                    }
                 }
-            }
+            }            
 
             string cmdBase = "insert into `order_table` (`order_id`, `order_time`, `customer_name`, `customer_nick_name`, `customer_phone_number`, `customer_district`, `customer_address`, `product_brand`, `product_name`, `product_order_number`, `deliver_period`, `deliver_number_everytime`, `deliver_begin_date`, `additional_gifts`, `comments`) values";
             string sqlCommand = cmdBase + "('" + order.OrderId + "','" + order.OrderDateTime + "','" + order.CustomerName + "','"
@@ -236,6 +265,18 @@ namespace BLL
             DAL.MySQLHelper.ExecuteSqlNonQuery(sqlCommand);
         }
 
+        public static int UpdateDeliverItem(Model.DeliverItem item)
+        {
+            string sqlCommand = "update `deliver_table` set `deliver_date` = '" + item.DeliverDate + "', `deliver_number` = '" + item.DeliverNumber.ToString() + "' where (`deliver_id` = '" + item.DeliverId + "')";
+            return DAL.MySQLHelper.ExecuteSqlNonQuery(sqlCommand);
+        }
+
+        public static int UpdateDeliverStatus(string deliverId, string st)
+        {
+            string sqlCommand = "update `deliver_table` set `deliver_status` = '" + st + "' where (`deliver_id` = '" + deliverId + "')";
+            return DAL.MySQLHelper.ExecuteSqlNonQuery(sqlCommand);
+        }
+
         public static Model.Order QueryOrderById(string order_id)
         {
             Model.Order order = new Model.Order();
@@ -258,6 +299,12 @@ namespace BLL
             order.Comments = ds.Tables[0].Rows[0][15].ToString();
 
             return order;
+        }
+
+        public static string QueryLastInsertId()
+        {
+            DataSet ds = DAL.MySQLHelper.QueryOrderTable("select last_insert_id()");
+            return ds.Tables[0].Rows[0][0].ToString();
         }
     }
 }

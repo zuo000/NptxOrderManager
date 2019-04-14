@@ -43,6 +43,8 @@
             this.Column_Name = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Column_Data = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Column_DeliverNumber = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Column_Finished = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.ToolStripMenuItem_finished = new System.Windows.Forms.ToolStripMenuItem();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
             this.contextMenuStrip1.SuspendLayout();
             this.SuspendLayout();
@@ -66,7 +68,8 @@
             this.Column_Brand,
             this.Column_Name,
             this.Column_Data,
-            this.Column_DeliverNumber});
+            this.Column_DeliverNumber,
+            this.Column_Finished});
             this.dataGridView1.Location = new System.Drawing.Point(0, 0);
             this.dataGridView1.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.dataGridView1.MultiSelect = false;
@@ -84,11 +87,12 @@
             // 
             this.contextMenuStrip1.Font = new System.Drawing.Font("微软雅黑", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
             this.contextMenuStrip1.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.ToolStripMenuItem_finished,
             this.ToolStripMenuItem_add,
             this.ToolStripMenuItem_modify,
             this.ToolStripMenuItem_delete});
             this.contextMenuStrip1.Name = "contextMenuStrip1";
-            this.contextMenuStrip1.Size = new System.Drawing.Size(101, 70);
+            this.contextMenuStrip1.Size = new System.Drawing.Size(181, 114);
             // 
             // ToolStripMenuItem_add
             // 
@@ -183,6 +187,21 @@
             this.Column_DeliverNumber.Name = "Column_DeliverNumber";
             this.Column_DeliverNumber.ReadOnly = true;
             // 
+            // Column_Finished
+            // 
+            this.Column_Finished.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
+            this.Column_Finished.DataPropertyName = "deliver_status";
+            this.Column_Finished.HeaderText = "完成情况";
+            this.Column_Finished.Name = "Column_Finished";
+            this.Column_Finished.ReadOnly = true;
+            // 
+            // ToolStripMenuItem_finished
+            // 
+            this.ToolStripMenuItem_finished.Name = "ToolStripMenuItem_finished";
+            this.ToolStripMenuItem_finished.Size = new System.Drawing.Size(180, 22);
+            this.ToolStripMenuItem_finished.Text = "已完成";
+            this.ToolStripMenuItem_finished.Click += new System.EventHandler(this.ToolStripMenuItem_finished_Click);
+            // 
             // DeliverForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 17F);
@@ -217,5 +236,7 @@
         private System.Windows.Forms.DataGridViewTextBoxColumn Column_Name;
         private System.Windows.Forms.DataGridViewTextBoxColumn Column_Data;
         private System.Windows.Forms.DataGridViewTextBoxColumn Column_DeliverNumber;
+        private System.Windows.Forms.DataGridViewTextBoxColumn Column_Finished;
+        private System.Windows.Forms.ToolStripMenuItem ToolStripMenuItem_finished;
     }
 }

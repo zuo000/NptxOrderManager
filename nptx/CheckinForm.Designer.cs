@@ -138,13 +138,11 @@
             // radioButton_ByWeek
             // 
             this.radioButton_ByWeek.AutoSize = true;
-            this.radioButton_ByWeek.Checked = true;
             this.radioButton_ByWeek.Font = new System.Drawing.Font("微软雅黑", 10.5F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
             this.radioButton_ByWeek.Location = new System.Drawing.Point(85, 17);
             this.radioButton_ByWeek.Name = "radioButton_ByWeek";
             this.radioButton_ByWeek.Size = new System.Drawing.Size(55, 24);
             this.radioButton_ByWeek.TabIndex = 1;
-            this.radioButton_ByWeek.TabStop = true;
             this.radioButton_ByWeek.Text = "按周";
             this.radioButton_ByWeek.UseVisualStyleBackColor = true;
             this.radioButton_ByWeek.CheckedChanged += new System.EventHandler(this.radioButton_ByWeek_CheckedChanged);
@@ -176,6 +174,7 @@
             this.panel_DeliverWeekly.Name = "panel_DeliverWeekly";
             this.panel_DeliverWeekly.Size = new System.Drawing.Size(197, 192);
             this.panel_DeliverWeekly.TabIndex = 3;
+            this.panel_DeliverWeekly.Visible = false;
             // 
             // checkBox_Sunday
             // 
@@ -566,6 +565,7 @@
             this.MaximizeBox = false;
             this.Name = "CheckinForm";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
+            this.Activated += new System.EventHandler(this.CheckinForm_Activated);
             this.Load += new System.EventHandler(this.CheckinForm_Load);
             this.panel_DeliverWeekly.ResumeLayout(false);
             this.panel_DeliverWeekly.PerformLayout();

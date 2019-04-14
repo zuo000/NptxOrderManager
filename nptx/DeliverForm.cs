@@ -29,6 +29,21 @@ namespace UI
             this.dataGridView1.ClearSelection();
         }
 
+        private void RefreshDataGridAndSetSelection(string order_id, string deliver_id)
+        {
+            RefreshDataGrid(order_id);
+
+            foreach (DataGridViewRow row in this.dataGridView1.Rows)
+            {
+                if (row.Cells[0].Value.ToString() == deliver_id)
+                {
+                    this.dataGridView1.CurrentCell = row.Cells[1];
+                    this.dataGridView1.Rows[row.Index].Selected = true;
+                    return;
+                }
+            }
+        }
+
         private void DeliverForm_Load(object sender, EventArgs e)
         {
             RefreshDataGrid(m_orderId);
@@ -45,6 +60,7 @@ namespace UI
             var row = dataGridView1.SelectedRows[0];
 
             Model.DeliverItem item = new Model.DeliverItem();
+            item.DeliverId = row.Cells[0].Value.ToString();
             item.OrderId = row.Cells[1].Value.ToString();
             item.CustomerName = row.Cells[2].Value.ToString();
             item.CustomerNickName = row.Cells[3].Value.ToString();
@@ -55,6 +71,7 @@ namespace UI
             item.DeliverNumber = Convert.ToUInt16(row.Cells[8].Value.ToString());
 
             DeliverUpdateForm form = new DeliverUpdateForm(item, true);
+            form.MyEvent += new DeliverUpdateForm.MyDelegate(RefreshDataGridAndSetSelection);
             form.ShowDialog();
         }
 
@@ -63,6 +80,7 @@ namespace UI
             var row = dataGridView1.SelectedRows[0];
 
             Model.DeliverItem item = new Model.DeliverItem();
+            item.DeliverId = row.Cells[0].Value.ToString();
             item.OrderId = row.Cells[1].Value.ToString();
             item.CustomerName = row.Cells[2].Value.ToString();
             item.CustomerNickName = row.Cells[3].Value.ToString();
@@ -73,12 +91,14 @@ namespace UI
             item.DeliverNumber = Convert.ToUInt16(row.Cells[8].Value.ToString());
 
             DeliverUpdateForm form = new DeliverUpdateForm(item, false);
+            form.MyEvent += new DeliverUpdateForm.MyDelegate(RefreshDataGridAndSetSelection);
             form.ShowDialog();
         }
 
         private void ToolStripMenuItem_delete_Click(object sender, EventArgs e)
         {
             BLL.Interface.DeleteDeliverItem(dataGridView1.SelectedRows[0].Cells[0].Value.ToString());
+            RefreshDataGrid(m_orderId);
         }
 
         private void dataGridView1_CellMouseClick(object sender, DataGridViewCellMouseEventArgs e)
@@ -93,6 +113,17 @@ namespace UI
         private void dataGridView1_CellDoubleClick(object sender, DataGridViewCellEventArgs e)
         {
             ToolStripMenuItem_modify_Click(sender, e);
+        }
+
+        private void ToolStripMenuItem_finished_Click(object sender, EventArgs e)
+        {
+            var row = dataGridView1.SelectedRows[0];
+            int row_index = row.Index;
+
+            BLL.Interface.UpdateDeliverStatus(row.Cells[0].Value.ToString(), "已完成");
+            RefreshDataGrid(m_orderId);
+
+            this.dataGridView1.Rows[row_index].Selected = true;
         }
     }
 }
