@@ -173,5 +173,11 @@ namespace UI
             //e.Row.HeaderCell.Value = (e.Row.Index + 1).ToString();
             e.Row.HeaderCell.Value = string.Format("{0}", e.Row.Index + 1);
         }
+
+        private void toolStripButton_DeliverStatistics_Click(object sender, EventArgs e)
+        {
+            DeliverStatis form = new DeliverStatis();
+            form.ShowDialog();
+        }
     }
 }

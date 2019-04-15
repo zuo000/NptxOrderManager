@@ -12,6 +12,7 @@ namespace Model
         private string m_orderId = null;
         private string m_customerName = null;
         private string m_customerNickName = null;
+        private string m_customerDistrict = null;
         private string m_customerAddress = null;
         private string m_productBrand = null;
         private string m_productName = null;
@@ -29,5 +30,6 @@ namespace Model
         public ushort DeliverNumber { get => m_deliverNumber; set => m_deliverNumber = value; }
         public string DeliverId { get => m_deliverId; set => m_deliverId = value; }
         public string Status { get => m_status; set => m_status = value; }
+        public string CustomerDistrict { get => m_customerDistrict; set => m_customerDistrict = value; }
     }
 }

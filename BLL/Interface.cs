@@ -50,8 +50,8 @@ namespace BLL
 
         public static int CheckinDeliverItem(Model.DeliverItem item)
         {
-            string sql = "insert into `deliver_table` (`order_id`, `customer_name`, `customer_nick_name`, `customer_address`, `product_brand`, `product_name`, `deliver_date`, `deliver_number`, `deliver_status`) values ('"
-                         + item.OrderId + "','" + item.CustomerName + "','" + item.CustomerNickName + "','"
+            string sql = "insert into `deliver_table` (`order_id`, `customer_name`, `customer_nick_name`, `customer_district`, `customer_address`, `product_brand`, `product_name`, `deliver_date`, `deliver_number`, `deliver_status`) values ('"
+                         + item.OrderId + "','" + item.CustomerName + "','" + item.CustomerNickName + "','" + item.CustomerDistrict + "','"
                          + item.CustomerAddress + "','" + item.ProductBrand + "','" + item.ProductName + "','"
                          + item.DeliverDate + "','" + item.DeliverNumber.ToString() + "','" + item.Status + "')";
             return DAL.MySQLHelper.ExecuteSqlNonQuery(sql);
@@ -68,6 +68,7 @@ namespace BLL
             item.OrderId = order.OrderId;
             item.CustomerName = order.CustomerName;
             item.CustomerNickName = order.CustomerNickName;
+            item.CustomerDistrict = order.CustomerDistrict;
             item.CustomerAddress = order.CustomerAddress;
             item.ProductBrand = order.ProductBrand;
             item.ProductName = order.ProductName;
@@ -235,9 +236,32 @@ namespace BLL
             return DAL.MySQLHelper.QueryOrderTable("select * from order_table");
         }
 
+        public static DataSet GetAllDeliverData()
+        {
+            return DAL.MySQLHelper.QueryDeliverTable("select * from deliver_table");
+        }
+
         public static DataSet GetDeliverItemsByOrderId(string orderId)
         {
             return DAL.MySQLHelper.QueryDeliverTable("select * from deliver_table where (`order_id` = '" + orderId + "')");
+        }
+
+        public static DataSet GetDeliverItemsBySearch(string productBrand, string district, string datetime)
+        {
+            string sql = "select * from deliver_table where (`deliver_date` = '" + datetime + "'";
+            if (productBrand != "all")
+            {
+                sql += " and `product_brand` = '" + productBrand + "'";
+            }
+
+            if (district != "all")
+            {
+                sql += " and `customer_district` = '" + district + "'";
+            }
+
+            sql += ")";
+
+            return DAL.MySQLHelper.QueryDeliverTable(sql);
         }
 
         public static DataSet GetOrderDataByColumn(string column_name, string column_content)

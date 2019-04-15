@@ -64,11 +64,12 @@ namespace UI
             item.OrderId = row.Cells[1].Value.ToString();
             item.CustomerName = row.Cells[2].Value.ToString();
             item.CustomerNickName = row.Cells[3].Value.ToString();
-            item.CustomerAddress = row.Cells[4].Value.ToString();
-            item.ProductBrand = row.Cells[5].Value.ToString();
-            item.ProductName = row.Cells[6].Value.ToString();
-            item.DeliverDate = row.Cells[7].Value.ToString();
-            item.DeliverNumber = Convert.ToUInt16(row.Cells[8].Value.ToString());
+            item.CustomerDistrict = row.Cells[4].Value.ToString();
+            item.CustomerAddress = row.Cells[5].Value.ToString();
+            item.ProductBrand = row.Cells[6].Value.ToString();
+            item.ProductName = row.Cells[7].Value.ToString();
+            item.DeliverDate = row.Cells[8].Value.ToString();
+            item.DeliverNumber = Convert.ToUInt16(row.Cells[9].Value.ToString());
 
             DeliverUpdateForm form = new DeliverUpdateForm(item, true);
             form.MyEvent += new DeliverUpdateForm.MyDelegate(RefreshDataGridAndSetSelection);
@@ -84,11 +85,12 @@ namespace UI
             item.OrderId = row.Cells[1].Value.ToString();
             item.CustomerName = row.Cells[2].Value.ToString();
             item.CustomerNickName = row.Cells[3].Value.ToString();
-            item.CustomerAddress = row.Cells[4].Value.ToString();
-            item.ProductBrand = row.Cells[5].Value.ToString();
-            item.ProductName = row.Cells[6].Value.ToString();
-            item.DeliverDate = row.Cells[7].Value.ToString();
-            item.DeliverNumber = Convert.ToUInt16(row.Cells[8].Value.ToString());
+            item.CustomerDistrict = row.Cells[4].Value.ToString();
+            item.CustomerAddress = row.Cells[5].Value.ToString();
+            item.ProductBrand = row.Cells[6].Value.ToString();
+            item.ProductName = row.Cells[7].Value.ToString();
+            item.DeliverDate = row.Cells[8].Value.ToString();
+            item.DeliverNumber = Convert.ToUInt16(row.Cells[9].Value.ToString());
 
             DeliverUpdateForm form = new DeliverUpdateForm(item, false);
             form.MyEvent += new DeliverUpdateForm.MyDelegate(RefreshDataGridAndSetSelection);

@@ -73,6 +73,12 @@
     <Compile Include="DeliverForm.Designer.cs">
       <DependentUpon>DeliverForm.cs</DependentUpon>
     </Compile>
+    <Compile Include="DeliverStatis.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="DeliverStatis.Designer.cs">
+      <DependentUpon>DeliverStatis.cs</DependentUpon>
+    </Compile>
     <Compile Include="DeliverUpdateForm.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -93,6 +99,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="DeliverForm.resx">
       <DependentUpon>DeliverForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="DeliverStatis.resx">
+      <DependentUpon>DeliverStatis.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="DeliverUpdateForm.resx">
       <DependentUpon>DeliverUpdateForm.cs</DependentUpon>

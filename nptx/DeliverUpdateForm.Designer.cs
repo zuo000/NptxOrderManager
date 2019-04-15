@@ -244,7 +244,6 @@
             this.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.Name = "DeliverUpdateForm";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
-            this.Text = "配送计划更新";
             this.Activated += new System.EventHandler(this.DeliverUpdateForm_Activated);
             this.Load += new System.EventHandler(this.DeliverUpdateForm_Load);
             this.groupBox2.ResumeLayout(false);

@@ -420,5 +420,29 @@ namespace UI
         {
 
         }
+
+        private void textBox_DeliverNumEveryTime_MouseHover(object sender, EventArgs e)
+        {
+            ToolTip toolTip1 = new ToolTip();
+            // 设置显示样式
+            toolTip1.AutoPopDelay = 5000;//提示信息的可见时间
+            toolTip1.InitialDelay = 200;//事件触发多久后出现提示
+            toolTip1.ReshowDelay = 500;//指针从一个控件移向另一个控件时，经过多久才会显示下一个提示框
+            toolTip1.ShowAlways = true;//是否显示提示框
+            //  设置伴随的对象.
+            toolTip1.SetToolTip(this.textBox_DeliverNumEveryTime, "留空则为一次性配送");//设置提示按钮和提示内容
+        }
+
+        private void label4_MouseHover(object sender, EventArgs e)
+        {
+            ToolTip toolTip1 = new ToolTip();
+            // 设置显示样式
+            toolTip1.AutoPopDelay = 5000;//提示信息的可见时间
+            toolTip1.InitialDelay = 400;//事件触发多久后出现提示
+            toolTip1.ReshowDelay = 400;//指针从一个控件移向另一个控件时，经过多久才会显示下一个提示框
+            toolTip1.ShowAlways = true;//是否显示提示框
+            //  设置伴随的对象.
+            toolTip1.SetToolTip(this.label4, "留空则为一次性配送");//设置提示按钮和提示内容
+        }
     }
 }

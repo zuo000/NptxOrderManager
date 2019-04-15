@@ -361,6 +361,7 @@
             this.textBox_DeliverNumEveryTime.Size = new System.Drawing.Size(56, 26);
             this.textBox_DeliverNumEveryTime.TabIndex = 22;
             this.textBox_DeliverNumEveryTime.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.textBox_DeliverNumEveryTime_KeyPress);
+            this.textBox_DeliverNumEveryTime.MouseHover += new System.EventHandler(this.textBox_DeliverNumEveryTime_MouseHover);
             // 
             // label4
             // 
@@ -371,6 +372,7 @@
             this.label4.Size = new System.Drawing.Size(51, 20);
             this.label4.TabIndex = 21;
             this.label4.Text = "每次送";
+            this.label4.MouseHover += new System.EventHandler(this.label4_MouseHover);
             // 
             // textBox_NickName
             // 

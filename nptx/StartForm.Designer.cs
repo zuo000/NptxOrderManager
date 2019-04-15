@@ -57,6 +57,8 @@
             this.Column_DeliverNumEveryTime = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Column_StartDate = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Column_Gifts = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.toolStripSeparator2 = new System.Windows.Forms.ToolStripSeparator();
+            this.toolStripButton_DeliverStatistics = new System.Windows.Forms.ToolStripButton();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
             this.contextMenuStrip1.SuspendLayout();
             this.toolStrip1.SuspendLayout();
@@ -139,7 +141,9 @@
             this.toolStripButton_CancelSearch,
             this.toolStripSeparator1,
             this.toolStripButton_Checkin,
-            this.toolStripButton_Import});
+            this.toolStripButton_Import,
+            this.toolStripSeparator2,
+            this.toolStripButton_DeliverStatistics});
             this.toolStrip1.Location = new System.Drawing.Point(0, 0);
             this.toolStrip1.Name = "toolStrip1";
             this.toolStrip1.RenderMode = System.Windows.Forms.ToolStripRenderMode.System;
@@ -321,6 +325,21 @@
             this.Column_Gifts.Name = "Column_Gifts";
             this.Column_Gifts.ReadOnly = true;
             // 
+            // toolStripSeparator2
+            // 
+            this.toolStripSeparator2.Name = "toolStripSeparator2";
+            this.toolStripSeparator2.Size = new System.Drawing.Size(6, 28);
+            // 
+            // toolStripButton_DeliverStatistics
+            // 
+            this.toolStripButton_DeliverStatistics.Font = new System.Drawing.Font("微软雅黑", 10.5F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
+            this.toolStripButton_DeliverStatistics.Image = ((System.Drawing.Image)(resources.GetObject("toolStripButton_DeliverStatistics.Image")));
+            this.toolStripButton_DeliverStatistics.ImageTransparentColor = System.Drawing.Color.Magenta;
+            this.toolStripButton_DeliverStatistics.Name = "toolStripButton_DeliverStatistics";
+            this.toolStripButton_DeliverStatistics.Size = new System.Drawing.Size(85, 25);
+            this.toolStripButton_DeliverStatistics.Text = "配送统计";
+            this.toolStripButton_DeliverStatistics.Click += new System.EventHandler(this.toolStripButton_DeliverStatistics_Click);
+            // 
             // StartForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 17F);
@@ -371,5 +390,7 @@
         private System.Windows.Forms.DataGridViewTextBoxColumn Column_DeliverNumEveryTime;
         private System.Windows.Forms.DataGridViewTextBoxColumn Column_StartDate;
         private System.Windows.Forms.DataGridViewTextBoxColumn Column_Gifts;
+        private System.Windows.Forms.ToolStripSeparator toolStripSeparator2;
+        private System.Windows.Forms.ToolStripButton toolStripButton_DeliverStatistics;
     }
 }

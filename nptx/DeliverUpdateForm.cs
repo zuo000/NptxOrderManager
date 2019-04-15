@@ -14,6 +14,7 @@ namespace UI
     {
         private Model.DeliverItem m_item = null;
         private bool m_isAdd = false;
+        private string m_title = null;
 
         //定义委托
         public delegate void MyDelegate(string orderId, string deliverId);
@@ -29,6 +30,16 @@ namespace UI
 
         private void DeliverUpdateForm_Load(object sender, EventArgs e)
         {
+            if (m_isAdd)
+            {
+                m_title = "配送计划添加";
+            }
+            else
+            {
+                m_title = "配送计划修改";
+            }
+
+            this.Text = m_title;
             this.textBox_OrderId.Text = m_item.OrderId;
             this.textBox_CustomerAddr.Text = m_item.CustomerAddress;
             this.textBox_CustomerName.Text = m_item.CustomerName;
@@ -50,23 +61,23 @@ namespace UI
                 m_item.Status = "未完成";
                 if( BLL.Interface.CheckinDeliverItem(m_item) == 1)
                 {
-                    MessageBox.Show("配送计划增加成功", "配送计划增加", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                    MessageBox.Show(m_title + "成功", m_title, MessageBoxButtons.OK, MessageBoxIcon.Information);
                     m_item.DeliverId = BLL.Interface.QueryLastInsertId();
                 }
                 else
                 {
-                    MessageBox.Show("配送计划增加失败", "配送计划增加", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    MessageBox.Show(m_title + "失败", m_title, MessageBoxButtons.OK, MessageBoxIcon.Error);
                 }
             }
             else
             {
                 if (BLL.Interface.UpdateDeliverItem(m_item) == 1)
                 {
-                    MessageBox.Show("配送计划修改成功", "配送计划修改", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                    MessageBox.Show(m_title + "成功", m_title, MessageBoxButtons.OK, MessageBoxIcon.Information);
                 }
                 else
                 {
-                    MessageBox.Show("配送计划修改失败", "配送计划修改", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    MessageBox.Show(m_title + "失败", m_title, MessageBoxButtons.OK, MessageBoxIcon.Error);
                 }
             }
 
