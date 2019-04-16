@@ -109,27 +109,27 @@
             this.ToolStripMenuItem_modify,
             this.ToolStripMenuItem_delete});
             this.contextMenuStrip1.Name = "contextMenuStrip1";
-            this.contextMenuStrip1.Size = new System.Drawing.Size(101, 70);
+            this.contextMenuStrip1.Size = new System.Drawing.Size(149, 70);
             // 
             // ToolStripMenuItem_check
             // 
             this.ToolStripMenuItem_check.Name = "ToolStripMenuItem_check";
-            this.ToolStripMenuItem_check.Size = new System.Drawing.Size(100, 22);
-            this.ToolStripMenuItem_check.Text = "查看";
+            this.ToolStripMenuItem_check.Size = new System.Drawing.Size(180, 22);
+            this.ToolStripMenuItem_check.Text = "查看配送计划";
             this.ToolStripMenuItem_check.Click += new System.EventHandler(this.ToolStripMenuItem_check_Click);
             // 
             // ToolStripMenuItem_modify
             // 
             this.ToolStripMenuItem_modify.Name = "ToolStripMenuItem_modify";
-            this.ToolStripMenuItem_modify.Size = new System.Drawing.Size(100, 22);
-            this.ToolStripMenuItem_modify.Text = "修改";
+            this.ToolStripMenuItem_modify.Size = new System.Drawing.Size(180, 22);
+            this.ToolStripMenuItem_modify.Text = "修改订单";
             this.ToolStripMenuItem_modify.Click += new System.EventHandler(this.ToolStripMenuItem_modify_Click);
             // 
             // ToolStripMenuItem_delete
             // 
             this.ToolStripMenuItem_delete.Name = "ToolStripMenuItem_delete";
-            this.ToolStripMenuItem_delete.Size = new System.Drawing.Size(100, 22);
-            this.ToolStripMenuItem_delete.Text = "删除";
+            this.ToolStripMenuItem_delete.Size = new System.Drawing.Size(180, 22);
+            this.ToolStripMenuItem_delete.Text = "删除订单";
             this.ToolStripMenuItem_delete.Click += new System.EventHandler(this.ToolStripMenuItem_delete_Click);
             // 
             // toolStrip1
@@ -180,8 +180,8 @@
             this.toolStripButton_CancelSearch.Image = ((System.Drawing.Image)(resources.GetObject("toolStripButton_CancelSearch.Image")));
             this.toolStripButton_CancelSearch.ImageTransparentColor = System.Drawing.Color.Magenta;
             this.toolStripButton_CancelSearch.Name = "toolStripButton_CancelSearch";
-            this.toolStripButton_CancelSearch.Size = new System.Drawing.Size(85, 25);
-            this.toolStripButton_CancelSearch.Text = "取消查询";
+            this.toolStripButton_CancelSearch.Size = new System.Drawing.Size(113, 25);
+            this.toolStripButton_CancelSearch.Text = "清除查询结果";
             this.toolStripButton_CancelSearch.Click += new System.EventHandler(this.toolStripButton_CancelSearch_Click);
             // 
             // toolStripSeparator1

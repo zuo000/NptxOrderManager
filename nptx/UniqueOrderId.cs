@@ -34,11 +34,11 @@ namespace UI
                 number += GetTimeStr(timeType, out fillCount);
                 if (id > 0)
                 {
-                    number += ticks.Substring(ticks.Length - (fillCount + 3)) + id.ToString().PadLeft(10, '0');
+                    number += ticks.Substring(ticks.Length - (fillCount + 3)) + id.ToString().PadLeft(9, '0');
                 }
                 else
                 {
-                    number += ticks.Substring(ticks.Length - (fillCount + 3)) + GuidIntStr.PadLeft(10, '0');
+                    number += ticks.Substring(ticks.Length - (fillCount + 3)) + GuidIntStr.PadLeft(9, '0');
                 }
                 return number + mark;
             }

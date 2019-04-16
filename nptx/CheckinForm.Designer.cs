@@ -32,7 +32,6 @@
             this.textBox_CustomerName = new System.Windows.Forms.TextBox();
             this.label_OrderNum = new System.Windows.Forms.Label();
             this.textBox_OrderNum = new System.Windows.Forms.TextBox();
-            this.label1 = new System.Windows.Forms.Label();
             this.label_DeliverPeriod = new System.Windows.Forms.Label();
             this.radioButton_ByWeek = new System.Windows.Forms.RadioButton();
             this.radioButton_ByDay = new System.Windows.Forms.RadioButton();
@@ -53,7 +52,6 @@
             this.groupBox2 = new System.Windows.Forms.GroupBox();
             this.label2 = new System.Windows.Forms.Label();
             this.monthCalendar1 = new System.Windows.Forms.MonthCalendar();
-            this.label3 = new System.Windows.Forms.Label();
             this.textBox_DeliverNumEveryTime = new System.Windows.Forms.TextBox();
             this.label4 = new System.Windows.Forms.Label();
             this.textBox_NickName = new System.Windows.Forms.TextBox();
@@ -93,7 +91,7 @@
             this.textBox_CustomerName.Font = new System.Drawing.Font("微软雅黑", 10.5F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
             this.textBox_CustomerName.Location = new System.Drawing.Point(91, 29);
             this.textBox_CustomerName.Name = "textBox_CustomerName";
-            this.textBox_CustomerName.Size = new System.Drawing.Size(100, 26);
+            this.textBox_CustomerName.Size = new System.Drawing.Size(113, 26);
             this.textBox_CustomerName.TabIndex = 1;
             // 
             // label_OrderNum
@@ -104,26 +102,16 @@
             this.label_OrderNum.Name = "label_OrderNum";
             this.label_OrderNum.Size = new System.Drawing.Size(65, 20);
             this.label_OrderNum.TabIndex = 18;
-            this.label_OrderNum.Text = "订奶数量";
+            this.label_OrderNum.Text = "订购数量";
             // 
             // textBox_OrderNum
             // 
             this.textBox_OrderNum.Font = new System.Drawing.Font("微软雅黑", 10.5F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
             this.textBox_OrderNum.Location = new System.Drawing.Point(91, 181);
             this.textBox_OrderNum.Name = "textBox_OrderNum";
-            this.textBox_OrderNum.Size = new System.Drawing.Size(56, 26);
+            this.textBox_OrderNum.Size = new System.Drawing.Size(66, 26);
             this.textBox_OrderNum.TabIndex = 19;
             this.textBox_OrderNum.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.textBox_OrderNum_KeyPress);
-            // 
-            // label1
-            // 
-            this.label1.AutoSize = true;
-            this.label1.Font = new System.Drawing.Font("微软雅黑", 10.5F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
-            this.label1.Location = new System.Drawing.Point(153, 184);
-            this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(23, 20);
-            this.label1.TabIndex = 20;
-            this.label1.Text = "袋";
             // 
             // label_DeliverPeriod
             // 
@@ -343,22 +331,12 @@
             this.monthCalendar1.Name = "monthCalendar1";
             this.monthCalendar1.TabIndex = 1;
             // 
-            // label3
-            // 
-            this.label3.AutoSize = true;
-            this.label3.Font = new System.Drawing.Font("微软雅黑", 10.5F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
-            this.label3.Location = new System.Drawing.Point(392, 181);
-            this.label3.Name = "label3";
-            this.label3.Size = new System.Drawing.Size(23, 20);
-            this.label3.TabIndex = 23;
-            this.label3.Text = "袋";
-            // 
             // textBox_DeliverNumEveryTime
             // 
             this.textBox_DeliverNumEveryTime.Font = new System.Drawing.Font("微软雅黑", 10.5F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
             this.textBox_DeliverNumEveryTime.Location = new System.Drawing.Point(330, 181);
             this.textBox_DeliverNumEveryTime.Name = "textBox_DeliverNumEveryTime";
-            this.textBox_DeliverNumEveryTime.Size = new System.Drawing.Size(56, 26);
+            this.textBox_DeliverNumEveryTime.Size = new System.Drawing.Size(67, 26);
             this.textBox_DeliverNumEveryTime.TabIndex = 22;
             this.textBox_DeliverNumEveryTime.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.textBox_DeliverNumEveryTime_KeyPress);
             this.textBox_DeliverNumEveryTime.MouseHover += new System.EventHandler(this.textBox_DeliverNumEveryTime_MouseHover);
@@ -367,11 +345,11 @@
             // 
             this.label4.AutoSize = true;
             this.label4.Font = new System.Drawing.Font("微软雅黑", 10.5F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
-            this.label4.Location = new System.Drawing.Point(271, 181);
+            this.label4.Location = new System.Drawing.Point(231, 184);
             this.label4.Name = "label4";
-            this.label4.Size = new System.Drawing.Size(51, 20);
+            this.label4.Size = new System.Drawing.Size(93, 20);
             this.label4.TabIndex = 21;
-            this.label4.Text = "每次送";
+            this.label4.Text = "每次配送数量";
             this.label4.MouseHover += new System.EventHandler(this.label4_MouseHover);
             // 
             // textBox_NickName
@@ -379,7 +357,7 @@
             this.textBox_NickName.Font = new System.Drawing.Font("微软雅黑", 10.5F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
             this.textBox_NickName.Location = new System.Drawing.Point(330, 29);
             this.textBox_NickName.Name = "textBox_NickName";
-            this.textBox_NickName.Size = new System.Drawing.Size(94, 26);
+            this.textBox_NickName.Size = new System.Drawing.Size(109, 26);
             this.textBox_NickName.TabIndex = 3;
             // 
             // label5
@@ -397,7 +375,7 @@
             this.textBox_PhoneNO.Font = new System.Drawing.Font("微软雅黑", 10.5F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
             this.textBox_PhoneNO.Location = new System.Drawing.Point(548, 29);
             this.textBox_PhoneNO.Name = "textBox_PhoneNO";
-            this.textBox_PhoneNO.Size = new System.Drawing.Size(100, 26);
+            this.textBox_PhoneNO.Size = new System.Drawing.Size(124, 26);
             this.textBox_PhoneNO.TabIndex = 5;
             this.textBox_PhoneNO.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.textBox_PhoneNO_KeyPress);
             // 
@@ -419,7 +397,7 @@
             this.comboBox_CustomerDistrict.FormattingEnabled = true;
             this.comboBox_CustomerDistrict.Location = new System.Drawing.Point(91, 77);
             this.comboBox_CustomerDistrict.Name = "comboBox_CustomerDistrict";
-            this.comboBox_CustomerDistrict.Size = new System.Drawing.Size(100, 28);
+            this.comboBox_CustomerDistrict.Size = new System.Drawing.Size(113, 28);
             this.comboBox_CustomerDistrict.TabIndex = 7;
             this.comboBox_CustomerDistrict.TextUpdate += new System.EventHandler(this.comboBox_CustomerDistrict_TextUpdate);
             // 
@@ -438,7 +416,7 @@
             this.textBox_CustomerAddr.Font = new System.Drawing.Font("微软雅黑", 10.5F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
             this.textBox_CustomerAddr.Location = new System.Drawing.Point(330, 77);
             this.textBox_CustomerAddr.Name = "textBox_CustomerAddr";
-            this.textBox_CustomerAddr.Size = new System.Drawing.Size(218, 26);
+            this.textBox_CustomerAddr.Size = new System.Drawing.Size(342, 26);
             this.textBox_CustomerAddr.TabIndex = 11;
             // 
             // label8
@@ -459,7 +437,7 @@
             this.comboBox_ProductBrand.FormattingEnabled = true;
             this.comboBox_ProductBrand.Location = new System.Drawing.Point(91, 128);
             this.comboBox_ProductBrand.Name = "comboBox_ProductBrand";
-            this.comboBox_ProductBrand.Size = new System.Drawing.Size(100, 28);
+            this.comboBox_ProductBrand.Size = new System.Drawing.Size(151, 28);
             this.comboBox_ProductBrand.TabIndex = 13;
             this.comboBox_ProductBrand.TextUpdate += new System.EventHandler(this.comboBox_ProductBrand_TextUpdate);
             // 
@@ -510,7 +488,7 @@
             this.textBox_AdditionalGifts.Font = new System.Drawing.Font("微软雅黑", 10.5F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
             this.textBox_AdditionalGifts.Location = new System.Drawing.Point(548, 133);
             this.textBox_AdditionalGifts.Name = "textBox_AdditionalGifts";
-            this.textBox_AdditionalGifts.Size = new System.Drawing.Size(100, 26);
+            this.textBox_AdditionalGifts.Size = new System.Drawing.Size(124, 26);
             this.textBox_AdditionalGifts.TabIndex = 17;
             // 
             // textBox_Comments
@@ -518,7 +496,7 @@
             this.textBox_Comments.Font = new System.Drawing.Font("微软雅黑", 10.5F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
             this.textBox_Comments.Location = new System.Drawing.Point(548, 181);
             this.textBox_Comments.Name = "textBox_Comments";
-            this.textBox_Comments.Size = new System.Drawing.Size(100, 26);
+            this.textBox_Comments.Size = new System.Drawing.Size(124, 26);
             this.textBox_Comments.TabIndex = 28;
             // 
             // label12
@@ -552,12 +530,10 @@
             this.Controls.Add(this.label6);
             this.Controls.Add(this.textBox_NickName);
             this.Controls.Add(this.label5);
-            this.Controls.Add(this.label3);
             this.Controls.Add(this.textBox_DeliverNumEveryTime);
             this.Controls.Add(this.label4);
             this.Controls.Add(this.groupBox2);
             this.Controls.Add(this.button_Submit);
-            this.Controls.Add(this.label1);
             this.Controls.Add(this.textBox_OrderNum);
             this.Controls.Add(this.label_OrderNum);
             this.Controls.Add(this.textBox_CustomerName);
@@ -588,7 +564,6 @@
         private System.Windows.Forms.TextBox textBox_CustomerName;
         private System.Windows.Forms.Label label_OrderNum;
         private System.Windows.Forms.TextBox textBox_OrderNum;
-        private System.Windows.Forms.Label label1;
         private System.Windows.Forms.Label label_DeliverPeriod;
         private System.Windows.Forms.RadioButton radioButton_ByWeek;
         private System.Windows.Forms.RadioButton radioButton_ByDay;
@@ -609,7 +584,6 @@
         private System.Windows.Forms.GroupBox groupBox2;
         private System.Windows.Forms.MonthCalendar monthCalendar1;
         private System.Windows.Forms.Label label2;
-        private System.Windows.Forms.Label label3;
         private System.Windows.Forms.TextBox textBox_DeliverNumEveryTime;
         private System.Windows.Forms.Label label4;
         private System.Windows.Forms.TextBox textBox_NickName;

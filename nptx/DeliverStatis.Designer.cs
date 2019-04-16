@@ -184,7 +184,7 @@
             this.groupBox1.Controls.Add(this.label1);
             this.groupBox1.Location = new System.Drawing.Point(7, 0);
             this.groupBox1.Name = "groupBox1";
-            this.groupBox1.Size = new System.Drawing.Size(877, 57);
+            this.groupBox1.Size = new System.Drawing.Size(923, 57);
             this.groupBox1.TabIndex = 0;
             this.groupBox1.TabStop = false;
             // 
@@ -252,9 +252,9 @@
             this.button_ClearSearch.Font = new System.Drawing.Font("微软雅黑", 10.5F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
             this.button_ClearSearch.Location = new System.Drawing.Point(787, 19);
             this.button_ClearSearch.Name = "button_ClearSearch";
-            this.button_ClearSearch.Size = new System.Drawing.Size(75, 30);
+            this.button_ClearSearch.Size = new System.Drawing.Size(101, 30);
             this.button_ClearSearch.TabIndex = 6;
-            this.button_ClearSearch.Text = "清除查询";
+            this.button_ClearSearch.Text = "清除查询结果";
             this.button_ClearSearch.UseVisualStyleBackColor = true;
             this.button_ClearSearch.Click += new System.EventHandler(this.button_ClearSearch_Click);
             // 
