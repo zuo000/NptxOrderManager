@@ -20,6 +20,14 @@ namespace UI
             InitializeComponent();
         }
 
+        private void SetHeaderCell()
+        {
+            for (int i = 0; i < dataGridView1.RowCount; i++)
+            {
+                dataGridView1.Rows[i].HeaderCell.Value = string.Format("{0}", i + 1);
+            }
+        }
+
         private void RefreshDataGrid(string orderId)
         {
             DataSet ds = BLL.Interface.GetDeliverItemsByOrderId(orderId);
@@ -27,6 +35,8 @@ namespace UI
             this.dataGridView1.AutoGenerateColumns = false;
             this.dataGridView1.DataSource = ds.Tables[0];
             this.dataGridView1.ClearSelection();
+
+            SetHeaderCell();
         }
 
         private void RefreshDataGridAndSetSelection(string order_id, string deliver_id)
@@ -47,12 +57,6 @@ namespace UI
         private void DeliverForm_Load(object sender, EventArgs e)
         {
             RefreshDataGrid(m_orderId);
-        }
-
-        private void dataGridView1_RowStateChanged(object sender, DataGridViewRowStateChangedEventArgs e)
-        {
-            //e.Row.HeaderCell.Value = string.Format("{0}", e.Row.Index + 1);
-            e.Row.HeaderCell.Value = (e.Row.Index + 1).ToString();
         }
 
         private void ToolStripMenuItem_add_Click(object sender, EventArgs e)
@@ -126,6 +130,11 @@ namespace UI
             RefreshDataGrid(m_orderId);
 
             this.dataGridView1.Rows[row_index].Selected = true;
+        }
+
+        private void dataGridView1_Sorted(object sender, EventArgs e)
+        {
+            SetHeaderCell();
         }
     }
 }

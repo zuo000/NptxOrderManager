@@ -23,6 +23,14 @@ namespace UI
             InitializeComponent();
         }
 
+        private void SetHeaderCell()
+        {
+            for (int i = 0; i < dataGridView1.RowCount; i++)
+            {
+                dataGridView1.Rows[i].HeaderCell.Value = string.Format("{0}", i + 1);
+            }
+        }
+
         private void RefreshDataGrid()
         {
             DataSet ds = BLL.Interface.GetAllDeliverData();
@@ -30,6 +38,8 @@ namespace UI
             this.dataGridView1.AutoGenerateColumns = false;
             this.dataGridView1.DataSource = ds.Tables[0];
             this.dataGridView1.ClearSelection();
+
+            SetHeaderCell();
         }
 
         private void DeliverStatis_Load(object sender, EventArgs e)
@@ -37,11 +47,6 @@ namespace UI
             BindProductBrandComboBox();
             BindDistrictComboBox();
             RefreshDataGrid();
-        }
-
-        private void DeliverStatis_Activated(object sender, EventArgs e)
-        {
-
         }
 
         private void BindProductBrandComboBox()
@@ -83,12 +88,7 @@ namespace UI
             this.comboBox_District.DisplayMember = "SearchName";
             this.comboBox_District.SelectedIndex = 0;
         }
-
-        private void dataGridView1_RowStateChanged(object sender, DataGridViewRowStateChangedEventArgs e)
-        {
-            e.Row.HeaderCell.Value = (e.Row.Index + 1).ToString();
-        }
-
+        
         private void button_Search_Click(object sender, EventArgs e)
         {
             DataSet ds = BLL.Interface.GetDeliverItemsBySearch(this.comboBox_ProductBrand.SelectedValue.ToString(),
@@ -97,6 +97,8 @@ namespace UI
             this.dataGridView1.AutoGenerateColumns = false;
             this.dataGridView1.DataSource = ds.Tables[0];
             this.dataGridView1.ClearSelection();
+
+            SetHeaderCell();
         }
 
         private void button_ClearSearch_Click(object sender, EventArgs e)
@@ -105,6 +107,11 @@ namespace UI
             this.comboBox_District.SelectedValue = "all";
             this.dateTimePicker1.Text = DateTime.Now.ToLocalTime().ToString("yyyy-MM-dd");
             RefreshDataGrid();
+        }
+
+        private void dataGridView1_Sorted(object sender, EventArgs e)
+        {
+            SetHeaderCell();
         }
     }
 }

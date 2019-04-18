@@ -28,6 +28,14 @@ namespace UI
             InitializeComponent();
         }
 
+        private void SetHeaderCell()
+        {
+            for (int i = 0; i < dataGridView1.RowCount; i++)
+            {
+                dataGridView1.Rows[i].HeaderCell.Value = string.Format("{0}", i + 1);
+            }
+        }
+
         private void RefreshDataGrid()
         {
             DataSet ds = BLL.Interface.GetAllOrderData();
@@ -36,6 +44,7 @@ namespace UI
             this.dataGridView1.DataSource = ds.Tables[0];
             this.dataGridView1.Columns[1].DefaultCellStyle.Format = "yyyy-MM-dd  HH:mm:ss";
             this.dataGridView1.ClearSelection();
+            SetHeaderCell();
         }
 
         private void RefreshDataGridAndSetSelection(string order_id)
@@ -95,6 +104,8 @@ namespace UI
             this.dataGridView1.DataSource = ds.Tables[0];
             this.dataGridView1.Columns[1].DefaultCellStyle.Format = "yyyy-MM-dd  HH:mm:ss";
             this.dataGridView1.ClearSelection();
+
+            SetHeaderCell();
         }
 
         private void toolStripButton_CancelSearch_Click(object sender, EventArgs e)
@@ -277,16 +288,15 @@ namespace UI
             RefreshDataGrid();
         }
 
-        private void dataGridView1_RowStateChanged(object sender, DataGridViewRowStateChangedEventArgs e)
-        {
-            //e.Row.HeaderCell.Value = (e.Row.Index + 1).ToString();
-            e.Row.HeaderCell.Value = string.Format("{0}", e.Row.Index + 1);
-        }
-
         private void toolStripButton_DeliverStatistics_Click(object sender, EventArgs e)
         {
             DeliverStatis form = new DeliverStatis();
             form.ShowDialog();
+        }
+
+        private void dataGridView1_Sorted(object sender, EventArgs e)
+        {
+            SetHeaderCell();
         }
     }
 }

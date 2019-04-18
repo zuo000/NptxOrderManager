@@ -31,18 +31,6 @@
             this.components = new System.ComponentModel.Container();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(StartForm));
             this.dataGridView1 = new System.Windows.Forms.DataGridView();
-            this.contextMenuStrip1 = new System.Windows.Forms.ContextMenuStrip(this.components);
-            this.ToolStripMenuItem_check = new System.Windows.Forms.ToolStripMenuItem();
-            this.ToolStripMenuItem_modify = new System.Windows.Forms.ToolStripMenuItem();
-            this.ToolStripMenuItem_delete = new System.Windows.Forms.ToolStripMenuItem();
-            this.toolStrip1 = new System.Windows.Forms.ToolStrip();
-            this.toolStripComboBox_SearchType = new System.Windows.Forms.ToolStripComboBox();
-            this.toolStripTextBox_SearchContent = new System.Windows.Forms.ToolStripTextBox();
-            this.toolStripButton_Search = new System.Windows.Forms.ToolStripButton();
-            this.toolStripButton_CancelSearch = new System.Windows.Forms.ToolStripButton();
-            this.toolStripSeparator1 = new System.Windows.Forms.ToolStripSeparator();
-            this.toolStripButton_Checkin = new System.Windows.Forms.ToolStripButton();
-            this.toolStripButton_Import = new System.Windows.Forms.ToolStripButton();
             this.Column_OrderId = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Column_OrderTime = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Column1_Name = new System.Windows.Forms.DataGridViewTextBoxColumn();
@@ -57,6 +45,18 @@
             this.Column_DeliverNumEveryTime = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Column_StartDate = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Column_Gifts = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.contextMenuStrip1 = new System.Windows.Forms.ContextMenuStrip(this.components);
+            this.ToolStripMenuItem_check = new System.Windows.Forms.ToolStripMenuItem();
+            this.ToolStripMenuItem_modify = new System.Windows.Forms.ToolStripMenuItem();
+            this.ToolStripMenuItem_delete = new System.Windows.Forms.ToolStripMenuItem();
+            this.toolStrip1 = new System.Windows.Forms.ToolStrip();
+            this.toolStripComboBox_SearchType = new System.Windows.Forms.ToolStripComboBox();
+            this.toolStripTextBox_SearchContent = new System.Windows.Forms.ToolStripTextBox();
+            this.toolStripButton_Search = new System.Windows.Forms.ToolStripButton();
+            this.toolStripButton_CancelSearch = new System.Windows.Forms.ToolStripButton();
+            this.toolStripSeparator1 = new System.Windows.Forms.ToolStripSeparator();
+            this.toolStripButton_Checkin = new System.Windows.Forms.ToolStripButton();
+            this.toolStripButton_Import = new System.Windows.Forms.ToolStripButton();
             this.toolStripSeparator2 = new System.Windows.Forms.ToolStripSeparator();
             this.toolStripButton_DeliverStatistics = new System.Windows.Forms.ToolStripButton();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
@@ -100,114 +100,7 @@
             this.dataGridView1.TabIndex = 7;
             this.dataGridView1.CellMouseClick += new System.Windows.Forms.DataGridViewCellMouseEventHandler(this.dataGridView1_CellMouseClick);
             this.dataGridView1.CellMouseDoubleClick += new System.Windows.Forms.DataGridViewCellMouseEventHandler(this.dataGridView1_CellMouseDoubleClick);
-            this.dataGridView1.RowStateChanged += new System.Windows.Forms.DataGridViewRowStateChangedEventHandler(this.dataGridView1_RowStateChanged);
-            // 
-            // contextMenuStrip1
-            // 
-            this.contextMenuStrip1.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.ToolStripMenuItem_check,
-            this.ToolStripMenuItem_modify,
-            this.ToolStripMenuItem_delete});
-            this.contextMenuStrip1.Name = "contextMenuStrip1";
-            this.contextMenuStrip1.Size = new System.Drawing.Size(149, 70);
-            // 
-            // ToolStripMenuItem_check
-            // 
-            this.ToolStripMenuItem_check.Name = "ToolStripMenuItem_check";
-            this.ToolStripMenuItem_check.Size = new System.Drawing.Size(180, 22);
-            this.ToolStripMenuItem_check.Text = "查看配送计划";
-            this.ToolStripMenuItem_check.Click += new System.EventHandler(this.ToolStripMenuItem_check_Click);
-            // 
-            // ToolStripMenuItem_modify
-            // 
-            this.ToolStripMenuItem_modify.Name = "ToolStripMenuItem_modify";
-            this.ToolStripMenuItem_modify.Size = new System.Drawing.Size(180, 22);
-            this.ToolStripMenuItem_modify.Text = "修改订单";
-            this.ToolStripMenuItem_modify.Click += new System.EventHandler(this.ToolStripMenuItem_modify_Click);
-            // 
-            // ToolStripMenuItem_delete
-            // 
-            this.ToolStripMenuItem_delete.Name = "ToolStripMenuItem_delete";
-            this.ToolStripMenuItem_delete.Size = new System.Drawing.Size(180, 22);
-            this.ToolStripMenuItem_delete.Text = "删除订单";
-            this.ToolStripMenuItem_delete.Click += new System.EventHandler(this.ToolStripMenuItem_delete_Click);
-            // 
-            // toolStrip1
-            // 
-            this.toolStrip1.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.toolStripComboBox_SearchType,
-            this.toolStripTextBox_SearchContent,
-            this.toolStripButton_Search,
-            this.toolStripButton_CancelSearch,
-            this.toolStripSeparator1,
-            this.toolStripButton_Checkin,
-            this.toolStripButton_Import,
-            this.toolStripSeparator2,
-            this.toolStripButton_DeliverStatistics});
-            this.toolStrip1.Location = new System.Drawing.Point(0, 0);
-            this.toolStrip1.Name = "toolStrip1";
-            this.toolStrip1.RenderMode = System.Windows.Forms.ToolStripRenderMode.System;
-            this.toolStrip1.Size = new System.Drawing.Size(1182, 28);
-            this.toolStrip1.TabIndex = 8;
-            this.toolStrip1.Text = "toolStrip1";
-            // 
-            // toolStripComboBox_SearchType
-            // 
-            this.toolStripComboBox_SearchType.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
-            this.toolStripComboBox_SearchType.Font = new System.Drawing.Font("微软雅黑", 10.5F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
-            this.toolStripComboBox_SearchType.Name = "toolStripComboBox_SearchType";
-            this.toolStripComboBox_SearchType.Size = new System.Drawing.Size(90, 28);
-            // 
-            // toolStripTextBox_SearchContent
-            // 
-            this.toolStripTextBox_SearchContent.Font = new System.Drawing.Font("微软雅黑", 10.5F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
-            this.toolStripTextBox_SearchContent.Name = "toolStripTextBox_SearchContent";
-            this.toolStripTextBox_SearchContent.Size = new System.Drawing.Size(90, 28);
-            // 
-            // toolStripButton_Search
-            // 
-            this.toolStripButton_Search.Font = new System.Drawing.Font("微软雅黑", 10.5F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
-            this.toolStripButton_Search.Image = ((System.Drawing.Image)(resources.GetObject("toolStripButton_Search.Image")));
-            this.toolStripButton_Search.ImageTransparentColor = System.Drawing.Color.Magenta;
-            this.toolStripButton_Search.Name = "toolStripButton_Search";
-            this.toolStripButton_Search.Size = new System.Drawing.Size(57, 25);
-            this.toolStripButton_Search.Text = "查询";
-            this.toolStripButton_Search.Click += new System.EventHandler(this.toolStripButton_Search_Click);
-            // 
-            // toolStripButton_CancelSearch
-            // 
-            this.toolStripButton_CancelSearch.Font = new System.Drawing.Font("微软雅黑", 10.5F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
-            this.toolStripButton_CancelSearch.Image = ((System.Drawing.Image)(resources.GetObject("toolStripButton_CancelSearch.Image")));
-            this.toolStripButton_CancelSearch.ImageTransparentColor = System.Drawing.Color.Magenta;
-            this.toolStripButton_CancelSearch.Name = "toolStripButton_CancelSearch";
-            this.toolStripButton_CancelSearch.Size = new System.Drawing.Size(113, 25);
-            this.toolStripButton_CancelSearch.Text = "清除查询结果";
-            this.toolStripButton_CancelSearch.Click += new System.EventHandler(this.toolStripButton_CancelSearch_Click);
-            // 
-            // toolStripSeparator1
-            // 
-            this.toolStripSeparator1.Name = "toolStripSeparator1";
-            this.toolStripSeparator1.Size = new System.Drawing.Size(6, 28);
-            // 
-            // toolStripButton_Checkin
-            // 
-            this.toolStripButton_Checkin.Font = new System.Drawing.Font("微软雅黑", 10.5F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
-            this.toolStripButton_Checkin.Image = ((System.Drawing.Image)(resources.GetObject("toolStripButton_Checkin.Image")));
-            this.toolStripButton_Checkin.ImageTransparentColor = System.Drawing.Color.Magenta;
-            this.toolStripButton_Checkin.Name = "toolStripButton_Checkin";
-            this.toolStripButton_Checkin.Size = new System.Drawing.Size(85, 25);
-            this.toolStripButton_Checkin.Text = "订单录入";
-            this.toolStripButton_Checkin.Click += new System.EventHandler(this.toolStripButton_Checkin_Click);
-            // 
-            // toolStripButton_Import
-            // 
-            this.toolStripButton_Import.Font = new System.Drawing.Font("微软雅黑", 10.5F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
-            this.toolStripButton_Import.Image = ((System.Drawing.Image)(resources.GetObject("toolStripButton_Import.Image")));
-            this.toolStripButton_Import.ImageTransparentColor = System.Drawing.Color.Magenta;
-            this.toolStripButton_Import.Name = "toolStripButton_Import";
-            this.toolStripButton_Import.Size = new System.Drawing.Size(85, 25);
-            this.toolStripButton_Import.Text = "订单导入";
-            this.toolStripButton_Import.Click += new System.EventHandler(this.toolStripButton_Import_Click);
+            this.dataGridView1.Sorted += new System.EventHandler(this.dataGridView1_Sorted);
             // 
             // Column_OrderId
             // 
@@ -324,6 +217,113 @@
             this.Column_Gifts.HeaderText = "赠品";
             this.Column_Gifts.Name = "Column_Gifts";
             this.Column_Gifts.ReadOnly = true;
+            // 
+            // contextMenuStrip1
+            // 
+            this.contextMenuStrip1.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.ToolStripMenuItem_check,
+            this.ToolStripMenuItem_modify,
+            this.ToolStripMenuItem_delete});
+            this.contextMenuStrip1.Name = "contextMenuStrip1";
+            this.contextMenuStrip1.Size = new System.Drawing.Size(149, 70);
+            // 
+            // ToolStripMenuItem_check
+            // 
+            this.ToolStripMenuItem_check.Name = "ToolStripMenuItem_check";
+            this.ToolStripMenuItem_check.Size = new System.Drawing.Size(148, 22);
+            this.ToolStripMenuItem_check.Text = "查看配送计划";
+            this.ToolStripMenuItem_check.Click += new System.EventHandler(this.ToolStripMenuItem_check_Click);
+            // 
+            // ToolStripMenuItem_modify
+            // 
+            this.ToolStripMenuItem_modify.Name = "ToolStripMenuItem_modify";
+            this.ToolStripMenuItem_modify.Size = new System.Drawing.Size(148, 22);
+            this.ToolStripMenuItem_modify.Text = "修改订单";
+            this.ToolStripMenuItem_modify.Click += new System.EventHandler(this.ToolStripMenuItem_modify_Click);
+            // 
+            // ToolStripMenuItem_delete
+            // 
+            this.ToolStripMenuItem_delete.Name = "ToolStripMenuItem_delete";
+            this.ToolStripMenuItem_delete.Size = new System.Drawing.Size(148, 22);
+            this.ToolStripMenuItem_delete.Text = "删除订单";
+            this.ToolStripMenuItem_delete.Click += new System.EventHandler(this.ToolStripMenuItem_delete_Click);
+            // 
+            // toolStrip1
+            // 
+            this.toolStrip1.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.toolStripComboBox_SearchType,
+            this.toolStripTextBox_SearchContent,
+            this.toolStripButton_Search,
+            this.toolStripButton_CancelSearch,
+            this.toolStripSeparator1,
+            this.toolStripButton_Checkin,
+            this.toolStripButton_Import,
+            this.toolStripSeparator2,
+            this.toolStripButton_DeliverStatistics});
+            this.toolStrip1.Location = new System.Drawing.Point(0, 0);
+            this.toolStrip1.Name = "toolStrip1";
+            this.toolStrip1.RenderMode = System.Windows.Forms.ToolStripRenderMode.System;
+            this.toolStrip1.Size = new System.Drawing.Size(1182, 28);
+            this.toolStrip1.TabIndex = 8;
+            this.toolStrip1.Text = "toolStrip1";
+            // 
+            // toolStripComboBox_SearchType
+            // 
+            this.toolStripComboBox_SearchType.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.toolStripComboBox_SearchType.Font = new System.Drawing.Font("微软雅黑", 10.5F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
+            this.toolStripComboBox_SearchType.Name = "toolStripComboBox_SearchType";
+            this.toolStripComboBox_SearchType.Size = new System.Drawing.Size(90, 28);
+            // 
+            // toolStripTextBox_SearchContent
+            // 
+            this.toolStripTextBox_SearchContent.Font = new System.Drawing.Font("微软雅黑", 10.5F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
+            this.toolStripTextBox_SearchContent.Name = "toolStripTextBox_SearchContent";
+            this.toolStripTextBox_SearchContent.Size = new System.Drawing.Size(90, 28);
+            // 
+            // toolStripButton_Search
+            // 
+            this.toolStripButton_Search.Font = new System.Drawing.Font("微软雅黑", 10.5F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
+            this.toolStripButton_Search.Image = ((System.Drawing.Image)(resources.GetObject("toolStripButton_Search.Image")));
+            this.toolStripButton_Search.ImageTransparentColor = System.Drawing.Color.Magenta;
+            this.toolStripButton_Search.Name = "toolStripButton_Search";
+            this.toolStripButton_Search.Size = new System.Drawing.Size(57, 25);
+            this.toolStripButton_Search.Text = "查询";
+            this.toolStripButton_Search.Click += new System.EventHandler(this.toolStripButton_Search_Click);
+            // 
+            // toolStripButton_CancelSearch
+            // 
+            this.toolStripButton_CancelSearch.Font = new System.Drawing.Font("微软雅黑", 10.5F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
+            this.toolStripButton_CancelSearch.Image = ((System.Drawing.Image)(resources.GetObject("toolStripButton_CancelSearch.Image")));
+            this.toolStripButton_CancelSearch.ImageTransparentColor = System.Drawing.Color.Magenta;
+            this.toolStripButton_CancelSearch.Name = "toolStripButton_CancelSearch";
+            this.toolStripButton_CancelSearch.Size = new System.Drawing.Size(113, 25);
+            this.toolStripButton_CancelSearch.Text = "清除查询结果";
+            this.toolStripButton_CancelSearch.Click += new System.EventHandler(this.toolStripButton_CancelSearch_Click);
+            // 
+            // toolStripSeparator1
+            // 
+            this.toolStripSeparator1.Name = "toolStripSeparator1";
+            this.toolStripSeparator1.Size = new System.Drawing.Size(6, 28);
+            // 
+            // toolStripButton_Checkin
+            // 
+            this.toolStripButton_Checkin.Font = new System.Drawing.Font("微软雅黑", 10.5F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
+            this.toolStripButton_Checkin.Image = ((System.Drawing.Image)(resources.GetObject("toolStripButton_Checkin.Image")));
+            this.toolStripButton_Checkin.ImageTransparentColor = System.Drawing.Color.Magenta;
+            this.toolStripButton_Checkin.Name = "toolStripButton_Checkin";
+            this.toolStripButton_Checkin.Size = new System.Drawing.Size(85, 25);
+            this.toolStripButton_Checkin.Text = "订单录入";
+            this.toolStripButton_Checkin.Click += new System.EventHandler(this.toolStripButton_Checkin_Click);
+            // 
+            // toolStripButton_Import
+            // 
+            this.toolStripButton_Import.Font = new System.Drawing.Font("微软雅黑", 10.5F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
+            this.toolStripButton_Import.Image = ((System.Drawing.Image)(resources.GetObject("toolStripButton_Import.Image")));
+            this.toolStripButton_Import.ImageTransparentColor = System.Drawing.Color.Magenta;
+            this.toolStripButton_Import.Name = "toolStripButton_Import";
+            this.toolStripButton_Import.Size = new System.Drawing.Size(85, 25);
+            this.toolStripButton_Import.Text = "订单导入";
+            this.toolStripButton_Import.Click += new System.EventHandler(this.toolStripButton_Import_Click);
             // 
             // toolStripSeparator2
             // 

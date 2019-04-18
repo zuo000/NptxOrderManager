@@ -41,13 +41,13 @@
             this.Column_DeliverNumber = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Column_Finished = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.groupBox1 = new System.Windows.Forms.GroupBox();
-            this.label1 = new System.Windows.Forms.Label();
-            this.comboBox_ProductBrand = new System.Windows.Forms.ComboBox();
+            this.button_ClearSearch = new System.Windows.Forms.Button();
+            this.button_Search = new System.Windows.Forms.Button();
+            this.dateTimePicker1 = new System.Windows.Forms.DateTimePicker();
             this.comboBox_District = new System.Windows.Forms.ComboBox();
             this.label2 = new System.Windows.Forms.Label();
-            this.dateTimePicker1 = new System.Windows.Forms.DateTimePicker();
-            this.button_Search = new System.Windows.Forms.Button();
-            this.button_ClearSearch = new System.Windows.Forms.Button();
+            this.comboBox_ProductBrand = new System.Windows.Forms.ComboBox();
+            this.label1 = new System.Windows.Forms.Label();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
             this.groupBox1.SuspendLayout();
             this.SuspendLayout();
@@ -82,8 +82,8 @@
             this.dataGridView1.RowTemplate.Height = 23;
             this.dataGridView1.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
             this.dataGridView1.Size = new System.Drawing.Size(1088, 452);
-            this.dataGridView1.TabIndex = 1;
-            this.dataGridView1.RowStateChanged += new System.Windows.Forms.DataGridViewRowStateChangedEventHandler(this.dataGridView1_RowStateChanged);
+            this.dataGridView1.TabIndex = 0;
+            this.dataGridView1.Sorted += new System.EventHandler(this.dataGridView1_Sorted);
             // 
             // Column_deliverId
             // 
@@ -185,28 +185,38 @@
             this.groupBox1.Location = new System.Drawing.Point(7, 0);
             this.groupBox1.Name = "groupBox1";
             this.groupBox1.Size = new System.Drawing.Size(923, 57);
-            this.groupBox1.TabIndex = 0;
+            this.groupBox1.TabIndex = 1;
             this.groupBox1.TabStop = false;
             // 
-            // label1
+            // button_ClearSearch
             // 
-            this.label1.AutoSize = true;
-            this.label1.Font = new System.Drawing.Font("微软雅黑", 10.5F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
-            this.label1.Location = new System.Drawing.Point(10, 21);
-            this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(37, 20);
-            this.label1.TabIndex = 0;
-            this.label1.Text = "商品";
+            this.button_ClearSearch.Font = new System.Drawing.Font("微软雅黑", 10.5F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
+            this.button_ClearSearch.Location = new System.Drawing.Point(787, 19);
+            this.button_ClearSearch.Name = "button_ClearSearch";
+            this.button_ClearSearch.Size = new System.Drawing.Size(101, 30);
+            this.button_ClearSearch.TabIndex = 6;
+            this.button_ClearSearch.Text = "清除查询结果";
+            this.button_ClearSearch.UseVisualStyleBackColor = true;
+            this.button_ClearSearch.Click += new System.EventHandler(this.button_ClearSearch_Click);
             // 
-            // comboBox_ProductBrand
+            // button_Search
             // 
-            this.comboBox_ProductBrand.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
-            this.comboBox_ProductBrand.Font = new System.Drawing.Font("微软雅黑", 10.5F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
-            this.comboBox_ProductBrand.FormattingEnabled = true;
-            this.comboBox_ProductBrand.Location = new System.Drawing.Point(53, 18);
-            this.comboBox_ProductBrand.Name = "comboBox_ProductBrand";
-            this.comboBox_ProductBrand.Size = new System.Drawing.Size(121, 28);
-            this.comboBox_ProductBrand.TabIndex = 1;
+            this.button_Search.Font = new System.Drawing.Font("微软雅黑", 10.5F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
+            this.button_Search.Location = new System.Drawing.Point(681, 19);
+            this.button_Search.Name = "button_Search";
+            this.button_Search.Size = new System.Drawing.Size(75, 30);
+            this.button_Search.TabIndex = 5;
+            this.button_Search.Text = "查询";
+            this.button_Search.UseVisualStyleBackColor = true;
+            this.button_Search.Click += new System.EventHandler(this.button_Search_Click);
+            // 
+            // dateTimePicker1
+            // 
+            this.dateTimePicker1.Font = new System.Drawing.Font("微软雅黑", 10.5F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
+            this.dateTimePicker1.Location = new System.Drawing.Point(452, 19);
+            this.dateTimePicker1.Name = "dateTimePicker1";
+            this.dateTimePicker1.Size = new System.Drawing.Size(200, 26);
+            this.dateTimePicker1.TabIndex = 4;
             // 
             // comboBox_District
             // 
@@ -228,35 +238,25 @@
             this.label2.TabIndex = 2;
             this.label2.Text = "所在区域";
             // 
-            // dateTimePicker1
+            // comboBox_ProductBrand
             // 
-            this.dateTimePicker1.Font = new System.Drawing.Font("微软雅黑", 10.5F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
-            this.dateTimePicker1.Location = new System.Drawing.Point(452, 19);
-            this.dateTimePicker1.Name = "dateTimePicker1";
-            this.dateTimePicker1.Size = new System.Drawing.Size(200, 26);
-            this.dateTimePicker1.TabIndex = 4;
+            this.comboBox_ProductBrand.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.comboBox_ProductBrand.Font = new System.Drawing.Font("微软雅黑", 10.5F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
+            this.comboBox_ProductBrand.FormattingEnabled = true;
+            this.comboBox_ProductBrand.Location = new System.Drawing.Point(53, 18);
+            this.comboBox_ProductBrand.Name = "comboBox_ProductBrand";
+            this.comboBox_ProductBrand.Size = new System.Drawing.Size(121, 28);
+            this.comboBox_ProductBrand.TabIndex = 1;
             // 
-            // button_Search
+            // label1
             // 
-            this.button_Search.Font = new System.Drawing.Font("微软雅黑", 10.5F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
-            this.button_Search.Location = new System.Drawing.Point(681, 19);
-            this.button_Search.Name = "button_Search";
-            this.button_Search.Size = new System.Drawing.Size(75, 30);
-            this.button_Search.TabIndex = 5;
-            this.button_Search.Text = "查询";
-            this.button_Search.UseVisualStyleBackColor = true;
-            this.button_Search.Click += new System.EventHandler(this.button_Search_Click);
-            // 
-            // button_ClearSearch
-            // 
-            this.button_ClearSearch.Font = new System.Drawing.Font("微软雅黑", 10.5F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
-            this.button_ClearSearch.Location = new System.Drawing.Point(787, 19);
-            this.button_ClearSearch.Name = "button_ClearSearch";
-            this.button_ClearSearch.Size = new System.Drawing.Size(101, 30);
-            this.button_ClearSearch.TabIndex = 6;
-            this.button_ClearSearch.Text = "清除查询结果";
-            this.button_ClearSearch.UseVisualStyleBackColor = true;
-            this.button_ClearSearch.Click += new System.EventHandler(this.button_ClearSearch_Click);
+            this.label1.AutoSize = true;
+            this.label1.Font = new System.Drawing.Font("微软雅黑", 10.5F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
+            this.label1.Location = new System.Drawing.Point(10, 21);
+            this.label1.Name = "label1";
+            this.label1.Size = new System.Drawing.Size(37, 20);
+            this.label1.TabIndex = 0;
+            this.label1.Text = "商品";
             // 
             // DeliverStatis
             // 
@@ -268,7 +268,6 @@
             this.Name = "DeliverStatis";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "配送统计";
-            this.Activated += new System.EventHandler(this.DeliverStatis_Activated);
             this.Load += new System.EventHandler(this.DeliverStatis_Load);
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).EndInit();
             this.groupBox1.ResumeLayout(false);

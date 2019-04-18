@@ -30,11 +30,6 @@
         {
             this.components = new System.ComponentModel.Container();
             this.dataGridView1 = new System.Windows.Forms.DataGridView();
-            this.contextMenuStrip1 = new System.Windows.Forms.ContextMenuStrip(this.components);
-            this.ToolStripMenuItem_add = new System.Windows.Forms.ToolStripMenuItem();
-            this.ToolStripMenuItem_modify = new System.Windows.Forms.ToolStripMenuItem();
-            this.ToolStripMenuItem_delete = new System.Windows.Forms.ToolStripMenuItem();
-            this.ToolStripMenuItem_finished = new System.Windows.Forms.ToolStripMenuItem();
             this.Column_deliverId = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Column_OrderId = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Column_CustomerName = new System.Windows.Forms.DataGridViewTextBoxColumn();
@@ -46,6 +41,11 @@
             this.Column_Data = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Column_DeliverNumber = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Column_Finished = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.contextMenuStrip1 = new System.Windows.Forms.ContextMenuStrip(this.components);
+            this.ToolStripMenuItem_finished = new System.Windows.Forms.ToolStripMenuItem();
+            this.ToolStripMenuItem_add = new System.Windows.Forms.ToolStripMenuItem();
+            this.ToolStripMenuItem_modify = new System.Windows.Forms.ToolStripMenuItem();
+            this.ToolStripMenuItem_delete = new System.Windows.Forms.ToolStripMenuItem();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
             this.contextMenuStrip1.SuspendLayout();
             this.SuspendLayout();
@@ -73,7 +73,7 @@
             this.Column_DeliverNumber,
             this.Column_Finished});
             this.dataGridView1.Location = new System.Drawing.Point(0, 0);
-            this.dataGridView1.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.dataGridView1.Margin = new System.Windows.Forms.Padding(4);
             this.dataGridView1.MultiSelect = false;
             this.dataGridView1.Name = "dataGridView1";
             this.dataGridView1.RowHeadersWidthSizeMode = System.Windows.Forms.DataGridViewRowHeadersWidthSizeMode.AutoSizeToDisplayedHeaders;
@@ -83,46 +83,7 @@
             this.dataGridView1.TabIndex = 0;
             this.dataGridView1.CellDoubleClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dataGridView1_CellDoubleClick);
             this.dataGridView1.CellMouseClick += new System.Windows.Forms.DataGridViewCellMouseEventHandler(this.dataGridView1_CellMouseClick);
-            this.dataGridView1.RowStateChanged += new System.Windows.Forms.DataGridViewRowStateChangedEventHandler(this.dataGridView1_RowStateChanged);
-            // 
-            // contextMenuStrip1
-            // 
-            this.contextMenuStrip1.Font = new System.Drawing.Font("微软雅黑", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
-            this.contextMenuStrip1.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.ToolStripMenuItem_finished,
-            this.ToolStripMenuItem_add,
-            this.ToolStripMenuItem_modify,
-            this.ToolStripMenuItem_delete});
-            this.contextMenuStrip1.Name = "contextMenuStrip1";
-            this.contextMenuStrip1.Size = new System.Drawing.Size(113, 92);
-            // 
-            // ToolStripMenuItem_add
-            // 
-            this.ToolStripMenuItem_add.Name = "ToolStripMenuItem_add";
-            this.ToolStripMenuItem_add.Size = new System.Drawing.Size(180, 22);
-            this.ToolStripMenuItem_add.Text = "增加";
-            this.ToolStripMenuItem_add.Click += new System.EventHandler(this.ToolStripMenuItem_add_Click);
-            // 
-            // ToolStripMenuItem_modify
-            // 
-            this.ToolStripMenuItem_modify.Name = "ToolStripMenuItem_modify";
-            this.ToolStripMenuItem_modify.Size = new System.Drawing.Size(180, 22);
-            this.ToolStripMenuItem_modify.Text = "修改";
-            this.ToolStripMenuItem_modify.Click += new System.EventHandler(this.ToolStripMenuItem_modify_Click);
-            // 
-            // ToolStripMenuItem_delete
-            // 
-            this.ToolStripMenuItem_delete.Name = "ToolStripMenuItem_delete";
-            this.ToolStripMenuItem_delete.Size = new System.Drawing.Size(180, 22);
-            this.ToolStripMenuItem_delete.Text = "删除";
-            this.ToolStripMenuItem_delete.Click += new System.EventHandler(this.ToolStripMenuItem_delete_Click);
-            // 
-            // ToolStripMenuItem_finished
-            // 
-            this.ToolStripMenuItem_finished.Name = "ToolStripMenuItem_finished";
-            this.ToolStripMenuItem_finished.Size = new System.Drawing.Size(180, 22);
-            this.ToolStripMenuItem_finished.Text = "已完成";
-            this.ToolStripMenuItem_finished.Click += new System.EventHandler(this.ToolStripMenuItem_finished_Click);
+            this.dataGridView1.Sorted += new System.EventHandler(this.dataGridView1_Sorted);
             // 
             // Column_deliverId
             // 
@@ -212,6 +173,45 @@
             this.Column_Finished.Name = "Column_Finished";
             this.Column_Finished.ReadOnly = true;
             // 
+            // contextMenuStrip1
+            // 
+            this.contextMenuStrip1.Font = new System.Drawing.Font("微软雅黑", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
+            this.contextMenuStrip1.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.ToolStripMenuItem_finished,
+            this.ToolStripMenuItem_add,
+            this.ToolStripMenuItem_modify,
+            this.ToolStripMenuItem_delete});
+            this.contextMenuStrip1.Name = "contextMenuStrip1";
+            this.contextMenuStrip1.Size = new System.Drawing.Size(113, 92);
+            // 
+            // ToolStripMenuItem_finished
+            // 
+            this.ToolStripMenuItem_finished.Name = "ToolStripMenuItem_finished";
+            this.ToolStripMenuItem_finished.Size = new System.Drawing.Size(112, 22);
+            this.ToolStripMenuItem_finished.Text = "已完成";
+            this.ToolStripMenuItem_finished.Click += new System.EventHandler(this.ToolStripMenuItem_finished_Click);
+            // 
+            // ToolStripMenuItem_add
+            // 
+            this.ToolStripMenuItem_add.Name = "ToolStripMenuItem_add";
+            this.ToolStripMenuItem_add.Size = new System.Drawing.Size(112, 22);
+            this.ToolStripMenuItem_add.Text = "增加";
+            this.ToolStripMenuItem_add.Click += new System.EventHandler(this.ToolStripMenuItem_add_Click);
+            // 
+            // ToolStripMenuItem_modify
+            // 
+            this.ToolStripMenuItem_modify.Name = "ToolStripMenuItem_modify";
+            this.ToolStripMenuItem_modify.Size = new System.Drawing.Size(112, 22);
+            this.ToolStripMenuItem_modify.Text = "修改";
+            this.ToolStripMenuItem_modify.Click += new System.EventHandler(this.ToolStripMenuItem_modify_Click);
+            // 
+            // ToolStripMenuItem_delete
+            // 
+            this.ToolStripMenuItem_delete.Name = "ToolStripMenuItem_delete";
+            this.ToolStripMenuItem_delete.Size = new System.Drawing.Size(112, 22);
+            this.ToolStripMenuItem_delete.Text = "删除";
+            this.ToolStripMenuItem_delete.Click += new System.EventHandler(this.ToolStripMenuItem_delete_Click);
+            // 
             // DeliverForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 17F);
@@ -219,7 +219,7 @@
             this.ClientSize = new System.Drawing.Size(982, 493);
             this.Controls.Add(this.dataGridView1);
             this.Font = new System.Drawing.Font("微软雅黑", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
-            this.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.Margin = new System.Windows.Forms.Padding(4);
             this.Name = "DeliverForm";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "配送计划";
