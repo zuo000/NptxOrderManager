@@ -83,7 +83,7 @@ namespace UI
             this.toolStripComboBox_SearchType.ComboBox.SelectedIndex = 0;
         }
                
-        private void StartForm2_Load(object sender, EventArgs e)
+        private void StartForm_Load(object sender, EventArgs e)
         {
             BindSearchTypeComboBox();
             RefreshDataGrid();
@@ -190,6 +190,8 @@ namespace UI
                                             {
                                                 order.OrderId += "-" + (productIndex + 1).ToString();
                                             }
+                                            order.IsDeliveredOnlyOnce = true;
+                                            order.DeliverPlan = "";
                                             order.OrderDateTime = row.Cells[OrderTimeColIndex].DateCellValue.ToString();
                                             order.CustomerName = row.Cells[CustomerNameColIndex].StringCellValue;
                                             order.CustomerNickName = row.Cells[CustomerNickNameColIndex].StringCellValue;
@@ -204,7 +206,6 @@ namespace UI
                                             order.ProductBrand = row.Cells[ProductBrandColIndex + productIndex * 4].StringCellValue;
                                             order.ProductName = row.Cells[ProductNameColIndex + productIndex * 4].StringCellValue;
                                             order.ProductOrderNumber = Convert.ToUInt16(row.Cells[ProductOrderNumberColIndex + productIndex * 4].NumericCellValue);
-                                            order.DeliverNumberEveryTime = order.ProductOrderNumber;
                                             order.DeliverBeginDate = Convert.ToDateTime(order.OrderDateTime).ToString("yyyy-MM-dd");
                                             order.Comments = row.Cells[CommentsColIndex].StringCellValue;
 

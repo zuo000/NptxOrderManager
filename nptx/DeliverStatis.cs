@@ -46,6 +46,7 @@ namespace UI
         {
             BindProductBrandComboBox();
             BindDistrictComboBox();
+            BindStatusComboBox();
             RefreshDataGrid();
         }
 
@@ -72,14 +73,14 @@ namespace UI
         private void BindDistrictComboBox()
         {
             IList<SearchTypeInfo> infoList = new List<SearchTypeInfo>();
-            List<string> brandList = BLL.Interface.GetAllDistrictNames();
+            List<string> districtList = BLL.Interface.GetAllDistrictNames();
 
             SearchTypeInfo info2 = new SearchTypeInfo() { SearchType = "all", SearchName = "全部" };
             infoList.Add(info2);
 
-            foreach (string brand in brandList)
+            foreach (string district in districtList)
             {
-                SearchTypeInfo info = new SearchTypeInfo() { SearchType = brand, SearchName = brand };
+                SearchTypeInfo info = new SearchTypeInfo() { SearchType = district, SearchName = district };
                 infoList.Add(info);
             }
 
@@ -88,11 +89,32 @@ namespace UI
             this.comboBox_District.DisplayMember = "SearchName";
             this.comboBox_District.SelectedIndex = 0;
         }
-        
+
+        private void BindStatusComboBox()
+        {
+            IList<SearchTypeInfo> infoList = new List<SearchTypeInfo>();
+            List<string> statusList = BLL.Interface.GetAllStatusName();
+
+            SearchTypeInfo info2 = new SearchTypeInfo() { SearchType = "all", SearchName = "全部" };
+            infoList.Add(info2);
+
+            foreach (string status in statusList)
+            {
+                SearchTypeInfo info = new SearchTypeInfo() { SearchType = status, SearchName = status };
+                infoList.Add(info);
+            }
+
+            this.comboBox_status.DataSource = infoList;
+            this.comboBox_status.ValueMember = "SearchType";
+            this.comboBox_status.DisplayMember = "SearchName";
+            this.comboBox_status.SelectedIndex = 0;
+        }
+
         private void button_Search_Click(object sender, EventArgs e)
         {
             DataSet ds = BLL.Interface.GetDeliverItemsBySearch(this.comboBox_ProductBrand.SelectedValue.ToString(),
-                this.comboBox_District.SelectedValue.ToString(), this.dateTimePicker1.Value.ToString("yyyy-MM-dd"));
+                this.comboBox_District.SelectedValue.ToString(), this.comboBox_status.SelectedValue.ToString(),
+                this.dateTimePicker1.Value.ToString("yyyy-MM-dd"));
 
             this.dataGridView1.AutoGenerateColumns = false;
             this.dataGridView1.DataSource = ds.Tables[0];
@@ -105,6 +127,7 @@ namespace UI
         {
             this.comboBox_ProductBrand.SelectedValue = "all";
             this.comboBox_District.SelectedValue = "all";
+            this.comboBox_status.SelectedValue = "all";
             this.dateTimePicker1.Text = DateTime.Now.ToLocalTime().ToString("yyyy-MM-dd");
             RefreshDataGrid();
         }

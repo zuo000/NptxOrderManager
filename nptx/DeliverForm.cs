@@ -103,7 +103,13 @@ namespace UI
 
         private void ToolStripMenuItem_delete_Click(object sender, EventArgs e)
         {
-            BLL.Interface.DeleteDeliverItem(dataGridView1.SelectedRows[0].Cells[0].Value.ToString());
+            foreach (DataGridViewRow row in dataGridView1.SelectedRows)
+            {
+                string deliverId = row.Cells[0].Value.ToString();
+
+                BLL.Interface.DeleteDeliverItem(deliverId);
+            }
+
             RefreshDataGrid(m_orderId);
         }
 
@@ -112,6 +118,23 @@ namespace UI
             if (e.Button == System.Windows.Forms.MouseButtons.Right && e.ColumnIndex > -1 && e.RowIndex > -1)
             {
                 dataGridView1.Rows[e.RowIndex].Cells[e.ColumnIndex].Selected = true;
+                foreach (ToolStripItem item in this.contextMenuStrip1.Items)
+                {
+                    item.Enabled = true;
+                }
+
+                if (dataGridView1.SelectedRows.Count > 1)
+                {
+                    foreach(ToolStripItem item in this.contextMenuStrip1.Items)
+                    {
+                        if (item.Text == "增加" ||
+                            item.Text == "修改")
+                        {
+                            item.Enabled = false;
+                        }
+                    }
+                }
+
                 this.contextMenuStrip1.Show(MousePosition.X, MousePosition.Y); //MousePosition.X, MousePosition.Y 是为了让菜单在所选行的位置显示
             }
         }
@@ -123,13 +146,21 @@ namespace UI
 
         private void ToolStripMenuItem_finished_Click(object sender, EventArgs e)
         {
-            var row = dataGridView1.SelectedRows[0];
-            int row_index = row.Index;
+            List<int> rowIndexArray = new List<int>();
+            foreach (DataGridViewRow row in dataGridView1.SelectedRows)
+            {
+                int row_index = row.Index;
+                rowIndexArray.Add(row_index);
 
-            BLL.Interface.UpdateDeliverStatus(row.Cells[0].Value.ToString(), "已完成");
+                BLL.Interface.UpdateDeliverStatus(row.Cells[0].Value.ToString(), "已完成");
+            }
+
             RefreshDataGrid(m_orderId);
 
-            this.dataGridView1.Rows[row_index].Selected = true;
+            foreach(int index in rowIndexArray)
+            {
+                this.dataGridView1.Rows[index].Selected = true;
+            }
         }
 
         private void dataGridView1_Sorted(object sender, EventArgs e)

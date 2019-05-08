@@ -48,6 +48,8 @@
             this.label2 = new System.Windows.Forms.Label();
             this.comboBox_ProductBrand = new System.Windows.Forms.ComboBox();
             this.label1 = new System.Windows.Forms.Label();
+            this.comboBox_status = new System.Windows.Forms.ComboBox();
+            this.label3 = new System.Windows.Forms.Label();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
             this.groupBox1.SuspendLayout();
             this.SuspendLayout();
@@ -175,6 +177,8 @@
             // 
             // groupBox1
             // 
+            this.groupBox1.Controls.Add(this.comboBox_status);
+            this.groupBox1.Controls.Add(this.label3);
             this.groupBox1.Controls.Add(this.button_ClearSearch);
             this.groupBox1.Controls.Add(this.button_Search);
             this.groupBox1.Controls.Add(this.dateTimePicker1);
@@ -184,14 +188,14 @@
             this.groupBox1.Controls.Add(this.label1);
             this.groupBox1.Location = new System.Drawing.Point(7, 0);
             this.groupBox1.Name = "groupBox1";
-            this.groupBox1.Size = new System.Drawing.Size(923, 57);
+            this.groupBox1.Size = new System.Drawing.Size(1069, 57);
             this.groupBox1.TabIndex = 1;
             this.groupBox1.TabStop = false;
             // 
             // button_ClearSearch
             // 
             this.button_ClearSearch.Font = new System.Drawing.Font("微软雅黑", 10.5F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
-            this.button_ClearSearch.Location = new System.Drawing.Point(787, 19);
+            this.button_ClearSearch.Location = new System.Drawing.Point(954, 19);
             this.button_ClearSearch.Name = "button_ClearSearch";
             this.button_ClearSearch.Size = new System.Drawing.Size(101, 30);
             this.button_ClearSearch.TabIndex = 6;
@@ -202,7 +206,7 @@
             // button_Search
             // 
             this.button_Search.Font = new System.Drawing.Font("微软雅黑", 10.5F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
-            this.button_Search.Location = new System.Drawing.Point(681, 19);
+            this.button_Search.Location = new System.Drawing.Point(852, 19);
             this.button_Search.Name = "button_Search";
             this.button_Search.Size = new System.Drawing.Size(75, 30);
             this.button_Search.TabIndex = 5;
@@ -213,9 +217,9 @@
             // dateTimePicker1
             // 
             this.dateTimePicker1.Font = new System.Drawing.Font("微软雅黑", 10.5F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
-            this.dateTimePicker1.Location = new System.Drawing.Point(452, 19);
+            this.dateTimePicker1.Location = new System.Drawing.Point(682, 19);
             this.dateTimePicker1.Name = "dateTimePicker1";
-            this.dateTimePicker1.Size = new System.Drawing.Size(200, 26);
+            this.dateTimePicker1.Size = new System.Drawing.Size(146, 26);
             this.dateTimePicker1.TabIndex = 4;
             // 
             // comboBox_District
@@ -223,16 +227,16 @@
             this.comboBox_District.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.comboBox_District.Font = new System.Drawing.Font("微软雅黑", 10.5F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
             this.comboBox_District.FormattingEnabled = true;
-            this.comboBox_District.Location = new System.Drawing.Point(292, 18);
+            this.comboBox_District.Location = new System.Drawing.Point(466, 18);
             this.comboBox_District.Name = "comboBox_District";
-            this.comboBox_District.Size = new System.Drawing.Size(121, 28);
+            this.comboBox_District.Size = new System.Drawing.Size(55, 28);
             this.comboBox_District.TabIndex = 3;
             // 
             // label2
             // 
             this.label2.AutoSize = true;
             this.label2.Font = new System.Drawing.Font("微软雅黑", 10.5F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
-            this.label2.Location = new System.Drawing.Point(217, 21);
+            this.label2.Location = new System.Drawing.Point(394, 21);
             this.label2.Name = "label2";
             this.label2.Size = new System.Drawing.Size(65, 20);
             this.label2.TabIndex = 2;
@@ -245,7 +249,7 @@
             this.comboBox_ProductBrand.FormattingEnabled = true;
             this.comboBox_ProductBrand.Location = new System.Drawing.Point(53, 18);
             this.comboBox_ProductBrand.Name = "comboBox_ProductBrand";
-            this.comboBox_ProductBrand.Size = new System.Drawing.Size(121, 28);
+            this.comboBox_ProductBrand.Size = new System.Drawing.Size(331, 28);
             this.comboBox_ProductBrand.TabIndex = 1;
             // 
             // label1
@@ -257,6 +261,26 @@
             this.label1.Size = new System.Drawing.Size(37, 20);
             this.label1.TabIndex = 0;
             this.label1.Text = "商品";
+            // 
+            // comboBox_status
+            // 
+            this.comboBox_status.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.comboBox_status.Font = new System.Drawing.Font("微软雅黑", 10.5F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
+            this.comboBox_status.FormattingEnabled = true;
+            this.comboBox_status.Location = new System.Drawing.Point(610, 18);
+            this.comboBox_status.Name = "comboBox_status";
+            this.comboBox_status.Size = new System.Drawing.Size(55, 28);
+            this.comboBox_status.TabIndex = 8;
+            // 
+            // label3
+            // 
+            this.label3.AutoSize = true;
+            this.label3.Font = new System.Drawing.Font("微软雅黑", 10.5F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
+            this.label3.Location = new System.Drawing.Point(534, 21);
+            this.label3.Name = "label3";
+            this.label3.Size = new System.Drawing.Size(65, 20);
+            this.label3.TabIndex = 7;
+            this.label3.Text = "完成情况";
             // 
             // DeliverStatis
             // 
@@ -298,5 +322,7 @@
         private System.Windows.Forms.DateTimePicker dateTimePicker1;
         private System.Windows.Forms.Button button_Search;
         private System.Windows.Forms.Button button_ClearSearch;
+        private System.Windows.Forms.ComboBox comboBox_status;
+        private System.Windows.Forms.Label label3;
     }
 }

@@ -43,64 +43,103 @@ namespace UI
             this.comboBox_ProductName.Text = order.ProductName;
             this.textBox_AdditionalGifts.Text = order.AdditionalGifts;
             this.textBox_OrderNum.Text = order.ProductOrderNumber.ToString();
-            this.textBox_DeliverNumEveryTime.Text = order.DeliverNumberEveryTime.ToString();
+            //this.textBox_DeliverNumEveryTime.Text = order.DeliverNumberEveryTime.ToString();
             this.textBox_Comments.Text = order.Comments;
             this.monthCalendar1.SetDate(Convert.ToDateTime(order.DeliverBeginDate));
 
-            if (order.DeliverPeriod.EndsWith("天"))
+            if (!order.IsDeliveredOnlyOnce)
             {
-                this.radioButton_ByDay.Checked = true;
-                this.radioButton_ByWeek.Checked = false;
-                this.textBox_DeliverInterval.Text = order.DeliverPeriod.Replace("每", string.Empty).Replace("天", string.Empty);
-            }
-            else
-            {
-                this.radioButton_ByWeek.Checked = true;
-                this.radioButton_ByDay.Checked = false;
-
-                this.checkBox_Monday.Checked = false;
-                this.checkBox_Tuesday.Checked = false;
-                this.checkBox_Wednesday.Checked = false;
-                this.checkBox_Thursday.Checked = false;
-                this.checkBox_Friday.Checked = false;
-                this.checkBox_Saturday.Checked = false;
-                this.checkBox_Sunday.Checked = false;
-
-                if (order.DeliverPeriod.Contains("一"))
+                if (order.DeliverPlan.Contains("天"))
                 {
-                    this.checkBox_Monday.Checked = true;
-                }
+                    this.radioButton_ByDay.Checked = true;
+                    this.radioButton_ByWeek.Checked = false;
 
-                if (order.DeliverPeriod.Contains("二"))
-                {
-                    this.checkBox_Tuesday.Checked = true;
-                }
+                    this.textBox_DeliverInterval.Text = order.DeliverPlan.Substring(
+                        order.DeliverPlan.IndexOf("每") + 1, 
+                        order.DeliverPlan.IndexOf("天") - order.DeliverPlan.IndexOf("每") - 1);                    
 
-                if (order.DeliverPeriod.Contains("三"))
-                {
-                    this.checkBox_Wednesday.Checked = true;
+                    this.textBox_DeliveryNumberEveryTime.Text = order.DeliverPlan.Substring(
+                        order.DeliverPlan.IndexOf("天") + 1, 
+                        order.DeliverPlan.IndexOf("袋") - order.DeliverPlan.IndexOf("天") - 1);
                 }
+                else
+                {
+                    this.radioButton_ByWeek.Checked = true;
+                    this.radioButton_ByDay.Checked = false;
 
-                if (order.DeliverPeriod.Contains("四"))
-                {
-                    this.checkBox_Thursday.Checked = true;
-                }
+                    this.checkBox_Monday.Checked = false;
+                    this.checkBox_Tuesday.Checked = false;
+                    this.checkBox_Wednesday.Checked = false;
+                    this.checkBox_Thursday.Checked = false;
+                    this.checkBox_Friday.Checked = false;
+                    this.checkBox_Saturday.Checked = false;
+                    this.checkBox_Sunday.Checked = false;
 
-                if (order.DeliverPeriod.Contains("五"))
-                {
-                    this.checkBox_Friday.Checked = true;
-                }
+                    if (order.DeliverPlan.Contains("一"))
+                    {
+                        this.checkBox_Monday.Checked = true;
 
-                if (order.DeliverPeriod.Contains("六"))
-                {
-                    this.checkBox_Saturday.Checked = true;
-                }
+                        string subDeliverPlan = order.DeliverPlan.Substring(order.DeliverPlan.IndexOf("一"));
+                        this.textBox_Monday.Text = subDeliverPlan.Substring(subDeliverPlan.IndexOf("一") + 1,
+                            subDeliverPlan.IndexOf("袋") - subDeliverPlan.IndexOf("一") - 1);
 
-                if (order.DeliverPeriod.Contains("日"))
-                {
-                    this.checkBox_Sunday.Checked = true;
+                    }
+
+                    if (order.DeliverPlan.Contains("二"))
+                    {
+                        this.checkBox_Tuesday.Checked = true;
+
+                        string subDeliverPlan = order.DeliverPlan.Substring(order.DeliverPlan.IndexOf("二"));
+                        this.textBox_Tuesday.Text = subDeliverPlan.Substring(subDeliverPlan.IndexOf("二") + 1,
+                            subDeliverPlan.IndexOf("袋") - subDeliverPlan.IndexOf("二") - 1);
+                    }
+
+                    if (order.DeliverPlan.Contains("三"))
+                    {
+                        this.checkBox_Wednesday.Checked = true;
+
+                        string subDeliverPlan = order.DeliverPlan.Substring(order.DeliverPlan.IndexOf("三"));
+                        this.textBox_Wednesday.Text = subDeliverPlan.Substring(subDeliverPlan.IndexOf("三") + 1,
+                            subDeliverPlan.IndexOf("袋") - subDeliverPlan.IndexOf("三") - 1);
+                    }
+
+                    if (order.DeliverPlan.Contains("四"))
+                    {
+                        this.checkBox_Thursday.Checked = true;
+
+                        string subDeliverPlan = order.DeliverPlan.Substring(order.DeliverPlan.IndexOf("四"));
+                        this.textBox_Thursday.Text = subDeliverPlan.Substring(subDeliverPlan.IndexOf("四") + 1,
+                            subDeliverPlan.IndexOf("袋") - subDeliverPlan.IndexOf("四") - 1);
+                    }
+
+                    if (order.DeliverPlan.Contains("五"))
+                    {
+                        this.checkBox_Friday.Checked = true;
+
+                        string subDeliverPlan = order.DeliverPlan.Substring(order.DeliverPlan.IndexOf("五"));
+                        this.textBox_Friday.Text = subDeliverPlan.Substring(subDeliverPlan.IndexOf("五") + 1,
+                            subDeliverPlan.IndexOf("袋") - subDeliverPlan.IndexOf("五") - 1);
+                    }
+
+                    if (order.DeliverPlan.Contains("六"))
+                    {
+                        this.checkBox_Saturday.Checked = true;
+
+                        string subDeliverPlan = order.DeliverPlan.Substring(order.DeliverPlan.IndexOf("六"));
+                        this.textBox_Saturday.Text = subDeliverPlan.Substring(subDeliverPlan.IndexOf("六") + 1,
+                            subDeliverPlan.IndexOf("袋") - subDeliverPlan.IndexOf("六") - 1);
+                    }
+
+                    if (order.DeliverPlan.Contains("日"))
+                    {
+                        this.checkBox_Sunday.Checked = true;
+
+                        string subDeliverPlan = order.DeliverPlan.Substring(order.DeliverPlan.IndexOf("日"));
+                        this.textBox_Sunday.Text = subDeliverPlan.Substring(subDeliverPlan.IndexOf("日") + 1,
+                            subDeliverPlan.IndexOf("袋") - subDeliverPlan.IndexOf("日") - 1);
+                    }
                 }
-            }
+            }            
 
             this.button_Submit.TabIndex = 0;
 
@@ -184,15 +223,15 @@ namespace UI
             ComboBoxUpdate(ref this.comboBox_CustomerDistrict, ref this.m_districtList, ref this.m_districtListNew);
         }
 
-        private void checkedListBox_DeliverPeriod_ItemCheck(object sender, ItemCheckEventArgs e)
-        {
-            if (e.CurrentValue == CheckState.Checked) return;//取消选中就不用进行以下操作
-            for (int i = 0; i < ((CheckedListBox)sender).Items.Count; i++)
-            {
-                ((CheckedListBox)sender).SetItemChecked(i, false);//将所有选项设为不选中
-            }
-            e.NewValue = CheckState.Checked;//刷新
-        }
+        //private void checkedListBox_DeliverPeriod_ItemCheck(object sender, ItemCheckEventArgs e)
+        //{
+        //    if (e.CurrentValue == CheckState.Checked) return;//取消选中就不用进行以下操作
+        //    for (int i = 0; i < ((CheckedListBox)sender).Items.Count; i++)
+        //    {
+        //        ((CheckedListBox)sender).SetItemChecked(i, false);//将所有选项设为不选中
+        //    }
+        //    e.NewValue = CheckState.Checked;//刷新
+        //}
 
         private void radioButton_ByWeek_CheckedChanged(object sender, EventArgs e)
         {
@@ -241,6 +280,32 @@ namespace UI
             radioButton_ByDay.Checked = true;
         }
 
+        private bool isInvalid(CheckBox checkBox, TextBox textBox)
+        {
+            if (checkBox.Checked)
+            {
+                if (textBox.Text.Length == 0)
+                {
+                    return true;
+                }
+                else
+                {
+                    return false;
+                }
+            }
+            else
+            {
+                if (textBox.Text.Length != 0)
+                {
+                    return true;
+                }
+                else
+                {
+                    return false;
+                }
+            }
+        }
+
         private bool checkInputInfo()
         {
             if (this.textBox_PhoneNO.Text.Length > 11)
@@ -259,33 +324,175 @@ namespace UI
                 return false;
             }
 
-            if (this.textBox_DeliverNumEveryTime.Text.Length > 0)
+            if (GetCheckedBoxNumber() > 2)
             {
-                if (this.radioButton_ByDay.Checked)
+                MessageBox.Show("一周只能最多选择2天配送", m_messageBoxTitle, MessageBoxButtons.OK, MessageBoxIcon.Error);
+                return false;
+            }
+
+            if (this.radioButton_ByDay.Checked)
+            {
+                //不能只填一个
+                if (this.textBox_DeliverInterval.Text.Length * this.textBox_DeliveryNumberEveryTime.Text.Length == 0)
                 {
+                    string text = null;
                     if (this.textBox_DeliverInterval.Text.Length == 0)
                     {
-                        MessageBox.Show("请输入送奶计划", m_messageBoxTitle, MessageBoxButtons.OK, MessageBoxIcon.Error);
+                        text = "请输入配送时间间隔";
                         this.textBox_DeliverInterval.Focus();
-                        this.textBox_DeliverInterval.Select(0, 0);
-                        return false;
                     }
-                }
-                else if (this.radioButton_ByWeek.Checked)
-                {
-                    if (!this.checkBox_Monday.Checked &&
-                        !this.checkBox_Tuesday.Checked &&
-                        !this.checkBox_Wednesday.Checked &&
-                        !this.checkBox_Thursday.Checked &&
-                        !this.checkBox_Friday.Checked &&
-                        !this.checkBox_Saturday.Checked &&
-                        !this.checkBox_Sunday.Checked)
+                    else
                     {
-                        MessageBox.Show("请选择送奶计划", m_messageBoxTitle, MessageBoxButtons.OK, MessageBoxIcon.Error);
-                        return false;
+                        text = "请输入每次配送数量";
+                        this.textBox_DeliveryNumberEveryTime.Focus();
                     }
-                }                
+                    MessageBox.Show(text, m_messageBoxTitle, MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    return false;
+                }
             }
+
+            if (this.radioButton_ByWeek.Checked)
+            {
+                if (isInvalid(this.checkBox_Monday, this.textBox_Monday))
+                {
+                    string text = null; 
+                    if (!this.checkBox_Monday.Checked)
+                    {
+                        text = "请勾选周一";
+                    }
+                    else
+                    {
+                        text = "请输入周一配送数量";
+                        this.textBox_Monday.Focus();
+                    }
+                    MessageBox.Show(text, m_messageBoxTitle, MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    return false;
+                }
+
+                if (isInvalid(this.checkBox_Tuesday, this.textBox_Tuesday))
+                {
+                    string text = null;
+                    if (!this.checkBox_Tuesday.Checked)
+                    {
+                        text = "请勾选周二";
+                    }
+                    else
+                    {
+                        text = "请输入周二配送数量";
+                        this.textBox_Tuesday.Focus();
+                    }
+                    MessageBox.Show(text, m_messageBoxTitle, MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    return false;
+                }
+
+                if (isInvalid(this.checkBox_Wednesday, this.textBox_Wednesday))
+                {
+                    string text = null;
+                    if (!this.checkBox_Wednesday.Checked)
+                    {
+                        text = "请勾选周三";
+                    }
+                    else
+                    {
+                        text = "请输入周三配送数量";
+                        this.textBox_Wednesday.Focus();
+                    }
+                    MessageBox.Show(text, m_messageBoxTitle, MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    return false;
+                }
+
+                if (isInvalid(this.checkBox_Thursday, this.textBox_Thursday))
+                {
+                    string text = null;
+                    if (!this.checkBox_Thursday.Checked)
+                    {
+                        text = "请勾选周四";
+                    }
+                    else
+                    {
+                        text = "请输入周四配送数量";
+                        this.textBox_Thursday.Focus();
+                    }
+                    MessageBox.Show(text, m_messageBoxTitle, MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    return false;
+                }
+
+                if (isInvalid(this.checkBox_Friday, this.textBox_Friday))
+                {
+                    string text = null;
+                    if (!this.checkBox_Friday.Checked)
+                    {
+                        text = "请勾选周五";
+                    }
+                    else
+                    {
+                        text = "请输入周五配送数量";
+                        this.textBox_Friday.Focus();
+                    }
+                    MessageBox.Show(text, m_messageBoxTitle, MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    return false;
+                }
+
+                if (isInvalid(this.checkBox_Saturday, this.textBox_Saturday))
+                {
+                    string text = null;
+                    if (!this.checkBox_Saturday.Checked)
+                    {
+                        text = "请勾选周六";
+                    }
+                    else
+                    {
+                        text = "请输入周六配送数量";
+                        this.textBox_Saturday.Focus();
+                    }
+                    MessageBox.Show(text, m_messageBoxTitle, MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    return false;
+                }
+
+                if (isInvalid(this.checkBox_Sunday, this.textBox_Sunday))
+                {
+                    string text = null;
+                    if (!this.checkBox_Sunday.Checked)
+                    {
+                        text = "请勾选周日";
+                    }
+                    else
+                    {
+                        text = "请输入周日配送数量";
+                        this.textBox_Sunday.Focus();
+                    }
+                    MessageBox.Show(text, m_messageBoxTitle, MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    return false;
+                }
+            }
+
+            //if (this.textBox_DeliverNumEveryTime.Text.Length > 0)
+            //{
+            //    if (this.radioButton_ByDay.Checked)
+            //    {
+            //        if (this.textBox_DeliverInterval.Text.Length == 0)
+            //        {
+            //            MessageBox.Show("请输入送奶计划", m_messageBoxTitle, MessageBoxButtons.OK, MessageBoxIcon.Error);
+            //            this.textBox_DeliverInterval.Focus();
+            //            this.textBox_DeliverInterval.Select(0, 0);
+            //            return false;
+            //        }
+            //    }
+            //    else if (this.radioButton_ByWeek.Checked)
+            //    {
+            //        if (!this.checkBox_Monday.Checked &&
+            //            !this.checkBox_Tuesday.Checked &&
+            //            !this.checkBox_Wednesday.Checked &&
+            //            !this.checkBox_Thursday.Checked &&
+            //            !this.checkBox_Friday.Checked &&
+            //            !this.checkBox_Saturday.Checked &&
+            //            !this.checkBox_Sunday.Checked)
+            //        {
+            //            MessageBox.Show("请选择送奶计划", m_messageBoxTitle, MessageBoxButtons.OK, MessageBoxIcon.Error);
+            //            return false;
+            //        }
+            //    }                
+            //}
 
             return true;
         }
@@ -300,7 +507,7 @@ namespace UI
             if (!m_initFromModify)
             {
                 m_orderInfo.OrderId = UniqueOrderId.Gener("B");
-            }
+            }            
             m_orderInfo.CustomerName = this.textBox_CustomerName.Text;
             m_orderInfo.CustomerNickName = this.textBox_NickName.Text;
             m_orderInfo.CustomerPhoneNumber = this.textBox_PhoneNO.Text;
@@ -309,21 +516,43 @@ namespace UI
             m_orderInfo.ProductBrand = this.comboBox_ProductBrand.Text;
             m_orderInfo.ProductName = this.comboBox_ProductName.Text;
             m_orderInfo.ProductOrderNumber = Convert.ToUInt16(this.textBox_OrderNum.Text);
-            
+            m_orderInfo.IsDeliveredOnlyOnce = false;
 
-            if (this.textBox_DeliverNumEveryTime.Text.Length == 0 || this.textBox_DeliverNumEveryTime.Text == this.textBox_OrderNum.Text)
+            //一次性配送
+            if (this.radioButton_ByDay.Checked && this.textBox_DeliveryNumberEveryTime.Text.Length == 0)
             {
-                m_orderInfo.DeliverNumberEveryTime = m_orderInfo.ProductOrderNumber;
-                m_orderInfo.DeliverPeriod = "";
+                m_orderInfo.IsDeliveredOnlyOnce = true;
+                m_orderInfo.DeliverPlan = "";
             }
-            else
-            {
-                m_orderInfo.DeliverNumberEveryTime = Convert.ToUInt16(this.textBox_DeliverNumEveryTime.Text);
 
+            //一次性配送
+            if (this.radioButton_ByWeek.Checked &&
+                this.textBox_Monday.Text.Length == 0 &&
+                this.textBox_Tuesday.Text.Length == 0 &&
+                this.textBox_Wednesday.Text.Length == 0 &&
+                this.textBox_Thursday.Text.Length == 0 &&
+                this.textBox_Friday.Text.Length == 0 &&
+                this.textBox_Saturday.Text.Length == 0 &&
+                this.textBox_Sunday.Text.Length == 0)
+            {
+                m_orderInfo.IsDeliveredOnlyOnce = true;
+                m_orderInfo.DeliverPlan = "";
+            }
+
+            //if (this.textBox_DeliverNumEveryTime.Text.Length == 0 || this.textBox_DeliverNumEveryTime.Text == this.textBox_OrderNum.Text)
+            //{
+            //    m_orderInfo.DeliverNumberEveryTime = m_orderInfo.ProductOrderNumber;
+            //    m_orderInfo.DeliverPeriod = "";
+            //}
+            //else
+            //周期性配送
+            if (!m_orderInfo.IsDeliveredOnlyOnce)
+            {
                 if (radioButton_ByDay.Checked)
                 {
-                    string interval = "每" + this.textBox_DeliverInterval.Text + "天";
-                    m_orderInfo.DeliverPeriod = interval;
+                    string plan = "每" + this.textBox_DeliverInterval.Text + "天" +
+                        this.textBox_DeliveryNumberEveryTime.Text + "袋";
+                    m_orderInfo.DeliverPlan = plan;
                 }
                 else
                 {
@@ -331,34 +560,34 @@ namespace UI
 
                     if (this.checkBox_Monday.Checked)
                     {
-                        interval = interval + "周一";
+                        interval = interval + "周一" + this.textBox_Monday.Text + "袋";
                     }
                     if (this.checkBox_Tuesday.Checked)
                     {
-                        interval = interval + "周二";
+                        interval = interval + "周二" + this.textBox_Tuesday.Text + "袋"; ;
                     }
                     if (this.checkBox_Wednesday.Checked)
                     {
-                        interval = interval + "周三";
+                        interval = interval + "周三" + this.textBox_Wednesday.Text + "袋";
                     }
                     if (this.checkBox_Thursday.Checked)
                     {
-                        interval = interval + "周四";
+                        interval = interval + "周四" + this.textBox_Tuesday.Text + "袋";
                     }
                     if (this.checkBox_Friday.Checked)
                     {
-                        interval = interval + "周五";
+                        interval = interval + "周五" + this.textBox_Friday.Text + "袋";
                     }
                     if (this.checkBox_Saturday.Checked)
                     {
-                        interval = interval + "周六";
+                        interval = interval + "周六" + this.textBox_Saturday.Text + "袋";
                     }
                     if (this.checkBox_Sunday.Checked)
                     {
-                        interval = interval + "周日";
+                        interval = interval + "周日" + this.textBox_Sunday.Text + "袋";
                     }
 
-                    m_orderInfo.DeliverPeriod = interval;
+                    m_orderInfo.DeliverPlan = interval;
                 }
             }
             
@@ -400,14 +629,6 @@ namespace UI
             }
         }
 
-        private void textBox_DeliverNumEveryTime_KeyPress(object sender, KeyPressEventArgs e)
-        {
-            if (e.KeyChar != '\b' && !Char.IsDigit(e.KeyChar))
-            {
-                e.Handled = true;
-            }
-        }
-
         private void textBox_DeliverInterval_KeyPress(object sender, KeyPressEventArgs e)
         {
             if (e.KeyChar != '\b' && !Char.IsDigit(e.KeyChar))
@@ -421,28 +642,134 @@ namespace UI
 
         }
 
-        private void textBox_DeliverNumEveryTime_MouseHover(object sender, EventArgs e)
+        private int GetCheckedBoxNumber()
         {
-            ToolTip toolTip1 = new ToolTip();
-            // 设置显示样式
-            toolTip1.AutoPopDelay = 5000;//提示信息的可见时间
-            toolTip1.InitialDelay = 200;//事件触发多久后出现提示
-            toolTip1.ReshowDelay = 500;//指针从一个控件移向另一个控件时，经过多久才会显示下一个提示框
-            toolTip1.ShowAlways = true;//是否显示提示框
-            //  设置伴随的对象.
-            toolTip1.SetToolTip(this.textBox_DeliverNumEveryTime, "留空则为一次性配送");//设置提示按钮和提示内容
+            int n = 0;
+
+            if (this.checkBox_Monday.Checked)
+            {
+                n++;
+            }
+
+            if (this.checkBox_Tuesday.Checked)
+            {
+                n++;
+            }
+
+            if (this.checkBox_Wednesday.Checked)
+            {
+                n++;
+            }
+
+            if (this.checkBox_Thursday.Checked)
+            {
+                n++;
+            }
+
+            if (this.checkBox_Friday.Checked)
+            {
+                n++;
+            }
+
+            if (this.checkBox_Saturday.Checked)
+            {
+                n++;
+            }
+
+            if (this.checkBox_Sunday.Checked)
+            {
+                n++;
+            }
+
+            return n;
         }
 
-        private void label4_MouseHover(object sender, EventArgs e)
+        private void textBox_Monday_KeyPress(object sender, KeyPressEventArgs e)
         {
-            ToolTip toolTip1 = new ToolTip();
-            // 设置显示样式
-            toolTip1.AutoPopDelay = 5000;//提示信息的可见时间
-            toolTip1.InitialDelay = 400;//事件触发多久后出现提示
-            toolTip1.ReshowDelay = 400;//指针从一个控件移向另一个控件时，经过多久才会显示下一个提示框
-            toolTip1.ShowAlways = true;//是否显示提示框
-            //  设置伴随的对象.
-            toolTip1.SetToolTip(this.label4, "留空则为一次性配送");//设置提示按钮和提示内容
+            if (e.KeyChar != '\b' && !Char.IsDigit(e.KeyChar))
+            {
+                e.Handled = true;
+            }
         }
+
+        private void textBox_Tuesday_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            if (e.KeyChar != '\b' && !Char.IsDigit(e.KeyChar))
+            {
+                e.Handled = true;
+            }
+        }
+
+        private void textBox_Wednesday_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            if (e.KeyChar != '\b' && !Char.IsDigit(e.KeyChar))
+            {
+                e.Handled = true;
+            }
+        }
+
+        private void textBox_Thursday_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            if (e.KeyChar != '\b' && !Char.IsDigit(e.KeyChar))
+            {
+                e.Handled = true;
+            }
+        }
+
+        private void textBox_Friday_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            if (e.KeyChar != '\b' && !Char.IsDigit(e.KeyChar))
+            {
+                e.Handled = true;
+            }
+        }
+
+        private void textBox_Saturday_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            if (e.KeyChar != '\b' && !Char.IsDigit(e.KeyChar))
+            {
+                e.Handled = true;
+            }
+        }
+
+        private void textBox_Sunday_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            if (e.KeyChar != '\b' && !Char.IsDigit(e.KeyChar))
+            {
+                e.Handled = true;
+            }
+        }
+
+        private void textBox_DeliveryNumberEveryTime_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            if (e.KeyChar != '\b' && !Char.IsDigit(e.KeyChar))
+            {
+                e.Handled = true;
+            }
+        }
+
+        //private void textBox_DeliverNumEveryTime_MouseHover(object sender, EventArgs e)
+        //{
+        //    ToolTip toolTip1 = new ToolTip();
+        //    // 设置显示样式
+        //    toolTip1.AutoPopDelay = 5000;//提示信息的可见时间
+        //    toolTip1.InitialDelay = 200;//事件触发多久后出现提示
+        //    toolTip1.ReshowDelay = 500;//指针从一个控件移向另一个控件时，经过多久才会显示下一个提示框
+        //    toolTip1.ShowAlways = true;//是否显示提示框
+        //    //  设置伴随的对象.
+        //    toolTip1.SetToolTip(this.textBox_DeliverNumEveryTime, "留空则为一次性配送");//设置提示按钮和提示内容
+        //}
+
+        //private void label4_MouseHover(object sender, EventArgs e)
+        //{
+        //    ToolTip toolTip1 = new ToolTip();
+        //    // 设置显示样式
+        //    toolTip1.AutoPopDelay = 5000;//提示信息的可见时间
+        //    toolTip1.InitialDelay = 400;//事件触发多久后出现提示
+        //    toolTip1.ReshowDelay = 400;//指针从一个控件移向另一个控件时，经过多久才会显示下一个提示框
+        //    toolTip1.ShowAlways = true;//是否显示提示框
+        //    //  设置伴随的对象.
+        //    toolTip1.SetToolTip(this.label4, "留空则为一次性配送");//设置提示按钮和提示内容
+        //}
     }
 }
