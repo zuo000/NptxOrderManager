@@ -326,11 +326,11 @@
             // 
             // groupBox1
             // 
-            this.groupBox1.Controls.Add(this.panel_DeliverWeekly);
             this.groupBox1.Controls.Add(this.panel_DeliverDaily);
             this.groupBox1.Controls.Add(this.radioButton_ByDay);
             this.groupBox1.Controls.Add(this.radioButton_ByWeek);
             this.groupBox1.Controls.Add(this.label_DeliverPeriod);
+            this.groupBox1.Controls.Add(this.panel_DeliverWeekly);
             this.groupBox1.Location = new System.Drawing.Point(458, 241);
             this.groupBox1.Name = "groupBox1";
             this.groupBox1.Size = new System.Drawing.Size(250, 268);
@@ -411,6 +411,7 @@
             this.comboBox_CustomerDistrict.Size = new System.Drawing.Size(113, 28);
             this.comboBox_CustomerDistrict.TabIndex = 7;
             this.comboBox_CustomerDistrict.TextUpdate += new System.EventHandler(this.comboBox_CustomerDistrict_TextUpdate);
+            this.comboBox_CustomerDistrict.DropDownClosed += new System.EventHandler(this.comboBox_CustomerDistrict_DropDownClosed);
             // 
             // label7
             // 
@@ -451,6 +452,7 @@
             this.comboBox_ProductBrand.Size = new System.Drawing.Size(367, 28);
             this.comboBox_ProductBrand.TabIndex = 13;
             this.comboBox_ProductBrand.TextUpdate += new System.EventHandler(this.comboBox_ProductBrand_TextUpdate);
+            this.comboBox_ProductBrand.DropDownClosed += new System.EventHandler(this.comboBox_ProductBrand_DropDownClosed);
             // 
             // label9
             // 
@@ -473,6 +475,7 @@
             this.comboBox_ProductName.Size = new System.Drawing.Size(109, 28);
             this.comboBox_ProductName.TabIndex = 15;
             this.comboBox_ProductName.TextUpdate += new System.EventHandler(this.comboBox_ProductName_TextUpdate);
+            this.comboBox_ProductName.DropDownClosed += new System.EventHandler(this.comboBox_ProductName_DropDownClosed);
             // 
             // label10
             // 
@@ -714,7 +717,6 @@
             this.MaximizeBox = false;
             this.Name = "CheckinForm";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
-            this.Activated += new System.EventHandler(this.CheckinForm_Activated);
             this.Load += new System.EventHandler(this.CheckinForm_Load);
             this.panel_DeliverWeekly.ResumeLayout(false);
             this.panel_DeliverWeekly.PerformLayout();

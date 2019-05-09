@@ -18,12 +18,15 @@ namespace UI
 
         private List<string> m_districtList = BLL.Interface.GetAllDistrictNames();
         private List<string> m_districtListNew = new List<string>();
-        
+        private string m_districtText = null;
+
         private List<string> m_productBrandList = BLL.Interface.GetAllProductBrands();
         private List<string> m_productBrandListNew = new List<string>();
+        private string m_productBrandText = null;
 
         private List<string> m_productNameList = BLL.Interface.GetAllProductName();
         private List<string> m_productNameListNew = new List<string>();
+        private string m_productNameText = null;
 
         public CheckinForm()
         {            
@@ -163,14 +166,15 @@ namespace UI
 
         private void ComboBoxUpdate(ref ComboBox box, ref List<string> listInit, ref List<string> listNew)
         {
-            if (box.Text.Length == 0)
-            {
-                if (box.DroppedDown)
-                {
-                    box.DroppedDown = false;
-                }
-                return;
-            }
+
+            //if (box.Text.Length == 0)
+            //{
+            //    if (box.DroppedDown)
+            //    {
+            //        box.DroppedDown = false;
+            //    }
+            //    return;
+            //}
             //清空combobox
             box.Items.Clear();
             //清空listNew
@@ -190,11 +194,12 @@ namespace UI
                 //设置光标位置，否则光标位置始终保持在第一列，造成输入关键词的倒序排列
                 box.SelectionStart = box.Text.Length;
 
+
                 if (box.DroppedDown)
                 {
                     box.DroppedDown = false;
                 }
-
+                box.SelectedIndex = -1;
                 return;
             }
 
@@ -210,16 +215,19 @@ namespace UI
 
         private void comboBox_ProductBrand_TextUpdate(object sender, EventArgs e)
         {
+            m_productBrandText = this.comboBox_ProductBrand.Text;
             ComboBoxUpdate(ref this.comboBox_ProductBrand, ref this.m_productBrandList, ref this.m_productBrandListNew);
         }
 
         private void comboBox_ProductName_TextUpdate(object sender, EventArgs e)
         {
+            m_productNameText = this.comboBox_ProductName.Text;
             ComboBoxUpdate(ref this.comboBox_ProductName, ref this.m_productNameList, ref this.m_productNameListNew);
         }
 
         private void comboBox_CustomerDistrict_TextUpdate(object sender, EventArgs e)
         {
+            m_districtText = this.comboBox_CustomerDistrict.Text;
             ComboBoxUpdate(ref this.comboBox_CustomerDistrict, ref this.m_districtList, ref this.m_districtListNew);
         }
 
@@ -318,7 +326,7 @@ namespace UI
 
             if (this.textBox_OrderNum.Text.Length == 0)
             {
-                MessageBox.Show("订奶数量错误", m_messageBoxTitle, MessageBoxButtons.OK, MessageBoxIcon.Error);
+                MessageBox.Show("订购数量错误", m_messageBoxTitle, MessageBoxButtons.OK, MessageBoxIcon.Error);
                 this.textBox_OrderNum.Focus();
                 this.textBox_OrderNum.Select(0, this.textBox_OrderNum.Text.Length);
                 return false;
@@ -326,14 +334,15 @@ namespace UI
 
             if (GetCheckedBoxNumber() > 2)
             {
-                MessageBox.Show("一周只能最多选择2天配送", m_messageBoxTitle, MessageBoxButtons.OK, MessageBoxIcon.Error);
+                MessageBox.Show("每周只能最多选择2天配送", m_messageBoxTitle, MessageBoxButtons.OK, MessageBoxIcon.Error);
                 return false;
             }
 
             if (this.radioButton_ByDay.Checked)
             {
                 //不能只填一个
-                if (this.textBox_DeliverInterval.Text.Length * this.textBox_DeliveryNumberEveryTime.Text.Length == 0)
+                if (this.textBox_DeliverInterval.Text.Length * this.textBox_DeliveryNumberEveryTime.Text.Length == 0 &&
+                    this.textBox_DeliverInterval.Text.Length + this.textBox_DeliveryNumberEveryTime.Text.Length > 0)
                 {
                     string text = null;
                     if (this.textBox_DeliverInterval.Text.Length == 0)
@@ -637,11 +646,6 @@ namespace UI
             }
         }
 
-        private void CheckinForm_Activated(object sender, EventArgs e)
-        {
-
-        }
-
         private int GetCheckedBoxNumber()
         {
             int n = 0;
@@ -745,6 +749,39 @@ namespace UI
             if (e.KeyChar != '\b' && !Char.IsDigit(e.KeyChar))
             {
                 e.Handled = true;
+            }
+        }
+
+        private void comboBox_ProductBrand_DropDownClosed(object sender, EventArgs e)
+        {
+            if (this.comboBox_ProductBrand.Items.Count == 0 &&
+                this.comboBox_ProductBrand.SelectedIndex == 0)
+            {
+                this.comboBox_ProductBrand.SelectedIndex = -1;
+                this.comboBox_ProductBrand.Text = m_productBrandText;
+                this.comboBox_ProductBrand.SelectionStart = m_productBrandText.Length;
+            }
+        }
+
+        private void comboBox_CustomerDistrict_DropDownClosed(object sender, EventArgs e)
+        {
+            if (this.comboBox_CustomerDistrict.Items.Count == 0 &&
+                this.comboBox_CustomerDistrict.SelectedIndex == 0)
+            {
+                this.comboBox_CustomerDistrict.SelectedIndex = -1;
+                this.comboBox_CustomerDistrict.Text = m_districtText;
+                this.comboBox_CustomerDistrict.SelectionStart = m_districtText.Length;
+            }
+        }
+
+        private void comboBox_ProductName_DropDownClosed(object sender, EventArgs e)
+        {
+            if (this.comboBox_ProductName.Items.Count == 0 &&
+                this.comboBox_ProductName.SelectedIndex == 0)
+            {
+                this.comboBox_ProductName.SelectedIndex = -1;
+                this.comboBox_ProductName.Text = m_productNameText;
+                this.comboBox_ProductName.SelectionStart = m_productNameText.Length;
             }
         }
 
